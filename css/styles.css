@@ -1,6 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
 body 
 {
     background-color: #707070;
+}
+
+.logo-image
+{
+    height: 300px !important;
+    width: auto;
+    justify-content: center;
 }
 
 #title 
@@ -9,7 +18,7 @@ body
     width: 100%;
     margin: 2% 5%;
     text-align: center;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: #FFFFFF;
 }
 
