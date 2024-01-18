@@ -8,15 +8,34 @@
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-	<div class="container">
-		<!-- Navigation Bar at top of website for menu options (login, register) -->
-		<nav class="navbar navbar-expand-lg navbar-light justify-content-end">
-			<div class="navbar-nav ml-auto">
-				<a class="nav-item nav-link" href="/login.html">Login</a>
-				<a class="nav-item nav-link" href="/register.html">Register</a>
-			</div>
-		</nav>
+	<!-- Navigation Bar at top of website for menu options (login, register) -->
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<div class="container">
+			<a href="#" class="navbar-brand">Contactz</a>
 
+			<!-- Hamburger Toggle -->
+			<button 
+				class="navbar-toggler" 
+				type="button"
+				data-bs-toggle="collapse" 
+				data-bs-target="#navmenu"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<!-- Nav Links -->
+			<div class="collapse navbar-collapse" id="navmenu">
+				<ul class="navbar-nav ms-auto">
+					<a href="/login.html" class="nav-link">Login</a>
+				</ul>
+				<ul class="navbar-nav">
+					<a href="/register.html" class="nav-link">Register</a>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
 		<!--Header Content-->
 		<div id="header-content">
 			<!--Logo for App-->
