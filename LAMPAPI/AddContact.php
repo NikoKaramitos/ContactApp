@@ -1,10 +1,11 @@
 <?php
 	$inData = getRequestInfo();
 	
-	$color = $inData["color"];
+
 	$userId = $inData["userId"];
 
-	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
+
+	$conn = new mysqli("contactz.xyz", "TheBeast", "Group31POOS", "COP4331"); 	
 	if ($conn->connect_error) 
 	{
 		returnWithError( $conn->connect_error );
