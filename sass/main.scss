@@ -1,0 +1,24 @@
+// redefined variables go here:
+
+
+// import functions and variables
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+// custom variables can go here
+
+// Main Theme
+$custom-theme-colors:
+(
+    "altwhite":#ffffff,
+    "altlight": #b4b4b4,
+    "altgray": #5a5a5a,
+    "altblack":#000000,
+    "altpurple":#340a7d
+);
+
+// merge custom theme with original
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
+
+// import bootstrap
+@import '../node_modules/bootstrap/scss/bootstrap';
