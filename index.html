@@ -1,62 +1,113 @@
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Contactz</title>
+		<link rel="stylesheet" href="/sass/main.css" />
+	</head>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Contactz</title>
-	<link rel="stylesheet" href="/css/styles.css">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
+	<body>
+		<!-- Navigation Bar -->
+		<nav
+			id="navbar"
+			class="navbar sticky-top navbar-expand-md bg-altpurple navbar-dark py-3"
+		>
+			<div class="container">
+				<a href="/index.html" class="navbar-brand">
+					<span class="fw-bold text-light">
+						Bungus Sprungus Amungus
+					</span>
+				</a>
 
-<body>
-	<!-- Navigation Bar -->
-	<nav class="navbar navbar-expand-md bg-dark navbar-dark py-3">
-		<div class="container-fluid">
-			<a href="/index.html" class="navbar-brand">Bungus Amungus Sprungus</a>
+				<!-- Hamburger Toggle -->
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navmenu"
+					aria-controls="navmenu"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-			<!-- Hamburger Toggle -->
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-			<!-- Nav Links -->
-			<div class="collapse navbar-collapse" id="navmenu">
-				<ul class="navbar-nav ms-auto">
-					<a href="/login.html" class="nav-link">Login</a>
-				</ul>
-				<ul class="navbar-nav">
-					<a href="/register.html" class="nav-link">Register</a>
-				</ul>
-			</div>
-		</div>
-	</nav>
-
-	<!-- Main Page -->
-	<div id="brand_container" class="container-fluid ">
-		<div class="container text-dark p-5 text-center text-md-start justify-content-center align-items-center">
-			<div class="d-md-flex align-items-center justify-content-between">
-				<img class="img-fluid w-50 p-4 d-none d-md-block bor" src="images/testLogo_1.svg" alt="logo" />
-				<div>
-					<h1>Keep Track of your <span class="text-warning">Bungus Amungus Sprungus</span></h1>
-					<p class="lead my-4">
-						The Online Rolodex.
-						Our simple and efficient solution to finding your
-						contact information fast.
-					</p>
-					<button class="btn btn-primary btn-lg">Login</button>
-					<button class="btn btn-secondary btn-lg">Register</button>
+				<!-- Nav Links -->
+				<div
+					class="collapse navbar-collapse justify-content-end align-center"
+					id="navmenu"
+				>
+					<ul class="navbar-nav ms-auto">
+						<a href="/login.html" class="nav-link text-white"
+							>Login</a
+						>
+					</ul>
+					<ul class="navbar-nav">
+						<a href="/login.html" class="nav-link text-white"
+							>Register</a
+						>
+					</ul>
+					<ul class="navbar-nav">
+						<a href="/reference.html" class="nav-link text-white"
+							>BS REFERENCE</a
+						>
+					</ul>
 				</div>
 			</div>
-		</div>
-	</div>
+		</nav>
 
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-		integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-		crossorigin="anonymous"></script>
-</body>
+		<!-- Main Page -->
 
+		<!-- Main Image and Intro Text -->
+		<section id="intro">
+			<div class="container-lg">
+				<div class="row justify-content-center align-items-center">
+					<div class="p-5 col-md-5 col-12 text-center text-md-start order-2 order-md-1">
+						<h1>
+							<div class="display-2">Contactz</div>
+							<div class="display-5 text-muted d-none d-md-block">
+								Your Online Rolodex
+							</div>
+						</h1>
+						<p class="lead my-4 text-muted d-none d-md-block">
+							Lorem ipsum dolor sit amet consectetur, adipisicing
+							elit.
+						</p>
+						<div class="row align-items-center">
+							<div class="col-sm-6 col-md-4 mb-2 mb-md-0">
+								<div class="d-grid">
+									<a href="#" class="btn btn-altpurple btn-lg">Login</a>
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-4 mb-2 mb-md-0">
+								<div class="d-grid">
+									<a href="#" class="btn btn-altlight btn-lg">Register</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div
+						class="p-5 col-8 col-md-5 text-center justify-content-between order-1 order-md-1"
+					>
+						<img
+							class="img-fluid "
+							src="/images/LogoCropped.png"
+							alt="Logo"
+						/>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+			integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+			integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+			crossorigin="anonymous"
+		></script>
+	</body>
 </html>
