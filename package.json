@@ -1,0 +1,22 @@
+{
+  "name": "contactapp",
+  "version": "1.0.0",
+  "description": "## POOS Group 31: Project 1.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NikoKaramitos/ContactApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NikoKaramitos/ContactApp/issues"
+  },
+  "homepage": "https://github.com/NikoKaramitos/ContactApp#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.2"
+  }
+}
