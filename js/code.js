@@ -1,4 +1,4 @@
-const urlBase = 'http://COP4331-5.com/LAMPAPI';
+const urlBase = 'http://contactz.xyz/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
@@ -46,7 +46,7 @@ function doLogin()
 
 				saveCookie();
 	
-				window.location.href = "color.html";
+				window.location.href = "../color.html";
 			}
 		};
 		xhr.send(jsonPayload);

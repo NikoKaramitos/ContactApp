@@ -10,12 +10,15 @@
 	<body id="login_body">
 		<!-- Navigation Bar -->
 		<nav
-			class="navbar sticky-top navbar-expand-md bg-dark navbar-dark py-3"
+			id="navbar"
+			class="navbar sticky-top navbar-expand-md bg-altpurple navbar-dark py-3"
 		>
 			<div class="container">
-				<a href="/index.html" class="navbar-brand"
-					>Bungus Amungus Sprungus</a
-				>
+				<a href="/index.html" class="navbar-brand">
+					<span class="fw-bold text-light">
+						Bungus Sprungus Amungus
+					</span>
+				</a>
 
 				<!-- Hamburger Toggle -->
 				<button
@@ -23,17 +26,27 @@
 					type="button"
 					data-bs-toggle="collapse"
 					data-bs-target="#navmenu"
+					aria-controls="navmenu"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
 				>
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
 				<!-- Nav Links -->
-				<div class="collapse navbar-collapse" id="navmenu">
+				<div
+					class="collapse navbar-collapse justify-content-end align-center"
+					id="navmenu"
+				>
 					<ul class="navbar-nav ms-auto">
-						<a href="/login.html" class="nav-link">Login</a>
+						<a href="/login.html" class="nav-link text-white"
+							>Login</a
+						>
 					</ul>
 					<ul class="navbar-nav">
-						<a href="/register.html" class="nav-link">Register</a>
+						<a href="/login.html" class="nav-link text-white"
+							>Register</a
+						>
 					</ul>
 					<ul class="navbar-nav">
 						<a href="/reference.html" class="nav-link text-white"
@@ -44,12 +57,214 @@
 			</div>
 		</nav>
 
-		<div id="login_container">
-			<h1>Login</h1>
-			<input type="text" placeholder="Username" />
-			<input type="password" placeholder="Password" />
-			<a href="#">Register now!</a>
+		<!-- Login Carousel -->
+		<div id="loginCarousel" class="carousel slide" data-bs-interval="false">
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<!-- Login Form -->
+					<div id="login" class="container mt-5">
+						<div class="row justify-content-center">
+							<div class="col-md-6">
+								<div class="card">
+									<div class="card-body">
+										<h2 class="card-title text-center mb-4">
+											Login
+										</h2>
+										<form id="loginForm" onsubmit="event.preventDefault(); doLogin();">
+											<div class="mb-3">
+												<label
+													for="loginName"
+													class="form-label"
+													>Username</label
+												>
+												<input
+													type="text"
+													class="form-control"
+													id="loginName"
+													name="username"
+													placeholder="Username"
+													required
+												/>
+											</div>
+											<div class="mb-3">
+												<label
+													for="loginPassword"
+													class="form-label"
+													>Password</label
+												>
+												<input
+													type="password"
+													class="form-control"
+													id="loginPassword"
+													name="password"
+													placeholder="Password"
+													required
+												/>
+											</div>
+											<button
+												type="submit"
+												class="btn btn-altpurple w-100"
+											>
+												Log In
+											</button>
+											<button
+												type="button"
+												class="btn btn-altlight w-100 mt-2"
+												onclick="switchCarouselItem('next')"
+											>
+												Register
+											</button>
+										</form>
+										<div id="loginResult"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<!-- Registration Form -->
+					<div id="register" class="container mt-5">
+						<div class="row justify-content-center">
+							<div class="col-md-6">
+								<div class="card">
+									<div class="card-body">
+										<h2 class="card-title text-center mb-4">
+											Register
+										</h2>
+										<form id="registerForm">
+											<div class="mb-3">
+												<label
+													for="username"
+													class="form-label"
+													>Username</label
+												>
+												<input
+													type="text"
+													class="form-control"
+													id="username"
+													name="username"
+													placeholder="Username"
+													required
+												/>
+											</div>
+											<div class="mb-3">
+												<label
+													for="password"
+													class="form-label"
+													>Password</label
+												>
+												<input
+													type="password"
+													class="form-control"
+													id="password"
+													name="password"
+													placeholder="Password"
+													required
+												/>
+											</div>
+											<div class="mb-3">
+												<label
+													for="phone"
+													class="form-label"
+													>Phone</label
+												>
+												<input
+													type="text"
+													class="form-control"
+													id="phone"
+													name="phone"
+													placeholder="Phone"
+													required
+												/>
+											</div>
+											<div class="mb-3">
+												<label
+													for="email"
+													class="form-label"
+													>Email</label
+												>
+												<input
+													type="text"
+													class="form-control"
+													id="email"
+													name="email"
+													placeholder="Email"
+													required
+												/>
+											</div>
+											<button
+												class="carousel-control-prev"
+												type="button"
+												data-bs-target="#loginCarousel"
+												data-bs-slide="prev"
+											>
+												<span
+													class="carousel-control-prev-icon"
+													aria-hidden="true"
+												></span>
+												<span class="visually-hidden"
+													>Previous</span
+												>
+											</button>
+											<button
+												class="carousel-control-next"
+												type="button"
+												data-bs-target="#loginCarousel"
+												data-bs-slide="next"
+											>
+												<span
+													class="carousel-control-next-icon"
+													aria-hidden="true"
+												></span>
+												<span class="visually-hidden"
+													>Next</span
+												>
+											</button>
+											<button
+												type="submit"
+												class="btn btn-altpurple w-100"
+												href="#"
+											>
+												Register
+											</button>
+											<button
+												type="submit"
+												class="btn btn-altlight w-100 mt-2"
+												onclick="switchCarouselItem('prev')"
+											>
+												Back to Login
+											</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
+
+		<!-- JS scripts -->
+
+		<!-- Carousel Switch Script -->
+		<script>
+			var loginCarousel;
+
+			document.addEventListener("DOMContentLoaded", function () {
+				var carouselElement = document.querySelector("#loginCarousel");
+				loginCarousel = new bootstrap.Carousel(carouselElement, {
+					interval: false,
+					ride: false,
+				});
+			});
+
+			function switchCarouselItem(direction) {
+				direction === "next"
+					? loginCarousel.next()
+					: loginCarousel.prev();
+			}
+		</script>
 
 		<script
 			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -61,5 +276,7 @@
 			integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
 			crossorigin="anonymous"
 		></script>
+		<script src="/js/md5.js"></script>
+		<script src="/js/code.js"></script>
 	</body>
 </html>
