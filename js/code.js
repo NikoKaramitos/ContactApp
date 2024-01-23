@@ -1,4 +1,4 @@
-const urlBase = 'http://contactz.xyz/LAMPAPI';
+const urlBase = 'http://contactz.xyz/ContactApp/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
@@ -22,10 +22,10 @@ function doLogin()
 	let jsonPayload = JSON.stringify( tmp );
 	
 	let url = urlBase + '/Login.' + extension;
-
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	
 	try
 	{
 		xhr.onreadystatechange = function() 
@@ -34,10 +34,11 @@ function doLogin()
 			{
 				let jsonObject = JSON.parse( xhr.responseText );
 				userId = jsonObject.id;
-		
+				console.log(jsonObject.id);
 				if( userId < 1 )
 				{		
 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					console.log("Failed to veriy login/password.");
 					return;
 				}
 		
@@ -45,8 +46,9 @@ function doLogin()
 				lastName = jsonObject.lastName;
 
 				saveCookie();
-	
-				window.location.href = "../color.html";
+				
+				
+				window.location.href = 'dashboard.html';
 			}
 		};
 		xhr.send(jsonPayload);
