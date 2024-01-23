@@ -1,4 +1,4 @@
-const urlBase = 'http://COP4331-5.com/LAMPAPI';
+const urlBase = 'http://contactz.xyz/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
@@ -46,7 +46,7 @@ function doLogin()
 
 				saveCookie();
 	
-				window.location.href = "color.html";
+				window.location.href = "../color.html";
 			}
 		};
 		xhr.send(jsonPayload);
@@ -57,6 +57,50 @@ function doLogin()
 	}
 
 }
+
+function doRegister() {
+    // Capture user input
+    let firstName = document.getElementById("registerFirstName").value;
+    let lastName = document.getElementById("registerLastName").value;
+    let email = document.getElementById("registerEmail").value;
+    let password = document.getElementById("registerPassword").value;
+    // Optionally, you can hash the password here as in the doLogin function
+    // var hash = md5(password);
+
+    // Clear any previous registration result message
+    document.getElementById("registerResult").innerHTML = "";
+
+    // Prepare the data payload for sending
+    let tmp = { firstName: firstName, lastName: lastName, email: email, password: password };
+    // var tmp = { firstName: firstName, lastName: lastName, email: email, password: hash };
+    let jsonPayload = JSON.stringify(tmp);
+
+    // Define the URL for registration endpoint
+    let url = urlBase + '/Register.' + extension;
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+    try {
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                // Process the response, typically you might inform the user of success and redirect
+                let jsonObject = JSON.parse(xhr.responseText);
+                if (jsonObject.error) {
+                    document.getElementById("registerResult").innerHTML = jsonObject.error;
+                } else {
+                    document.getElementById("registerResult").innerHTML = "Registration successful";
+                    // Optionally, redirect to login page or auto-login the user
+                    // window.location.href = "login.html";
+                }
+            }
+        };
+        xhr.send(jsonPayload);
+    } catch (err) {
+        document.getElementById("registerResult").innerHTML = err.message;
+    }
+}
+
 
 function saveCookie()
 {
