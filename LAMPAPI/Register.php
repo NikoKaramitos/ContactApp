@@ -4,10 +4,10 @@
 	$inData = getRequestInfo();
 	
 	$id = 0;
-	$firstName = $inData["firstName"];
-	$lastName = $inData["lastName"];
-	$login = $inData["login"];
-	$password = $inData["password"];
+	$firstName = $inData["FirstName"];
+	$lastName = $inData["LastName"];
+	$login = $inData["Login"];
+	$password = $inData["Password"];
 
 	$conn = new mysqli("contactz.xyz", "TheBeast", "Group31POOS", "COP4331"); 	
 	if( $conn->connect_error )
