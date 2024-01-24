@@ -4,10 +4,10 @@
 	$inData = getRequestInfo();
 	
 	$id = 0;
-	$firstName = $inData["FirstName"];
-	$lastName = $inData["LastName"];
-	$login = $inData["Login"];
-	$password = $inData["Password"];
+	$firstName = "";
+	$lastName = "";
+	$login = "";
+	$password = "";
 
 	$conn = new mysqli("contactz.xyz", "TheBeast", "Group31POOS", "COP4331"); 	
 	if( $conn->connect_error )
@@ -17,7 +17,7 @@
 	else
 	{
 		$stmt = $conn->prepare("INSERT INTO Users (FirstName,LastName,Login,Password) VALUES(?,?,?,?)");
-		$stmt->bind_param("ssss", $firstName,$lastName,$login,$password);
+		$stmt->bind_param("ssss", $inData['FirstName'],$inData['LastName'],$inData['Login'],$inData['Password']);
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
