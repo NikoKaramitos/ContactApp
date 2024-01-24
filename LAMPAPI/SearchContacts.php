@@ -1,9 +1,14 @@
+
 <?php
 
 	$inData = getRequestInfo();
 	
 	$searchResults = "";
 	$searchCount = 0;
+
+	// In data
+
+	// Out data
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error) 

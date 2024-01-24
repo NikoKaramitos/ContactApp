@@ -8,6 +8,10 @@
 	$LastName = "";
 	$UserID = 0;
 
+	// In data
+
+	// Out data
+
 	$conn = new mysqli("contactz.xyz", "TheBeast", "Group31POOS", "COP4331"); 	
 	if( $conn->connect_error )
 	{

@@ -1,9 +1,13 @@
+
 <?php
+
 	$inData = getRequestInfo();
 	
-
 	$userId = $inData["userId"];
 
+	// In data
+
+	// Out data
 
 	$conn = new mysqli("contactz.xyz", "TheBeast", "Group31POOS", "COP4331"); 	
 	if ($conn->connect_error) 
