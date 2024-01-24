@@ -89,22 +89,22 @@
 									<h2 class="card-title text-center mb-4">
 										Register
 									</h2>
-									<form id="registerForm">
+									<form id="registerForm" onsubmit="event.preventDefault(); doRegister();">
 										<div class="mb-3">
-											<input type="text" class="form-control" id="username" name="username"
+											<input type="text" class="form-control" id="firstName" name="firstName"
+												placeholder="First Name" required />
+										</div>
+										<div class="mb-3">
+											<input type="password" class="form-control" id="lastName" name="lastName"
+												placeholder="Last Name" required />
+										</div>
+										<div class="mb-3">
+											<input type="text" class="form-control" id="login" name="login"
 												placeholder="Username" required />
 										</div>
 										<div class="mb-3">
-											<input type="password" class="form-control" id="password" name="password"
+											<input type="text" class="form-control" id="password" name="password"
 												placeholder="Password" required />
-										</div>
-										<div class="mb-3">
-											<input type="text" class="form-control" id="phone" name="phone"
-												placeholder="Phone" required />
-										</div>
-										<div class="mb-3">
-											<input type="text" class="form-control" id="email" name="email"
-												placeholder="Email" required />
 										</div>
 										<button type="submit" class="btn btn-altpurple w-100" href="#">
 											Register
@@ -114,6 +114,7 @@
 											Back to Login
 										</button>
 									</form>
+									<div id="registerResult"></div>
 								</div>
 							</div>
 						</div>
