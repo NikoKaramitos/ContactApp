@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,15 +44,15 @@
 	</nav>
 
 	<!-- Login Carousel -->
-	<div id="loginCarousel" class="carousel slide" data-bs-interval="false">
+	<div id="loginCarousel" class="carousel slide " data-bs-interval="false">
 		<div class="carousel-inner">
 			<div class="carousel-item active">
 				<!-- Login Form -->
 				<div id="login" class="container mt-5">
-					<div class="row justify-content-center">
-						<div class="col-md-6">
-							<div class="card">
-								<div class="card-body">
+					<div class="row justify-content-center align-center">
+						<div class="col-md-6 p-2 ">
+							<div class="card ">
+								<div class="card-body shadow">
 									<h2 class="card-title text-center mb-4">
 										Login
 									</h2>
@@ -83,28 +84,28 @@
 				<!-- Registration Form -->
 				<div id="register" class="container mt-5">
 					<div class="row justify-content-center">
-						<div class="col-md-6">
+						<div class="col-md-6 p-2">
 							<div class="card">
-								<div class="card-body">
+								<div class="card-body shadow">
 									<h2 class="card-title text-center mb-4">
 										Register
 									</h2>
-									<form id="registerForm" onsubmit="event.preventDefault(); doRegister();">
+									<form id="registerForm">
 										<div class="mb-3">
-											<input type="text" class="form-control" id="firstName" name="firstName"
-												placeholder="First Name" required />
-										</div>
-										<div class="mb-3">
-											<input type="password" class="form-control" id="lastName" name="lastName"
-												placeholder="Last Name" required />
-										</div>
-										<div class="mb-3">
-											<input type="text" class="form-control" id="login" name="login"
+											<input type="text" class="form-control" id="username" name="username"
 												placeholder="Username" required />
 										</div>
 										<div class="mb-3">
-											<input type="text" class="form-control" id="password" name="password"
+											<input type="password" class="form-control" id="password" name="password"
 												placeholder="Password" required />
+										</div>
+										<div class="mb-3">
+											<input type="text" class="form-control" id="phone" name="phone"
+												placeholder="Phone" required />
+										</div>
+										<div class="mb-3">
+											<input type="text" class="form-control" id="email" name="email"
+												placeholder="Email" required />
 										</div>
 										<button type="submit" class="btn btn-altpurple w-100" href="#">
 											Register
@@ -114,7 +115,6 @@
 											Back to Login
 										</button>
 									</form>
-									<div id="registerResult"></div>
 								</div>
 							</div>
 						</div>
@@ -144,7 +144,8 @@
 				: loginCarousel.prev();
 		}
 	</script>
-	
+
+	<!--test js and json-->
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
 		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
 		crossorigin="anonymous"></script>
