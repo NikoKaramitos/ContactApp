@@ -6,15 +6,15 @@
 	<link href="sass/main.css" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" />
 
-	<!--script type="text/javascript">
-			document.addEventListener(
-				"DOMContentLoaded",
-				function () {
-					readCookie();
-				},
-				false
-			);
-		</!--script-->
+	<script type="text/javascript">
+		document.addEventListener(
+			"DOMContentLoaded",
+			function () {
+				readCookie();
+			},
+			false
+		);
+	</script>
 </head>
 
 <body>
@@ -58,7 +58,14 @@
 				<!--Search bar-->
 				<div class="row rounded-top bg-altpurple p-3">
 					<div class="input-group">
-						<input type="text" id="searchText" class="form-control" placeholder="Contact To Search For" />
+						<select class="form-select" id="PleaseWork">
+							<option value="Default" selected>Search Type</option>
+							<option value="Name">Name</option>
+							<option value="Number">Number</option>
+							<option value="Mail">Mail</option>
+						</select>
+						<input type="text" id="searchText" class="form-control w-50"
+							placeholder="Contact To Search For" />
 						<button type="button" id="searchColorButton" class="btn btn-altlight" onclick="searchColor();">
 							Search Contact</button>
 					</div>
@@ -67,16 +74,32 @@
 				<span id="colorSearchResult"></span>
 				<p id="colorList"></p>
 				<br /><br />
+				<!--Example contact-->
+				<div class="row">
+					<div class="col-2 text-start">John</div>
+					<div class="col-2 text-start">Doe</div>
+					<div class="col-4 text-start">555-555-5555</div>
+					<div class="col-4 text-start">example@mail.com</div>
+				</div>
+				<div class="row p-2">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="First Name">
+						<input type="text" class="form-control" placeholder="Last Name">
+						<input type="text" class="form-control" placeholder="Number">
+						<input type="text" class="form-control" placeholder="Email">
+						<button class="btn btn-altlight">Add Contact</button>
+					</div>
+				</div>
 
+				<!-- Prof code
 				<input type="text" id="colorText" placeholder="Contact To Add" />
 				<button type="button" id="addColorButton" class="btn btn-altlight mt-2" onclick="addColor();">
 					Add Contact</button><br />
 				<span id="colorAddResult"></span>
+			-->
 			</div>
 		</div>
 	</section>
-
-
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
 		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
 		crossorigin="anonymous"></script>
