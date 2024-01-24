@@ -2,28 +2,28 @@
 <?php
 
 	$inData = getRequestInfo();
-	
-	$id = 0;
-	$FirstName = $inData["FirstName"];
-	$LastName = $inData["LastName"];
-	$Login = $inData["Login"];
-	$Password = $inData["Password"];
 
-	$conn = new mysqli("contactz.xyz", "TheBeast", "Group31POOS", "COP4331"); 	
-	if( $conn->connect_error )
+	$conn = new mysqli("contactz.xyz", "TheBeast", "Group31POOS", "COP4331");
+
+	if (invalidApplication($inData))
 	{
-		returnWithError( $conn->connect_error );
+		returnWithError("Some of the required JSON fields: ['firstName', 'lastName', 'login', 'password'] are missing");
+	}
+	else if($conn->connect_error)
+	{
+		returnWithError($conn->connect_error);
 	}
 	else
 	{
-		$stmt = $conn->prepare("INSERT INTO Users (FirstName,LastName,Login,Password) VALUES(?,?,?,?)");
-		$stmt->bind_param("ssss", $FirstName,$LastName,$Login,$Password);
+		$stmt = $conn->prepare("INSERT INTO Users (FirstName, LastName, Login, Password) VALUES(?, ?, ?, ?)");
+		$stmt->bind_param("ssss", $inData["firstName"], $inData["lastName"], $inData["login"], $inData["password"]);
 		$stmt->execute();
-		$stmt->close();
-		$conn->close();
-/*
-		$result = $stmt->get_result();
-		if( $result)
+
+		if (0)
+		{
+
+		}
+		else if($result = $stmt->get_result())
 		{
 			returnWithInfo("Registration Completed.");
 		}
@@ -34,8 +34,14 @@
 
 		$stmt->close();
 		$conn->close();
-		
-*/
+	}
+
+	function invalidApplication($inData)
+	{
+		return !isset($inData['firstName'])
+			|| !isset($inData['lastName'])
+			|| !isset($inData['login'])
+			|| !isset($inData['password']);
 	}
 	
 	function getRequestInfo()

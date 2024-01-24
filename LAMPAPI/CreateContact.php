@@ -2,7 +2,6 @@
 <?php
 
 	$inData = getRequestInfo();
-	
 
 	$FirstName = $inData["FirstName"];
 	$LastName = $inData["LastName"];
@@ -16,8 +15,7 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("INSERT into Contacts (FirstName, LastName, Phone, Email)
-		 VALUES(?,?,?,?)");
+		$stmt = $conn->prepare("INSERT into Contacts (FirstName, LastName, Phone, Email) VALUES(?,?,?,?)");
 		$stmt->bind_param("ss", $FirstName, $LastName, $Phone, $Email);
 		$stmt->execute();
 		$stmt->close();
@@ -32,7 +30,7 @@
 
 	function sendResultInfoAsJson( $obj )
 	{
-		header('Content-type: application/json');
+		header('Content-Type: application/json');
 		echo $obj;
 	}
 	

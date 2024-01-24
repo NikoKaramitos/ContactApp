@@ -1,59 +1,101 @@
 
 <?php
+	/* TODO -
+	 * Password hashing was mentioned at the bottom of the word document
+	 * 
+	*/
+
+	// Is this needed? Refer to group and test it...
 	header("Access-Control-Allow-Origin: *");
+
+	/* Receives the JSON data sent from the browser
+	 * 
+	 * The following JSON fields MUST be defined:
+	 * "login" : "string"
+	 * "password" : "string"
+	 * 
+	 * Column matches and JSON fields are case sensitive
+	 * Fields are stored as an array in inData and are accessed by isset() and bind_param()
+	*/
 	$inData = getRequestInfo();
-	
-	$id = 0;
-	$FirstName = "";
-	$LastName = "";
-	$UserID = 0;
 
-	$conn = new mysqli("contactz.xyz", "TheBeast", "Group31POOS", "COP4331"); 	
-	if( $conn->connect_error )
+	// If either one of the fields are not present then return an error
+	$connection = new mysqli("contactz.xyz", "TheBeast", "Group31POOS", "COP4331");
+
+	// Error checking
+	if (invalidApplication($inData))
 	{
-		returnWithError( $conn->connect_error );
+		returnWithError("Some of the required JSON fields: ['login', 'password'] are missing");
 	}
-	else
+	else if($connection->connect_error)
 	{
-		$stmt = $conn->prepare("SELECT ID,FirstName,LastName FROM Users WHERE Login=? AND Password =?");
-		$stmt->bind_param("ss", $inData['Login'], $inData['Password']);
-		$stmt->execute();
-		$result = $stmt->get_result();
+		returnWithError($connection->connect_error);
+	}
+	else // Database operations
+	{
+		// Prepared statement for the database
+		// Then, bind the ? placeholders with the strings from application/json
+		// Finally, send to the database to execute it
+		$statement = $connection->prepare("SELECT ID, FirstName, LastName FROM Users WHERE Login = ? AND Password = ?");
+		$statement->bind_param("ss", $inData['login'], $inData['password']);
+		$statement->execute();
 
-		if( $row = $result->fetch_assoc()  )
+		// ID, FirstName, LastName are the extracted columns for rows matching Login = ? AND Password = ?
+		// Only one row should match, else something is very wrong
+		// If no rows are matched, falsy evaluation goes to the else block
+		$result = $statement->get_result();
+		if($row = $result->fetch_assoc())
 		{
-			returnWithInfo( $row['FirstName'], $row['LastName'], $row['ID'] );
+			// Close previous prepared statement
+			$statement->close();
+
+			// New prepared statement to update DateLastLoggedIn
+			date_default_timezone_set("America/New_York");
+			$date = date("Y-m-d H:i:s");
+			$statement = $connection->prepare("UPDATE Users SET DateLastLoggedIn = ? WHERE Login = ? AND Password = ?");
+			$statement->bind_param("sss", $date, $inData['login'], $inData['password']);
+			$statement->execute();
+
+			// Send the needed data back to the client
+			returnWithInfo($row['ID'], $row['FirstName'], $row['LastName']);
 		}
 		else
 		{
-			returnWithError("No Records Found");
+			returnWithError("User not found");
 		}
 
-		$stmt->close();
-		$conn->close();
+		$statement->close();
+		$connection->close();
 	}
-	
+
+	function invalidApplication($inData)
+	{
+		return !isset($inData['firstName'])
+			|| !isset($inData['lastName'])
+			|| !isset($inData['login'])
+			|| !isset($inData['password']);
+	}
+
 	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);
 	}
 
-	function sendResultInfoAsJson( $obj )
+	function sendResultInfoAsJson($object)
 	{
-		header('Content-type: application/json');
-		echo $obj;
+		header('Content-Type: application/json');
+		echo $object;
 	}
-	
-	function returnWithError( $err )
+
+	function returnWithError($error)
 	{
-		$retValue = '{"id":0,"FirstName":"","LastName":"","error":"' . $err . '"}';
-		sendResultInfoAsJson( $retValue );
+		$value = '{"id": 0, "firstName": "", "lastName": "", "error": "' . $error . '"}';
+		sendResultInfoAsJson($value);
 	}
-	
-	function returnWithInfo( $firstName, $lastName, $id )
+
+	function returnWithInfo($id, $firstName, $lastName)
 	{
-		$retValue = '{"ID":' . $id . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '","error":""}';
-		sendResultInfoAsJson( $retValue );
+		$value = '{"id": ' . $id . ', "firstName": "' . $firstName . '", "lastName": "' . $lastName . '", "error": ""}';
+		sendResultInfoAsJson($value);
 	}
-	
 ?>
