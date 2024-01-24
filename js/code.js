@@ -54,6 +54,7 @@ function doLogin() {
 
 
 function doRegister() {
+	
     // Capture user input
     let firstName = document.getElementById("firstName").value;
     let lastName = document.getElementById("lastName").value;
