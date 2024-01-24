@@ -1,4 +1,4 @@
-const urlBase = 'http://contactz.xyz/LAMPAPI';
+const urlBase = 'http://contactz.xyz/ContactApp/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
@@ -22,10 +22,10 @@ function doLogin()
 	let jsonPayload = JSON.stringify( tmp );
 	
 	let url = urlBase + '/Login.' + extension;
-
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	
 	try
 	{
 		xhr.onreadystatechange = function() 
@@ -45,7 +45,8 @@ function doLogin()
 				lastName = jsonObject.lastName;
 
 				saveCookie();
-	
+				
+				
 				window.location.href = "../color.html";
 			}
 		};
@@ -60,22 +61,18 @@ function doLogin()
 
 function doRegister() {
     // Capture user input
-    let firstName = document.getElementById("registerFirstName").value;
-    let lastName = document.getElementById("registerLastName").value;
-    let email = document.getElementById("registerEmail").value;
-    let password = document.getElementById("registerPassword").value;
-    // Optionally, you can hash the password here as in the doLogin function
+    let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
+    let login = document.getElementById("login").value;
+    let password = document.getElementById("password").value;
     // var hash = md5(password);
 
-    // Clear any previous registration result message
     document.getElementById("registerResult").innerHTML = "";
 
-    // Prepare the data payload for sending
-    let tmp = { firstName: firstName, lastName: lastName, email: email, password: password };
-    // var tmp = { firstName: firstName, lastName: lastName, email: email, password: hash };
+    let tmp = { firstName: firstName, lastName:lastName, login:login, password:password};
+    
     let jsonPayload = JSON.stringify(tmp);
 
-    // Define the URL for registration endpoint
     let url = urlBase + '/Register.' + extension;
 
     let xhr = new XMLHttpRequest();
@@ -84,14 +81,12 @@ function doRegister() {
     try {
         xhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                // Process the response, typically you might inform the user of success and redirect
                 let jsonObject = JSON.parse(xhr.responseText);
                 if (jsonObject.error) {
                     document.getElementById("registerResult").innerHTML = jsonObject.error;
                 } else {
                     document.getElementById("registerResult").innerHTML = "Registration successful";
-                    // Optionally, redirect to login page or auto-login the user
-                    // window.location.href = "login.html";
+                    window.location.href = "../login.html";
                 }
             }
         };
