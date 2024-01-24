@@ -1,4 +1,4 @@
-const urlBase = 'http://contactz.xyz/LAMPAPI';
+const urlBase = 'http://contactz.xyz/ContactApp/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
@@ -21,10 +21,10 @@ function doLogin() {
 	let jsonPayload = JSON.stringify(tmp);
 
 	let url = urlBase + '/Login.' + extension;
-
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
 	try {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
@@ -51,6 +51,45 @@ function doLogin() {
 	}
 
 }
+
+
+function doRegister() {
+    // Capture user input
+    let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
+    let login = document.getElementById("login").value;
+    let password = document.getElementById("password").value;
+    // var hash = md5(password);
+
+    document.getElementById("registerResult").innerHTML = "";
+
+    let tmp = { firstName: firstName, lastName:lastName, login:login, password:password};
+
+    let jsonPayload = JSON.stringify(tmp);
+
+    let url = urlBase + '/Register.' + extension;
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+    try {
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let jsonObject = JSON.parse(xhr.responseText);
+                if (jsonObject.error) {
+                    document.getElementById("registerResult").innerHTML = jsonObject.error;
+                } else {
+                    document.getElementById("registerResult").innerHTML = "Registration successful";
+                    window.location.href = "../login.html";
+                }
+            }
+        };
+        xhr.send(jsonPayload);
+    } catch (err) {
+        document.getElementById("registerResult").innerHTML = err.message;
+    }
+}
+
 
 function saveCookie() {
 	let minutes = 20;
