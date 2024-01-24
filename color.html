@@ -1,14 +1,12 @@
 <html>
-	<head>
-		<title>COP 4331 LAMP Stack Demo</title>
-		<script type="text/javascript" src="js/code.js"></script>
-		<link href="css/styles.css" rel="stylesheet" />
-		<link
-			href="https://fonts.googleapis.com/css?family=Ubuntu"
-			rel="stylesheet"
-		/>
 
-		<script type="text/javascript">
+<head>
+	<title>Contactz</title>
+	<script type="text/javascript" src="js/code.js"></script>
+	<link href="sass/main.css" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" />
+
+	<!--script type="text/javascript">
 			document.addEventListener(
 				"DOMContentLoaded",
 				function () {
@@ -16,54 +14,75 @@
 				},
 				false
 			);
-		</script>
-	</head>
-	<body>
-		<h1 id="title">COP 4331 LAMP Stack Demo</h1>
-		<h1>YOU MADE IT FROM Login</h1>
+		</!--script-->
+</head>
 
-		<div id="loggedInDiv">
-			<span id="userName"></span><br />
-			<button
-				type="button"
-				id="logoutButton"
-				class="buttons"
-				onclick="doLogout();"
-			>
-				Log Out
+<body>
+	<nav id="navbar" class="navbar sticky-top navbar-expand-md bg-altpurple navbar-dark py-3">
+		<div class="container">
+			<a href="/index.html" class="navbar-brand">
+				<span class="fw-bold text-light"> Contactz </span>
+			</a>
+
+			<!-- Hamburger Toggle -->
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu"
+				aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
 			</button>
+
+			<!-- Nav Links -->
+			<div class="collapse navbar-collapse justify-content-end align-center" id="navmenu">
+				<ul class="navbar-nav ms-auto">
+					<a href="/login.html" class="nav-link text-white">Login</a>
+				</ul>
+				<ul class="navbar-nav">
+					<a href="/login.html" class="nav-link text-white">Register</a>
+				</ul>
+				<ul class="navbar-nav">
+					<a href="/index.html" onclick="doLogout();" class="nav-link text-white">Log Out</a>
+				</ul>
+			</div>
 		</div>
+	</nav>
 
-		<div id="accessUIDiv">
-			<br />
+	<section id="contact-section">
+		<div class="container-fluid text-center p-5">
+			<div id="title" class="display-5">Welcome to your Contactz</div>
+			<div class="display-7 text-muted">Below you can add, edit, search, and delete your contacts!</div>
 
-			<input
-				type="text"
-				id="searchText"
-				placeholder="Color To Search For"
-			/>
-			<button
-				type="button"
-				id="searchColorButton"
-				class="buttons"
-				onclick="searchColor();"
-			>
-				Search Color</button
-			><br />
-			<span id="colorSearchResult"></span>
-			<p id="colorList"></p>
-			<br /><br />
+			<div id="loggedInDiv" class="container text-center">
+				<span id="userName"></span><br />
+			</div>
 
-			<input type="text" id="colorText" placeholder="Color To Add" />
-			<button
-				type="button"
-				id="addColorButton"
-				class="buttons"
-				onclick="addColor();"
-			>
-				Add Color</button
-			><br />
-			<span id="colorAddResult"></span>
+			<div id="accessUIDiv" class="container-fluid rounded shadow">
+				<!--Search bar-->
+				<div class="row rounded-top bg-altpurple p-3">
+					<div class="input-group">
+						<input type="text" id="searchText" class="form-control" placeholder="Contact To Search For" />
+						<button type="button" id="searchColorButton" class="btn btn-altlight" onclick="searchColor();">
+							Search Contact</button>
+					</div>
+				</div>
+
+				<span id="colorSearchResult"></span>
+				<p id="colorList"></p>
+				<br /><br />
+
+				<input type="text" id="colorText" placeholder="Contact To Add" />
+				<button type="button" id="addColorButton" class="btn btn-altlight mt-2" onclick="addColor();">
+					Add Contact</button><br />
+				<span id="colorAddResult"></span>
+			</div>
 		</div>
-	</body>
+	</section>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+		integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+		crossorigin="anonymous"></script>
+</body>
+
 </html>
