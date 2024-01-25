@@ -58,7 +58,7 @@ function doRegister() {
     // Capture user input
     let firstName = document.getElementById("firstName").value;
     let lastName = document.getElementById("lastName").value;
-    let login = document.getElementById("login").value;
+    let login = document.getElementById("loginUser").value;
     let password = document.getElementById("password").value;
     // var hash = md5(password);
 
@@ -67,7 +67,7 @@ function doRegister() {
     let tmp = { firstName: firstName, lastName:lastName, login:login, password:password};
 
     let jsonPayload = JSON.stringify(tmp);
-
+	console.log("json payload: " + jsonPayload);
     let url = urlBase + '/Register.' + extension;
 
     let xhr = new XMLHttpRequest();
