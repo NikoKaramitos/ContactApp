@@ -46,16 +46,6 @@
 		$result = $statement->get_result();
 		if($row = $result->fetch_assoc())
 		{
-			// Close previous prepared statement
-			$statement->close();
-
-			// New prepared statement to update DateLastLoggedIn
-			date_default_timezone_set("America/New_York");
-			$date = date("Y-m-d H:i:s");
-			$statement = $connection->prepare("UPDATE Users SET DateLastLoggedIn = ? WHERE Login = ? AND Password = ?");
-			$statement->bind_param("sss", $date, $inData['login'], $inData['password']);
-			$statement->execute();
-
 			// Send the needed data back to the client
 			returnWithInfo($row['ID'], $row['FirstName'], $row['LastName']);
 		}
@@ -64,7 +54,21 @@
 			returnWithError("User not found");
 		}
 
+		// Close previous prepared statement
 		$statement->close();
+
+		// Also update the DateLastLoggedIn column
+		if ($row)
+		{
+			date_default_timezone_set("America/New_York");
+			$date = date("Y-m-d H:i:s");
+			$statement = $connection->prepare("UPDATE Users SET DateLastLoggedIn = ? WHERE Login = ? AND Password = ?");
+			$statement->bind_param("sss", $date, $inData['login'], $inData['password']);
+			$statement->execute();
+			$statement->close();
+		}
+
+		// Done
 		$connection->close();
 	}
 

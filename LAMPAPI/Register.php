@@ -15,21 +15,25 @@
 	}
 	else
 	{
+
+
 		$stmt = $conn->prepare("INSERT INTO Users (FirstName, LastName, Login, Password) VALUES(?, ?, ?, ?)");
 		$stmt->bind_param("ssss", $inData["firstName"], $inData["lastName"], $inData["login"], $inData["password"]);
-		$stmt->execute();
+
+		$firstName = $inData["firstName"];
+		$lastName = $inData["lastName"];
 
 		if (0)
 		{
 
 		}
-		else if($result = $stmt->get_result())
+		else if($stmt->execute()) // Returns true if the execution was successful
 		{
-			returnWithInfo("Registration Completed.");
+			returnWithInfo("Successful");
 		}
 		else
 		{
-			returnWithError("Registration Failed.");
+			returnWithError("Failed");
 		}
 
 		$stmt->close();
@@ -49,21 +53,21 @@
 		return json_decode(file_get_contents('php://input'), true);
 	}
 
-	function sendResultInfoAsJson( $obj )
+	function sendResultInfoAsJson($obj)
 	{
-		header('Content-type: application/json');
+		header('Content-Type: application/json');
 		echo $obj;
 	}
 	
-	function returnWithError( $err )
+	function returnWithError($err)
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		$retValue = '{"id": 0, "firstName": "", "lastName": "", "error": "' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
-	function returnWithInfo( $firstName, $lastName, $id )
+	function returnWithInfo($firstName, $lastName, $id)
 	{
-		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+		$retValue = '{"id": ' . $id . ',"firstName": "' . $firstName . '","lastName": "' . $lastName . '", "error": ""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
