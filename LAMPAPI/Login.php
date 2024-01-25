@@ -1,10 +1,12 @@
 
 <?php
+	header("Access-Control-Allow-Origin: *");
 	$inData = getRequestInfo();
 	
 	$id = 0;
-	$firstName = "";
-	$lastName = "";
+	$FirstName = "";
+	$LastName = "";
+	$UserID = 0;
 
 	$conn = new mysqli("contactz.xyz", "TheBeast", "Group31POOS", "COP4331"); 	
 	if( $conn->connect_error )
@@ -14,7 +16,7 @@
 	else
 	{
 		$stmt = $conn->prepare("SELECT ID,firstName,lastName FROM Users WHERE Login=? AND Password =?");
-		$stmt->bind_param("ss", $inData['login'], $inData['password']);
+		$stmt->bind_param("ss", $inData['Login'], $inData['Password']);
 		$stmt->execute();
 		$result = $stmt->get_result();
 
