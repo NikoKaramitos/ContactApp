@@ -4,10 +4,10 @@
 	$inData = getRequestInfo();
 	
 	$id = 0;
-	$FirstName = "";
-	$LastName = "";
-	$UserID = 0;
-
+	$firstName = $inData["firstName"];
+	$lastName = $inData["lastName"];
+	$login = $inData["login"];
+	$password = $inData["password"];
 
 	$conn = new mysqli("contactz.xyz", "TheBeast", "Group31POOS", "COP4331"); 	
 	if( $conn->connect_error )
@@ -17,10 +17,12 @@
 	else
 	{
 		$stmt = $conn->prepare("INSERT INTO Users (FirstName,LastName,Login,Password) VALUES(?,?,?,?)");
-		$stmt->bind_param("ssss", $inData[],$LastName,$Login,$Password);
+		$stmt->bind_param("ssss", $firstName,$lastName,$login,$password);
 		$stmt->execute();
+		$stmt->close();
+		$conn->close();
+/*
 		$result = $stmt->get_result();
-
 		if( $result)
 		{
 			returnWithInfo("Registration Completed.");
@@ -32,6 +34,8 @@
 
 		$stmt->close();
 		$conn->close();
+		
+*/
 	}
 	
 	function getRequestInfo()

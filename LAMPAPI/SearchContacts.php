@@ -1,3 +1,4 @@
+
 <?php
 
 	$inData = getRequestInfo();
@@ -5,16 +6,16 @@
 	$searchResults = "";
 	$searchCount = 0;
 
-	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
+	$conn = new mysqli("contactz.xyz", "TheBeast", "Group31POOS", "COP4331");
 	if ($conn->connect_error) 
 	{
 		returnWithError( $conn->connect_error );
 	} 
 	else
 	{
-		$stmt = $conn->prepare("select Name from Colors where Name like ? and UserID=?");
-		$colorName = "%" . $inData["search"] . "%";
-		$stmt->bind_param("ss", $colorName, $inData["userId"]);
+		$stmt = $conn->prepare("select FirstName from Contacts where FirstName like ? and UserID=?");
+		$FirstName = "%" . $inData["search"] . "%";
+		$stmt->bind_param("ss", $FirstName, $inData["userId"]);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
@@ -26,7 +27,7 @@
 				$searchResults .= ",";
 			}
 			$searchCount++;
-			$searchResults .= '"' . $row["Name"] . '"';
+			$searchResults .= '"' . $row["FirstName"] . '"';
 		}
 		
 		if( $searchCount == 0 )
