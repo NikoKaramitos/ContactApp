@@ -51,13 +51,13 @@
 		}
 		else
 		{
-			returnWithError("User not found");
+			returnWithError("User Not Found: ['" . $statement->error . "']");
 		}
 
 		// Close previous prepared statement
 		$statement->close();
 
-		// Also update the DateLastLoggedIn column
+		// Also update the DateLastLoggedIn column, executes iff the previous if branch did
 		if ($row)
 		{
 			date_default_timezone_set("America/New_York");
