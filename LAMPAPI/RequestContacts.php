@@ -2,43 +2,52 @@
 <?php
 
 	$inData = getRequestInfo();
-	
-	$searchResults = "";
-	$searchCount = 0;
 
 	$conn = new mysqli("contactz.xyz", "TheBeast", "Group31POOS", "COP4331");
-	if ($conn->connect_error) 
+
+	if (!isset($inData['userID']))
 	{
-		returnWithError( $conn->connect_error );
-	} 
+		returnWithError("The required JSON field: ['userID'] is missing");
+	}
+	else if ($conn->connect_error)
+	{
+		returnWithError($conn->connect_error);
+	}
 	else
 	{
-		$stmt = $conn->prepare("select FirstName from Contacts where FirstName like ? and UserID=?");
-		$FirstName = "%" . $inData["search"] . "%";
-		$stmt->bind_param("ss", $FirstName, $inData["userId"]);
+		$stmt = $conn->prepare("SELECT ID, FirstName, LastName, Phone, Email FROM Contacts WHERE UserID = ?");
+		$stmt->bind_param("s", $inData["userID"]);
 		$stmt->execute();
-		
-		$result = $stmt->get_result();
-		
-		while($row = $result->fetch_assoc())
+		$result = $statement->get_result();
+		$count = 0;
+		$search = ""; // String concatenation my inefficient beloved
+
+		if($result->num_rows > 0)
 		{
-			if( $searchCount > 0 )
+			foreach ($result->fetch_assoc() as $row)
 			{
-				$searchResults .= ",";
+				$count++;
+				$search .= '{"id": ' . $row['ID'] . 
+					', "firstName": "' . $row['FirstName'] . 
+					'", "lastName": "' . $row['LastName'] . 
+					'", "phone": "' . $row['Phone'] . 
+					'", "email": "' . $row['Email'] . 
+				'"}';
+
+				// Don't append a comma on the last entry
+				if ($count != $result->num_rows)
+				{
+					$search .= ",";
+				}
 			}
-			$searchCount++;
-			$searchResults .= '"' . $row["FirstName"] . '"';
-		}
-		
-		if( $searchCount == 0 )
-		{
-			returnWithError( "No Records Found" );
+
+			returnWithInfo($search);
 		}
 		else
 		{
-			returnWithInfo( $searchResults );
+			returnWithError("No Contacts Found");
 		}
-		
+
 		$stmt->close();
 		$conn->close();
 	}
@@ -48,22 +57,22 @@
 		return json_decode(file_get_contents('php://input'), true);
 	}
 
-	function sendResultInfoAsJson( $obj )
+	function sendResultInfoAsJson($obj)
 	{
-		header('Content-type: application/json');
+		header('Content-Type: application/json');
 		echo $obj;
 	}
-	
-	function returnWithError( $err )
+
+	function returnWithError($err)
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		$retValue = '{"results": [], "error": "' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
-	
-	function returnWithInfo( $searchResults )
+
+	function returnWithInfo($searchResults)
 	{
-		$retValue = '{"results":[' . $searchResults . '],"error":""}';
-		sendResultInfoAsJson( $retValue );
+		$retValue = '{"results": [' . $searchResults . '], "error": ""}';
+		sendResultInfoAsJson($retValue);
 	}
-	
+
 ?>
