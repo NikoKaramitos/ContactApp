@@ -67,7 +67,8 @@ function doRegister() {
     let tmp = { firstName: firstName, lastName:lastName, login:login, password:password};
 
     let jsonPayload = JSON.stringify(tmp);
-	console.log("json payload: " + jsonPayload);
+	console.log("json payload: " + JSON.stringify(jsonPayload, null, 2));
+
     let url = urlBase + '/Register.' + extension;
 
     let xhr = new XMLHttpRequest();
