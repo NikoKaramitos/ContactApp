@@ -74,10 +74,7 @@
 
 	function invalidApplication($inData)
 	{
-		return !isset($inData['firstName'])
-			|| !isset($inData['lastName'])
-			|| !isset($inData['login'])
-			|| !isset($inData['password']);
+		return !isset($inData['login']) || !isset($inData['password']);
 	}
 
 	function getRequestInfo()
