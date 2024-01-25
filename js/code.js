@@ -1,4 +1,4 @@
-const urlBase = 'http://contactz.xyz/ContactApp/LAMPAPI';
+const urlBase = 'http://contactz.xyz/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
@@ -16,11 +16,11 @@ function doLogin() {
 
 	document.getElementById("loginResult").innerHTML = "";
 
-	let tmp = { login: login, password: password };
+	let tmp = {login: login, password: password};
 	//	var tmp = {login:login,password:hash};
-	let jsonPayload = JSON.stringify(tmp);
+	let jsonPayload = JSON.stringify( tmp );
 
-	let url = urlBase + '/Login.' + extension;
+	let url = 'http://contactz.xyz/LAMPAPI/Login.php';
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -49,7 +49,6 @@ function doLogin() {
 	catch (err) {
 		document.getElementById("loginResult").innerHTML = err.message;
 	}
-
 }
 
 
