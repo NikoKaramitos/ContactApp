@@ -3,9 +3,8 @@
 	$inData = getRequestInfo();
 	
 	$id = 0;
-	$FirstName = "";
-	$LastName = "";
-	$UserID = 0;
+	$firstName = "";
+	$lastName = "";
 
 	$conn = new mysqli("contactz.xyz", "TheBeast", "Group31POOS", "COP4331"); 	
 	if( $conn->connect_error )
@@ -14,8 +13,8 @@
 	}
 	else
 	{
-		$stmt = $conn->prepare("SELECT ID,FirstName,LastName FROM Users WHERE Login=? AND Password =?");
-		$stmt->bind_param("ss", $inData['Login'], $inData['Password']);
+		$stmt = $conn->prepare("SELECT ID,firstName,lastName FROM Users WHERE Login=? AND Password =?");
+		$stmt->bind_param("ss", $inData['login'], $inData['password']);
 		$stmt->execute();
 		$result = $stmt->get_result();
 

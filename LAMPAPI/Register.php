@@ -21,21 +21,6 @@
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
-/*
-		$result = $stmt->get_result();
-		if( $result)
-		{
-			returnWithInfo("Registration Completed.");
-		}
-		else
-		{
-			returnWithError("Registration Failed.");
-		}
-
-		$stmt->close();
-		$conn->close();
-		
-*/
 	}
 	
 	function getRequestInfo()

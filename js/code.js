@@ -16,9 +16,9 @@ function doLogin() {
 
 	document.getElementById("loginResult").innerHTML = "";
 
-	let tmp = { Login: login, Password: password };
+	let tmp = {login:login,password:password};
 	//	var tmp = {login:login,password:hash};
-	let jsonPayload = JSON.stringify(tmp);
+	let jsonPayload = JSON.stringify( tmp );
 
 	let url = urlBase + '/Login.' + extension;
 	let xhr = new XMLHttpRequest();
@@ -49,7 +49,6 @@ function doLogin() {
 	catch (err) {
 		document.getElementById("loginResult").innerHTML = err.message;
 	}
-
 }
 
 
