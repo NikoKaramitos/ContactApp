@@ -41,7 +41,7 @@ function doLogin() {
 
 				saveCookie();
 
-				window.location.href = "../color.html";
+				window.location.href = "color.html";
 			}
 		};
 		xhr.send(jsonPayload);
