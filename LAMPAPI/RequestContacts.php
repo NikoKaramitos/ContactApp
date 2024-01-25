@@ -7,7 +7,7 @@
 
 	if (!isset($inData['userID']))
 	{
-		returnWithError("The required JSON field: ['userID'] is missing");
+		returnWithError("The required application JSON field 'userID' is missing");
 	}
 	else if ($conn->connect_error)
 	{

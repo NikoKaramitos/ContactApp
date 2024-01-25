@@ -6,7 +6,7 @@
 	*/
 
 	// Is this needed? Refer to group and test it...
-	header("Access-Control-Allow-Origin: *");
+	// header("Access-Control-Allow-Origin: *");
 
 	/* Receives the JSON data sent from the browser
 	 * 
@@ -25,7 +25,7 @@
 	// Error checking
 	if (invalidApplication($inData))
 	{
-		returnWithError("Some of the required JSON fields: ['login', 'password'] are missing");
+		returnWithError("Some of the required application JSON fields: ['login', 'password'] are missing");
 	}
 	else if($connection->connect_error)
 	{

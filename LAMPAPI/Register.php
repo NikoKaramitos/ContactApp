@@ -7,7 +7,7 @@
 
 	if (invalidApplication($inData))
 	{
-		returnWithError("Some of the required JSON fields: ['firstName', 'lastName', 'login', 'password'] are missing");
+		returnWithError("Some of the required application JSON fields: ['firstName', 'lastName', 'login', 'password'] are missing");
 	}
 	else if($conn->connect_error)
 	{
