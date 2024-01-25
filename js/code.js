@@ -19,7 +19,6 @@ function doLogin() {
 	let tmp = {login: login, password: password};
 	//	var tmp = {login:login,password:hash};
 	let jsonPayload = JSON.stringify( tmp );
-	console.log("json payload: " + JSON.stringify(jsonPayload, null, 2));
 	let url = 'http://contactz.xyz/LAMPAPI/Login.php';
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
