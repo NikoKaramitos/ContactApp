@@ -2,57 +2,77 @@
 <?php
 
 	$inData = getRequestInfo();
-	
 
-	$FirstName = $inData["FirstName"];
-	$LastName = $inData["LastName"];
-	$Phone = $inData["Phone"];
-	$Email = $inData["Email"];
+	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 
-	$conn = new mysqli("contactz.xyz", "TheBeast", "Group31POOS", "COP4331"); 	
-	if ($conn->connect_error) 
+	if (invalidApplication($inData))
 	{
-		returnWithError( $conn->connect_error );
-	} 
+		returnWithError("Some of the required application JSON fields: ['firstName', 'lastName', 'login', 'password', 'userID'] are missing");	
+	}
+	else if ($conn->connect_error)
+	{
+		returnWithError($conn->connect_error);
+	}
 	else
 	{
-		$check = $conn->prepare("SELECT * FROM Contacts WHERE FirstName = ? AND
-		LastName = ? AND Phone = ? AND Email = ?");
-		$check->bind_param("ssss", $FirstName, $LastName, $Phone, $Email);
-		$check->execute();
-		$check->store_result();
-
-		if($check->num_rows > 0)
+		$stmt = $conn->prepare("INSERT INTO Contacts (FirstName, LastName, Phone, Email, UserID) VALUES (?, ?, ?, ?, ?)");
+		$stmt->bind_param("ss", $inData["firstName"], $inData["lastName"], $inData["phone"], $inData["email"], $inData["userID"]);
+		
+		if ($stmt->execute())
 		{
-			returnWithError("Contact already exists");
+			returnWithInfo(
+				returnCreatedUser($row)
+			);
 		}
-
-		$stmt = $conn->prepare("INSERT into Contacts (FirstName, LastName, Phone, Email)
-		VALUES(?,?,?,?)");
-		$stmt->bind_param("ss", $FirstName, $LastName, $Phone, $Email);
-		$stmt->execute();
-		$stmt->store_result();
+		else
+		{
+			returnWithError("Contact Creation Failed: ['" . $stmt->error . "']");
+		}
+		
 		$stmt->close();
 		$conn->close();
-		returnWithError("");
 	}
-	$check->close();
+
+	function invalidApplication($inData)
+	{
+		return !isset($inData['firstName'])
+			|| !isset($inData['lastName'])
+			|| !isset($inData['login'])
+			|| !isset($inData['password'])
+			|| !isset($inData['userID']);
+	}
 
 	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);
 	}
 
-	function sendResultInfoAsJson( $obj )
+	function sendResultInfoAsJson($obj)
 	{
-		header('Content-type: application/json');
+		header('Content-Type: application/json');
 		echo $obj;
 	}
 	
-	function returnWithError( $err )
+	function returnWithError($err)
 	{
-		$retValue = '{"error":"' . $err . '"}';
-		sendResultInfoAsJson( $retValue );
+		$retValue = '{"results": [], "error": "' . $err . '"}';
+		sendResultInfoAsJson($retValue);
+	}
+
+	function returnCreatedUser($row)
+	{
+		return '{"id": ' . $row['ID'] . 
+			', "firstName": "' . $row['FirstName'] . 
+			'", "lastName": "' . $row['LastName'] . 
+			'", "phone": "' . $row['Phone'] . 
+			'", "email": "' . $row['Email'] .
+		'"}';
+	}
+
+	function returnWithInfo($searchResults)
+	{
+		$retValue = '{"results": [' . $searchResults . '], "error": ""}';
+		sendResultInfoAsJson($retValue);
 	}
 	
 ?>
