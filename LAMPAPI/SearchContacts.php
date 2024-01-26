@@ -7,7 +7,7 @@
 
 	if (noQueries($inData))
 	{
-		returnWithError("The application JSON must contain at minimum the fields 'userID' and one query: ['firstName', 'lastName', 'phone', 'email']");
+		returnWithError("The application JSON must contain at minimum the field 'userID' and at minimum one query field: ['firstName', 'lastName', 'phone', 'email']");
 	}
 	else if ($conn->connect_error)
 	{
