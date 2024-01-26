@@ -21,7 +21,7 @@
 		if ($stmt->execute())
 		{
 			returnWithInfo(
-				returnCreatedUser($row)
+				returnCreatedContact($row)
 			);
 		}
 		else
@@ -59,7 +59,7 @@
 		sendResultInfoAsJson($retValue);
 	}
 
-	function returnCreatedUser($row)
+	function returnCreatedContact($row)
 	{
 		return '{"id": ' . $row['ID'] . 
 			', "firstName": "' . $row['FirstName'] . 
