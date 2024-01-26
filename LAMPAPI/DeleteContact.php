@@ -3,15 +3,20 @@
 
 	$inData = getRequestInfo();
 
-	$conn = new mysqli("contactz.xyz", "TheBeast", "Group31POOS", "COP4331"); 	
-	if ($conn->connect_error) 
+	$conn = new mysqli("contactz.xyz", "TheBeast", "Group31POOS", "COP4331");
+
+	if (!isset($inData['contactID']) || !isset($inData['userID']))
 	{
-		returnWithError( $conn->connect_error );
+		returnWithError("Some of the required application JSON fields: ['contactID', 'userID'] are missing");
+	}
+	else if ($conn->connect_error) 
+	{
+		returnWithError($conn->connect_error);
 	} 
 	else
 	{
-		$stmt = $conn->prepare("INSERT into Contacts (FirstName, LastName, Phone, Email) VALUES(?,?,?,?)");
-		$stmt->bind_param("ss", $FirstName, $LastName, $Phone, $Email);
+		$stmt = $conn->prepare("DELETE FROM Contacts WHERE ID = ? AND UserID = ?");
+		$stmt->bind_param("ss", $inData['contactID'], $inData['userID']);
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
@@ -23,13 +28,13 @@
 		return json_decode(file_get_contents('php://input'), true);
 	}
 
-	function sendResultInfoAsJson( $obj )
+	function sendResultInfoAsJson($obj)
 	{
-		header('Content-type: application/json');
+		header('Content-Type: application/json');
 		echo $obj;
 	}
-	
-	function returnWithError( $err )
+
+	function returnWithError($err)
 	{
 		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
