@@ -6,7 +6,7 @@
 
 	$inData = getRequestInfo();
 
-	$connection = new mysqli("localhost", "TheBeast", "Group31POOS", "COP4331");
+	$connection = new mysqli("contactz.xyz", "root", "Group31POOS", "COP4331");
 
 	if (invalidApplication($inData))
 	{
