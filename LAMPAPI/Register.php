@@ -20,26 +20,25 @@
 	else // Create the user
 	{
 		$date = date("Y-m-d H:i:s");
-		$stmt = $conn->prepare("INSERT INTO Users (DateCreated, FirstName, LastName, Login, Password) VALUES(?, ?, ?, ?, ?)");
+		$stmt = $conn->prepare("INSERT INTO Users (DateCreated, FirstName, LastName, Login, Password) VALUES (?, ?, ?, ?, ?)");
 		$stmt->bind_param("sssss", $date, $inData["firstName"], $inData["lastName"], $inData["login"], $inData["password"]);
 
 		if($stmt->execute()) // Returns true if the execution was successful
 		{
-			$stmt->close();
 			$id = getRegisteredId($conn, $inData);
 			returnWithInfo($id, $inData["firstName"], $inData["lastName"]);
 		}
 		else
 		{
-			$stmt->close();
 			returnWithError("Registration Failed: ['" . $stmt->error . "']");
 		}
 
 		// Done
+		$stmt->close();
 		$conn->close();
 	}
 
-	function getRegisteredId($conn, $inData): int
+	function getRegisteredId($conn, $inData)
 	{
 		$stmt = $conn->prepare("SELECT ID FROM Users WHERE Login = ? AND Password = ?");
 		$stmt->bind_param("ss", $inData['login'], $inData['password']);
@@ -48,7 +47,7 @@
 		$row = $result->fetch_assoc();
 		$stmt->close();
 
-		return (int) $row['ID'];
+		return $row['ID'];
 	}
 
 	function usernameTaken($conn, $inData)

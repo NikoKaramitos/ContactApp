@@ -22,7 +22,7 @@
 		$count = 0;
 		$search = ""; // String concatenation my inefficient beloved
 
-		if($result->num_rows > 0)
+		if ($result->num_rows > 0)
 		{
 			foreach ($result->fetch_assoc() as $row)
 			{
@@ -37,7 +37,7 @@
 				// Don't append a comma on the last entry
 				if ($count != $result->num_rows)
 				{
-					$search .= ",";
+					$search .= ", ";
 				}
 			}
 
@@ -66,7 +66,7 @@
 	function returnWithError($err)
 	{
 		$retValue = '{"results": [], "error": "' . $err . '"}';
-		sendResultInfoAsJson( $retValue );
+		sendResultInfoAsJson($retValue);
 	}
 
 	function returnWithInfo($searchResults)
