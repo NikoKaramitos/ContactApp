@@ -1,6 +1,9 @@
 
 <?php
 
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
+
 	$inData = getRequestInfo();
 
 	$connection = new mysqli("localhost", "TheBeast", "Group31POOS", "COP4331");
