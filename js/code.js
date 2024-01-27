@@ -4,6 +4,7 @@ const extension = 'php';
 let userId = 0;
 let firstName = "";
 let lastName = "";
+let carouselMode = "";
 
 function doLogin() {
 	userId = 0;
@@ -16,9 +17,9 @@ function doLogin() {
 
 	document.getElementById("loginResult").innerHTML = "";
 
-	let tmp = {login: login, password: password};
+	let tmp = { login: login, password: password };
 	//	var tmp = {login:login,password:hash};
-	let jsonPayload = JSON.stringify( tmp );
+	let jsonPayload = JSON.stringify(tmp);
 	let url = 'http://contactz.xyz/LAMPAPI/Login.php';
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -53,41 +54,41 @@ function doLogin() {
 
 
 function doRegister() {
-	
-    // Capture user input
-    let firstName = document.getElementById("firstName").value;
-    let lastName = document.getElementById("lastName").value;
-    let login = document.getElementById("loginUser").value;
-    let password = document.getElementById("password").value;
-    // var hash = md5(password);
 
-    document.getElementById("registerResult").innerHTML = "";
+	// Capture user input
+	let firstName = document.getElementById("firstName").value;
+	let lastName = document.getElementById("lastName").value;
+	let login = document.getElementById("loginUser").value;
+	let password = document.getElementById("password").value;
+	// var hash = md5(password);
 
-    let tmp = { firstName: firstName, lastName:lastName, login:login, password:password};
+	document.getElementById("registerResult").innerHTML = "";
 
-    let jsonPayload = JSON.stringify(tmp);
+	let tmp = { firstName: firstName, lastName: lastName, login: login, password: password };
 
-    let url = urlBase + '/Register.' + extension;
+	let jsonPayload = JSON.stringify(tmp);
 
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-    try {
-        xhr.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                let jsonObject = JSON.parse(xhr.responseText);
-                if (jsonObject.error) {
-                    document.getElementById("registerResult").innerHTML = jsonObject.error;
-                } else {
-                    document.getElementById("registerResult").innerHTML = "Registration successful";
-                    window.location.href = "../login.html";
-                }
-            }
-        };
-        xhr.send(jsonPayload);
-    } catch (err) {
-        document.getElementById("registerResult").innerHTML = err.message;
-    }
+	let url = urlBase + '/Register.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try {
+		xhr.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				let jsonObject = JSON.parse(xhr.responseText);
+				if (jsonObject.error) {
+					document.getElementById("registerResult").innerHTML = jsonObject.error;
+				} else {
+					document.getElementById("registerResult").innerHTML = "Registration successful";
+					window.location.href = "../login.html";
+				}
+			}
+		};
+		xhr.send(jsonPayload);
+	} catch (err) {
+		document.getElementById("registerResult").innerHTML = err.message;
+	}
 }
 
 
@@ -96,6 +97,17 @@ function saveCookie() {
 	let date = new Date();
 	date.setTime(date.getTime() + (minutes * 60 * 1000));
 	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
+}
+function registerMode() {
+	document.cookie = "register";
+}
+function loginMode() {
+	document.cookie = "login";
+}
+function setMode() {
+	carouselMode = document.cookie;
+	document.cookie = "mode= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+
 }
 
 function readCookie() {

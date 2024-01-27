@@ -1,7 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <!-- PLEASE WORK -->
+
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,6 +9,27 @@
 	<link rel="icon" type="image/x-icon" href="/images/LogoCropped.png" sizes="16x16">
 
 	<link rel="stylesheet" href="/sass/main.css" />
+	<!-- Carousel Switch Script -->
+	<script>
+		var loginCarousel;
+
+		document.addEventListener("DOMContentLoaded", function () {
+			var carouselElement = document.querySelector("#loginCarousel");
+			loginCarousel = new bootstrap.Carousel(carouselElement, {
+				interval: false,
+				ride: false,
+			});
+			setMode();
+			if (carouselMode == "register") loginCarousel.to(1);
+			else loginCarousel.to(0);
+		});
+
+		function switchCarouselItem(direction) {
+			direction === "next"
+				? loginCarousel.next()
+				: loginCarousel.prev();
+		}
+	</script>
 </head>
 
 <body id="login_body">
@@ -28,10 +49,10 @@
 			<!-- Nav Links -->
 			<div class="collapse navbar-collapse justify-content-end align-center" id="navmenu">
 				<ul class="navbar-nav ms-auto">
-					<a href="/login.html" class="nav-link text-white">Login</a>
+					<a href="/login.html" onclick="loginMode()" class="nav-link text-white">Login</a>
 				</ul>
 				<ul class="navbar-nav">
-					<a href="/login.html" class="nav-link text-white">Register</a>
+					<a href="/login.html" onclick="registerMode()" class="nav-link text-white">Register</a>
 				</ul>
 				<ul class="navbar-nav">
 					<a href="/reference.html" class="nav-link text-white">BS REFERENCE</a>
@@ -127,24 +148,7 @@
 
 	<!-- JS scripts -->
 
-	<!-- Carousel Switch Script -->
-	<script>
-		var loginCarousel;
 
-		document.addEventListener("DOMContentLoaded", function () {
-			var carouselElement = document.querySelector("#loginCarousel");
-			loginCarousel = new bootstrap.Carousel(carouselElement, {
-				interval: false,
-				ride: false,
-			});
-		});
-
-		function switchCarouselItem(direction) {
-			direction === "next"
-				? loginCarousel.next()
-				: loginCarousel.prev();
-		}
-	</script>
 
 	<!--test js and json-->
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
