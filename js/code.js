@@ -10,7 +10,7 @@ function doLogin() {
 	userId = 0;
 	firstName = "";
 	lastName = "";
-	let testMode = true;
+	let testMode = false;
 
 
 	let login = document.getElementById("loginName").value;
