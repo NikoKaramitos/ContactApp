@@ -10,6 +10,8 @@ function doLogin() {
 	userId = 0;
 	firstName = "";
 	lastName = "";
+	let testMode = true;
+
 
 	let login = document.getElementById("loginName").value;
 	let password = document.getElementById("loginPassword").value;
@@ -18,6 +20,14 @@ function doLogin() {
 	document.getElementById("loginResult").innerHTML = "";
 
 	let tmp = { login: login, password: password };
+	if (testMode) {
+		document.cookie = "mode=;expires = Thu, 01 Jan 1970 00:00:00 GMT";
+		firstName = "Tester";
+		lastName = "Man"
+		saveCookie();
+		window.location.href = "../color.html";
+		return;
+	}
 	//	var tmp = {login:login,password:hash};
 	let jsonPayload = JSON.stringify(tmp);
 	let url = 'http://contactz.xyz/LAMPAPI/Login.php';
@@ -31,11 +41,11 @@ function doLogin() {
 				console.log(xhr.responseText);
 				let jsonObject = JSON.parse(xhr.responseText);
 				userId = jsonObject.id;
-
 				if (userId < 1) {
 					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 					return;
 				}
+				document.cookie = "mode=;expires = Thu, 01 Jan 1970 00:00:00 GMT";
 
 				firstName = jsonObject.firstName;
 				lastName = jsonObject.lastName;
@@ -99,14 +109,14 @@ function saveCookie() {
 	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
 }
 function registerMode() {
-	document.cookie = "register";
+	document.cookie = "mode=register";
 }
 function loginMode() {
-	document.cookie = "login";
+	document.cookie = "mode=login";
 }
 function setMode() {
-	carouselMode = document.cookie;
-	document.cookie = "mode= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+	carouselMode = document.cookie.substring(5);
+	//document.cookie = "mode= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 
 }
 

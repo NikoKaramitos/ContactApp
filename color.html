@@ -19,7 +19,7 @@
 <body>
 	<nav id="navbar" class="navbar sticky-top navbar-expand-md bg-altpurple navbar-dark py-3">
 		<div class="container">
-			<a href="/index.html" class="navbar-brand">
+			<a href="/index.html" onclick="doLogout()" class="navbar-brand">
 				<span class="fw-bold text-light"> Contactz </span>
 			</a>
 
@@ -49,8 +49,8 @@
 			<div id="title" class="display-5">Welcome to your Contactz</div>
 			<div class="display-7 text-muted">Below you can add, edit, search, and delete your contacts!</div>
 
-			<div id="loggedInDiv" class="container text-center">
-				<span id="userName"></span><br />
+			<div id="loggedInDiv" class="container text-center p-3">
+				<span id="userName"></span>
 			</div>
 
 			<div id="accessUIDiv" class="container-fluid rounded shadow">
