@@ -3,11 +3,11 @@
 
 	$inData = getRequestInfo();
 
-	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
+	$conn = new mysqli("contactz.xyz", "TheBeast", "Group31POOS", "COP4331");
 
 	if (noQueries($inData))
 	{
-		returnWithError("The application JSON must contain at minimum the field 'userID' and at minimum one query field: ['firstName', 'lastName', 'phone', 'email']");
+		returnWithError("The application JSON must contain at minimum the fields 'userID' and one query: ['firstName', 'lastName', 'phone', 'email']");
 	}
 	else if ($conn->connect_error)
 	{

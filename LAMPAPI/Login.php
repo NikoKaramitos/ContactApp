@@ -1,13 +1,28 @@
 
 <?php
+	/* TODO -
+	 * Password hashing was mentioned at the bottom of the word document
+	 * 
+	*/
 
-	error_reporting(E_ALL);
-	ini_set('display_errors', 1);
+	// Is this needed? Refer to group and test it...
+	// header("Access-Control-Allow-Origin: *");
 
+	/* Receives the JSON data sent from the browser
+	 * 
+	 * The following JSON fields MUST be defined:
+	 * "login" : "string"
+	 * "password" : "string"
+	 * 
+	 * Column matches and JSON fields are case sensitive
+	 * Fields are stored as an array in inData and are accessed by isset() and bind_param()
+	*/
 	$inData = getRequestInfo();
 
-	$connection = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
+	// If either one of the fields are not present then return an error
+	$connection = new mysqli("localhost", "TheBeast", "Group31POOS", "COP4331");
 
+	// Error checking
 	if (invalidApplication($inData))
 	{
 		returnWithError("Some of the required application JSON fields: ['login', 'password'] are missing");
@@ -16,15 +31,22 @@
 	{
 		returnWithError($connection->connect_error);
 	}
-	else
+	else // Database operations
 	{
+		// Prepared statement for the database
+		// Then, bind the ? placeholders with the strings from application/json
+		// Finally, send to the database to execute it
 		$statement = $connection->prepare("SELECT ID, FirstName, LastName FROM Users WHERE Login = ? AND Password = ?");
 		$statement->bind_param("ss", $inData['login'], $inData['password']);
 		$statement->execute();
 
+		// ID, FirstName, LastName are the extracted columns for rows matching Login = ? AND Password = ?
+		// Only one row should match, else something is very wrong
+		// If no rows are matched, falsy evaluation goes to the else block
 		$result = $statement->get_result();
 		if($row = $result->fetch_assoc())
 		{
+			// Send the needed data back to the client
 			returnWithInfo($row['ID'], $row['FirstName'], $row['LastName']);
 		}
 		else
@@ -32,8 +54,10 @@
 			returnWithError("User Not Found: ['" . $statement->error . "']");
 		}
 
+		// Close previous prepared statement
 		$statement->close();
 
+		// Also update the DateLastLoggedIn column, executes iff the previous if branch did
 		if ($row)
 		{
 			date_default_timezone_set("America/New_York");
@@ -44,6 +68,7 @@
 			$statement->close();
 		}
 
+		// Done
 		$connection->close();
 	}
 
