@@ -1,4 +1,55 @@
 @charset "UTF-8";
+@keyframes gradient-wave {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 80%;
+  }
+}
+body {
+  background: linear-gradient(45deg, #ff020a, #fad0c4, #8b8ee7, rgb(195, 118, 233));
+  background-size: 400% 400%;
+  animation: gradient-wave 30s infinite alternate linear;
+  padding-bottom: 20px;
+}
+
+.my-containers {
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 90%;
+  border-radius: 50px;
+  margin-top: 30px;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-45px);
+  }
+  60% {
+    transform: translateY(-20px);
+  }
+}
+.bounce {
+  animation-name: bounce;
+}
+
+.animate {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-iteration-count: 3;
+}
+
+.navbar {
+  box-shadow: 0 -6px 10px 5px rgba(0, 0, 0, 0.5);
+}
+
 /*!
  * Bootstrap  v5.3.2 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors
@@ -33,7 +84,7 @@
   --bs-altlight: #b4b4b4;
   --bs-altgray: #5a5a5a;
   --bs-altblack: #000000;
-  --bs-altpurple: #340a7d;
+  --bs-altpurple: rgba(136, 212, 143, 0.7843137255);
   --bs-primary: #0d6efd;
   --bs-secondary: #6c757d;
   --bs-success: #198754;
@@ -46,7 +97,7 @@
   --bs-altlight-rgb: 180, 180, 180;
   --bs-altgray-rgb: 90, 90, 90;
   --bs-altblack-rgb: 0, 0, 0;
-  --bs-altpurple-rgb: 52, 10, 125;
+  --bs-altpurple-rgb: 136, 212, 143;
   --bs-primary-rgb: 13, 110, 253;
   --bs-secondary-rgb: 108, 117, 125;
   --bs-success-rgb: 25, 135, 84;
@@ -133,30 +184,6 @@
   --bs-form-valid-border-color: #198754;
   --bs-form-invalid-color: #dc3545;
   --bs-form-invalid-border-color: #dc3545;
-}
-
-@keyframes bounce
-{
-  0%,20%,50%,80%,100%{
-    transform: translateY(0);
-  }
-  40%{
-    transform: translateY(-45px);
-  }
-  60%{
-    transform: translateY(-20px);
-  }
-}
-
-.bounce
-{
-  animation-name: bounce;
-}
-
-.animate{
-  animation-duration: 1s;
-  animation-fill-mode: both;
-  animation-iteration-count: 3;
 }
 
 [data-bs-theme=dark] {
@@ -3109,20 +3136,20 @@ textarea.form-control-lg {
 }
 
 .btn-altpurple {
-  --bs-btn-color: #fff;
-  --bs-btn-bg: #340a7d;
-  --bs-btn-border-color: #340a7d;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #2c096a;
-  --bs-btn-hover-border-color: #2a0864;
-  --bs-btn-focus-shadow-rgb: 82, 47, 145;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #2a0864;
-  --bs-btn-active-border-color: #27085e;
+  --bs-btn-color: #000;
+  --bs-btn-bg: rgba(136, 212, 143, 0.7843137255);
+  --bs-btn-border-color: rgba(136, 212, 143, 0.7843137255);
+  --bs-btn-hover-color: #000;
+  --bs-btn-hover-bg: rgba(162, 221, 167, 0.8166666667);
+  --bs-btn-hover-border-color: rgba(153, 218, 159, 0.8058823529);
+  --bs-btn-focus-shadow-rgb: 107, 166, 112;
+  --bs-btn-active-color: #000;
+  --bs-btn-active-bg: rgba(169, 224, 174, 0.8274509804);
+  --bs-btn-active-border-color: rgba(153, 218, 159, 0.8058823529);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #340a7d;
-  --bs-btn-disabled-border-color: #340a7d;
+  --bs-btn-disabled-color: #000;
+  --bs-btn-disabled-bg: rgba(136, 212, 143, 0.7843137255);
+  --bs-btn-disabled-border-color: rgba(136, 212, 143, 0.7843137255);
 }
 
 .btn-primary {
@@ -3330,19 +3357,19 @@ textarea.form-control-lg {
 }
 
 .btn-outline-altpurple {
-  --bs-btn-color: #340a7d;
-  --bs-btn-border-color: #340a7d;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #340a7d;
-  --bs-btn-hover-border-color: #340a7d;
-  --bs-btn-focus-shadow-rgb: 52, 10, 125;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #340a7d;
-  --bs-btn-active-border-color: #340a7d;
+  --bs-btn-color: rgba(136, 212, 143, 0.7843137255);
+  --bs-btn-border-color: rgba(136, 212, 143, 0.7843137255);
+  --bs-btn-hover-color: #000;
+  --bs-btn-hover-bg: rgba(136, 212, 143, 0.7843137255);
+  --bs-btn-hover-border-color: rgba(136, 212, 143, 0.7843137255);
+  --bs-btn-focus-shadow-rgb: 136, 212, 143;
+  --bs-btn-active-color: #000;
+  --bs-btn-active-bg: rgba(136, 212, 143, 0.7843137255);
+  --bs-btn-active-border-color: rgba(136, 212, 143, 0.7843137255);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #340a7d;
+  --bs-btn-disabled-color: rgba(136, 212, 143, 0.7843137255);
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #340a7d;
+  --bs-btn-disabled-border-color: rgba(136, 212, 143, 0.7843137255);
   --bs-gradient: none;
 }
 
@@ -7131,7 +7158,7 @@ textarea.form-control-lg {
 }
 
 .text-bg-altpurple {
-  color: #fff !important;
+  color: #000 !important;
   background-color: RGBA(var(--bs-altpurple-rgb), var(--bs-bg-opacity, 1)) !important;
 }
 
@@ -7216,8 +7243,8 @@ textarea.form-control-lg {
   text-decoration-color: RGBA(var(--bs-altpurple-rgb), var(--bs-link-underline-opacity, 1)) !important;
 }
 .link-altpurple:hover, .link-altpurple:focus {
-  color: RGBA(42, 8, 100, var(--bs-link-opacity, 1)) !important;
-  text-decoration-color: RGBA(42, 8, 100, var(--bs-link-underline-opacity, 1)) !important;
+  color: RGBA(169, 224, 174, var(--bs-link-opacity, 1)) !important;
+  text-decoration-color: RGBA(169, 224, 174, var(--bs-link-underline-opacity, 1)) !important;
 }
 
 .link-primary {
@@ -7768,52 +7795,20 @@ textarea.form-control-lg {
   position: sticky !important;
 }
 
-.top-0 {
-  top: 0 !important;
+.top-1 {
+  top: 1% !important;
 }
 
-.top-50 {
-  top: 50% !important;
+.bottom-1 {
+  bottom: 1% !important;
 }
 
-.top-100 {
-  top: 100% !important;
+.start-1 {
+  left: 1% !important;
 }
 
-.bottom-0 {
-  bottom: 0 !important;
-}
-
-.bottom-50 {
-  bottom: 50% !important;
-}
-
-.bottom-100 {
-  bottom: 100% !important;
-}
-
-.start-0 {
-  left: 0 !important;
-}
-
-.start-50 {
-  left: 50% !important;
-}
-
-.start-100 {
-  left: 100% !important;
-}
-
-.end-0 {
-  right: 0 !important;
-}
-
-.end-50 {
-  right: 50% !important;
-}
-
-.end-100 {
-  right: 100% !important;
+.end-1 {
+  right: 1% !important;
 }
 
 .translate-middle {

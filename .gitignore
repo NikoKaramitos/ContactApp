@@ -1,0 +1,15 @@
+# Ignore the entire node_modules directory
+node_modules/
+
+# Ignore the entire .cache directory that might be used by various tools
+.cache/
+
+# Ignore all log files
+*.log
+
+# Ignore all .env files
+.env*
+
+# Ignore the build output directory
+/dist/
+
