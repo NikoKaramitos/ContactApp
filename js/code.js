@@ -5,6 +5,39 @@ let userId = 0;
 let firstName = "";
 let lastName = "";
 let carouselMode = "";
+let phone = "";
+let email = "";
+let login = "";
+let password = "";
+
+function validateLogin(login, password)
+{
+	let empty = true;
+
+	if(login.value.trim() == "")
+	{
+		login.style.borderCcolor = "red";
+		empty = false;
+	}
+	else
+	{
+		login.style.borderColor = "";
+		empty = true;
+	}
+
+	if(password.value.trim() == "")
+	{
+		password.style.borderColor = "red";
+		empty = false;
+	}
+	else
+	{
+		password.style.borderColor = "";
+		empty = true;
+	}
+
+	return empty;
+}
 
 function doLogin() {
 	userId = 0;
@@ -12,22 +45,32 @@ function doLogin() {
 	lastName = "";
 	let testMode = false;
 
-
-	let login = document.getElementById("loginName").value;
-	let password = document.getElementById("loginPassword").value;
-	//	var hash = md5( password );
-
-	document.getElementById("loginResult").innerHTML = "";
-
-	let tmp = { login: login, password: password };
 	if (testMode) {
 		document.cookie = "mode=;expires = Thu, 01 Jan 1970 00:00:00 GMT";
 		firstName = "Tester";
 		lastName = "Man"
 		saveCookie();
-		window.location.href = "../color.html";
+		window.location.href = "../dashboard.html";
 		return;
 	}
+
+	let loginID = document.getElementById("loginName")
+	let passwordID = document.getElementById("loginPassword")
+
+	if(!validateLogin(loginID, passwordID))
+	{
+		document.getElementById("registerResult").innerHTML = err.message;
+		return;
+		
+	}
+
+	let login = document.getElementById("loginName").value;
+	let password = document.getElementById("loginPassword").value;
+	//	var hash = md5( password );
+	
+	document.getElementById("loginResult").innerHTML = "";
+
+	let tmp = { login: login, password: password };
 	//	var tmp = {login:login,password:hash};
 	let jsonPayload = JSON.stringify(tmp);
 	let url = 'http://contactz.xyz/LAMPAPI/Login.php';
@@ -52,7 +95,7 @@ function doLogin() {
 
 				saveCookie();
 
-				window.location.href = "../color.html";
+				window.location.href = "../dashboard.html";
 			}
 		};
 		xhr.send(jsonPayload);
@@ -70,6 +113,7 @@ function doRegister() {
 	let lastName = document.getElementById("lastName").value;
 	let login = document.getElementById("loginUser").value;
 	let password = document.getElementById("password").value;
+
 	// var hash = md5(password);
 
 	document.getElementById("registerResult").innerHTML = "";
@@ -106,8 +150,12 @@ function saveCookie() {
 	let minutes = 20;
 	let date = new Date();
 	date.setTime(date.getTime() + (minutes * 60 * 1000));
-	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
+	if(firstName && lastName)
+	{
+		document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
+	}
 }
+
 function registerMode() {
 	document.cookie = "mode=register";
 }
@@ -154,14 +202,18 @@ function doLogout() {
 	window.location.href = "index.html";
 }
 
-function addColor() {
-	let newColor = document.getElementById("colorText").value;
-	document.getElementById("colorAddResult").innerHTML = "";
+function addContact() {
+	let firstName = document.getElementById("addFirstName").value;
+	let lastName = document.getElementById("addLastName").value;
+	let email = document.getElementById("addEmail").value;
+	let phone = document.getElementById("addPhone").value;
 
-	let tmp = { color: newColor, userId, userId };
+	document.getElementById("addResult").innerHTML = "";
+
+	let tmp = { firstName: firstName, lastName: lastName, email:email, phone:phone, userID: userId };
 	let jsonPayload = JSON.stringify(tmp);
 
-	let url = urlBase + '/AddColor.' + extension;
+	let url = urlBase + '/AddContact.' + extension;
 
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
@@ -169,28 +221,28 @@ function addColor() {
 	try {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
-				document.getElementById("colorAddResult").innerHTML = "Color has been added";
+				document.getElementById("addContactResult").innerHTML = "Contact added.";
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch (err) {
-		document.getElementById("colorAddResult").innerHTML = err.message;
+		document.getElementById("addResult").innerHTML = err.message;
+
 	}
 
 }
 
-function searchColor() {
-	let srch = document.getElementById("searchText").value;
-	document.getElementById("colorSearchResult").innerHTML = "";
-	// THIS IS FOR SEARCH TYPE ~ FRONTEND :)
-	let searchtype = document.getElementById("PleaseWork").value;
-	console.log(searchtype);
-	console.log("Searching for: " + srch);
+function searchContact() {
+	let srch = document.getElementById("searchType").value;
+	document.getElementById("searchType").innerHTML = "";
 
-	let colorList = "";
+	let searchType = document.getElementById("searchType").value;
+	
+	let tmp = { search: searchType, userID: userId };
 
-	let tmp = { search: srch, userId: userId };
+	
+
 	let jsonPayload = JSON.stringify(tmp);
 
 	let url = urlBase + '/SearchColors.' + extension;

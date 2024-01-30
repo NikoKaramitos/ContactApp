@@ -1,11 +1,71 @@
 // redefined variables go here:
-
+$position-values: (
+    1: 1%
+);
 
 // import functions and variables
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
 
-// custom variables can go here
+@keyframes gradient-wave 
+{
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 80%;
+    }
+}
+  
+body 
+{
+    background: linear-gradient(45deg, #ff020a, #fad0c4, #8b8ee7, rgb(195, 118, 233));
+    background-size: 400% 400%;
+    animation: gradient-wave 30s infinite alternate linear;
+    // height: 100vh;
+    padding-bottom: 20px;
+}
+
+.my-containers
+{
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 90%;
+  border-radius: 50px;
+  margin-top: 30px;
+}
+
+@keyframes bounce
+{
+  0%,20%,50%,80%,100%{
+    transform: translateY(0);
+  }
+  40%{
+    transform: translateY(-45px);
+  }
+  60%{
+    transform: translateY(-20px);
+  }
+}
+
+.bounce
+{
+    animation-name: bounce;
+}
+
+.animate{
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-iteration-count: 3;
+}
+
+.navbar
+{
+  box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
+}
 
 
 // Main Theme
@@ -15,11 +75,11 @@ $custom-theme-colors:
     "altlight": #b4b4b4,
     "altgray": #5a5a5a,
     "altblack":#000000,
-    "altpurple":#340a7d
+    "altpurple":#88d48fc8
 );
 
 // merge custom theme with original
 $theme-colors: map-merge($custom-theme-colors, $theme-colors);
 
 // import bootstrap
-@import '../node_modules/bootstrap/scss/bootstrap';
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
