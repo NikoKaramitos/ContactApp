@@ -3,6 +3,8 @@ $position-values: (
     1: 1%,
 );
 
+
+
 // import functions and variables
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
@@ -22,7 +24,7 @@ $position-values: (
 }
 
 body {
-    height: 120vh;
+    height: 150vh;
     background: linear-gradient(45deg,
             #b33d12,
             #f1936e,
@@ -30,6 +32,7 @@ body {
             #003ebb);
     background-size: 400% 400%;
     animation: gradient-wave 30s infinite alternate linear;
+    --bs-body-font-family: "IBM Plex Mono", monospace;
 }
 
 .my-containers {
@@ -55,7 +58,7 @@ body {
     left: 0;
     bottom: 0;
     width: 0;
-    height: 2px;
+    height: 3px;
     background-color: #f1936e;
     transition: width 0.5s ease;
 }
@@ -111,6 +114,10 @@ $custom-theme-colors: (
     "altblack": #000000,
     "altpurple": #12a8b3,
 );
+
+.txt-shadow {
+    text-shadow: black -1px 1px 2px;
+}
 
 // merge custom theme with original
 $theme-colors: map-merge($custom-theme-colors, $theme-colors);
