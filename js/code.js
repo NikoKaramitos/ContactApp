@@ -12,7 +12,7 @@ let password = "";
 
 function loadContacts()
 {
-	let url = 'http://contactz.xyz/LAMPAPI/SearchContacts.php';
+	let url = 'http://contactz.xyz/LAMPAPI/RequestContacts.php';
 	let xhr = new XMLHttpRequest();
 	xhr.open("GET", url, true);
 
