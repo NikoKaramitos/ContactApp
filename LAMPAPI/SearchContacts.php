@@ -16,14 +16,14 @@
 	else
 	{
 		$constructed = constructCommand($inData);
-		$stmt = $conn->prepare($constructed['c']);
+		$statement = $conn->prepare($constructed['c']);
 
 		// Bind dynamically generated prepared statment
 		for ($i = 0; $i < count($constructed['t']); $i++) {
 			$stmt->bind_param($constructed['t'][$i], $constructed['b'][$i]);
 		}
 
-		$stmt->execute();
+		$statement->execute();
 		$result = $statement->get_result();
 		$count = 0;
 		$search = ""; // String concatenation my inefficient beloved
@@ -54,7 +54,7 @@
 			returnWithError("No Contacts Found");
 		}
 
-		$stmt->close();
+		$statement->close();
 		$conn->close();
 	}
 
@@ -111,7 +111,7 @@
 
 	function getRequestInfo()
 	{
-		return json_decode(file_get_contents('php://input'), true);
+		return $_GET;
 	}
 
 	function sendResultInfoAsJson($obj)

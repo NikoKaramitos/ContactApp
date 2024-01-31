@@ -10,28 +10,57 @@ let email = "";
 let login = "";
 let password = "";
 
-function validateLogin(login, password)
+function loadContacts()
 {
+	let url = 'http://contactz.xyz/LAMPAPI/RequestContacts.php';
+	let xhr = new XMLHttpRequest();
+	xhr.open("GET", url, true);
+
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try {
+		xhr.onload = function () {
+			if (this.status == 200) {
+				let jsonResponse = JSON.parse(xhr.responseText);
+				let contacts = jsonResponse.contacts;
+				const searchContainer = document.getElementById("searchResults");
+				searchContainer.innerHTML = "";
+
+				searchContact.forEach(function(contacts) {
+					const a = document.createElement("div");
+					a.className = "contact";
+					// populate the following line with carlos' js code for adding boxes orw/e idk
+					a.innerHTML = `<h3>${searchContact.firstName}</h3>
+					<p>${searchContact.phone}</p>`; 
+					searchContainer.appendChild(a);
+				});
+			}
+		};
+	}
+	catch (err) {
+		document.getElementById("searchResult").innerHTML = err.message;
+	}
+
+	xhr.send(jsonPayload);
+}
+
+function validateLogin(login, password) {
 	let empty = true;
 
-	if(login.value.trim() == "")
-	{
+	if (login.value.trim() == "") {
 		login.style.borderCcolor = "red";
 		empty = false;
 	}
-	else
-	{
+	else {
 		login.style.borderColor = "";
 		empty = true;
 	}
 
-	if(password.value.trim() == "")
-	{
+	if (password.value.trim() == "") {
 		password.style.borderColor = "red";
 		empty = false;
 	}
-	else
-	{
+	else {
 		password.style.borderColor = "";
 		empty = true;
 	}
@@ -43,7 +72,7 @@ function doLogin() {
 	userId = 0;
 	firstName = "";
 	lastName = "";
-	let testMode = false;
+	let testMode = true;
 
 	if (testMode) {
 		document.cookie = "mode=;expires = Thu, 01 Jan 1970 00:00:00 GMT";
@@ -57,17 +86,16 @@ function doLogin() {
 	let loginID = document.getElementById("loginName")
 	let passwordID = document.getElementById("loginPassword")
 
-	if(!validateLogin(loginID, passwordID))
-	{
+	if (!validateLogin(loginID, passwordID)) {
 		document.getElementById("registerResult").innerHTML = err.message;
 		return;
-		
+
 	}
 
 	let login = document.getElementById("loginName").value;
 	let password = document.getElementById("loginPassword").value;
 	//	var hash = md5( password );
-	
+
 	document.getElementById("loginResult").innerHTML = "";
 
 	let tmp = { login: login, password: password };
@@ -81,7 +109,6 @@ function doLogin() {
 	try {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
-				console.log(xhr.responseText);
 				let jsonObject = JSON.parse(xhr.responseText);
 				userId = jsonObject.id;
 				if (userId < 1) {
@@ -150,8 +177,7 @@ function saveCookie() {
 	let minutes = 20;
 	let date = new Date();
 	date.setTime(date.getTime() + (minutes * 60 * 1000));
-	if(firstName && lastName)
-	{
+	if (firstName && lastName) {
 		document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
 	}
 }
@@ -210,7 +236,7 @@ function addContact() {
 
 	document.getElementById("addResult").innerHTML = "";
 
-	let tmp = { firstName: firstName, lastName: lastName, email:email, phone:phone, userID: userId };
+	let tmp = { firstName: firstName, lastName: lastName, email: email, phone: phone, userID: userId };
 	let jsonPayload = JSON.stringify(tmp);
 
 	let url = urlBase + '/AddContact.' + extension;
@@ -238,10 +264,10 @@ function searchContact() {
 	document.getElementById("searchType").innerHTML = "";
 
 	let searchType = document.getElementById("searchType").value;
-	
+
 	let tmp = { search: searchType, userID: userId };
 
-	
+
 
 	let jsonPayload = JSON.stringify(tmp);
 
