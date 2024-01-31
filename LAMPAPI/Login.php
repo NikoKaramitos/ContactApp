@@ -20,7 +20,7 @@
 	$inData = getRequestInfo();
 
 	// If either one of the fields are not present then return an error
-	$connection = new mysqli("localhost", "TheBeast", "Group31POOS", "COP4331");
+	$connection = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 
 	// Error checking
 	if (invalidApplication($inData))
