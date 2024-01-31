@@ -22,6 +22,7 @@ $position-values: (
 }
 
 body {
+    height: 150vh;
     background: linear-gradient(45deg,
             #b33d12,
             #f1936e,
@@ -29,15 +30,13 @@ body {
             #003ebb);
     background-size: 400% 400%;
     animation: gradient-wave 30s infinite alternate linear;
-    // height: 100vh;
-    padding-bottom: 20px;
 }
 
 .my-containers {
     margin: auto;
     background-color: rgba(255, 255, 255, 0.5);
     width: 90%;
-    border-radius: 50px;
+    border-radius: 20px;
     margin-top: 30px;
 }
 
@@ -57,7 +56,7 @@ body {
     bottom: 0;
     width: 0;
     height: 2px;
-    background-color:#f1936e;
+    background-color: #f1936e;
     transition: width 0.5s ease;
 }
 

@@ -11,17 +11,17 @@
   }
 }
 body {
+  height: 150vh;
   background: linear-gradient(45deg, #b33d12, #f1936e, #8b8ee7, #003ebb);
   background-size: 400% 400%;
   animation: gradient-wave 30s infinite alternate linear;
-  padding-bottom: 20px;
 }
 
 .my-containers {
   margin: auto;
   background-color: rgba(255, 255, 255, 0.5);
   width: 90%;
-  border-radius: 50px;
+  border-radius: 20px;
   margin-top: 30px;
 }
 
