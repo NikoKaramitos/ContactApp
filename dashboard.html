@@ -79,7 +79,8 @@
 				</div>
 
 				<span id="colorSearchResult"></span>
-				<p id="colorList"></p>
+				<button onclick="addElement('Tester friend','(555) 555-1234','tester@testmail.xyz')">click here</button>
+				<p id="searchResults"></p>
 				<br /><br />
 				<!--Example contact-->
 				<!-- <div class="row">
@@ -133,14 +134,14 @@
 							Add Contact</button><br />
 							<span id="colorAddResult"></span>
 						-->
-			</div>
-			<div id="myInput" class="btn rounded-circle btn-altpurple position-absolute bottom-1 end-1"
-				data-bs-toggle="modal" data-bs-target="#myModal">
-				<svg xmlns="http://www.w3.org/2000/svg" width="32" height="48" fill="currentColor" class="bi bi-plus-lg"
-					viewBox="0 0 16 16">
-					<path fill-rule="evenodd"
-						d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
-				</svg>
+				<div id="myInput" class="btn rounded-circle btn-altpurple position-relative bottom-0 end-0"
+					data-bs-toggle="modal" data-bs-target="#myModal">
+					<svg xmlns="http://www.w3.org/2000/svg" width="32" height="48" fill="currentColor"
+						class="bi bi-plus-lg" viewBox="0 0 16 16">
+						<path fill-rule="evenodd"
+							d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+					</svg>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -161,6 +162,7 @@
 		integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
 		crossorigin="anonymous"></script>
 	<script src="js/code.js"></script>
+	<script src="js/contacts.js"></script>
 </body>
 
 </html>

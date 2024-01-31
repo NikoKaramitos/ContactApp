@@ -10,28 +10,23 @@ let email = "";
 let login = "";
 let password = "";
 
-function validateLogin(login, password)
-{
+function validateLogin(login, password) {
 	let empty = true;
 
-	if(login.value.trim() == "")
-	{
+	if (login.value.trim() == "") {
 		login.style.borderCcolor = "red";
 		empty = false;
 	}
-	else
-	{
+	else {
 		login.style.borderColor = "";
 		empty = true;
 	}
 
-	if(password.value.trim() == "")
-	{
+	if (password.value.trim() == "") {
 		password.style.borderColor = "red";
 		empty = false;
 	}
-	else
-	{
+	else {
 		password.style.borderColor = "";
 		empty = true;
 	}
@@ -43,7 +38,7 @@ function doLogin() {
 	userId = 0;
 	firstName = "";
 	lastName = "";
-	let testMode = false;
+	let testMode = true;
 
 	if (testMode) {
 		document.cookie = "mode=;expires = Thu, 01 Jan 1970 00:00:00 GMT";
@@ -57,17 +52,16 @@ function doLogin() {
 	let loginID = document.getElementById("loginName")
 	let passwordID = document.getElementById("loginPassword")
 
-	if(!validateLogin(loginID, passwordID))
-	{
+	if (!validateLogin(loginID, passwordID)) {
 		document.getElementById("registerResult").innerHTML = err.message;
 		return;
-		
+
 	}
 
 	let login = document.getElementById("loginName").value;
 	let password = document.getElementById("loginPassword").value;
 	//	var hash = md5( password );
-	
+
 	document.getElementById("loginResult").innerHTML = "";
 
 	let tmp = { login: login, password: password };
@@ -150,8 +144,7 @@ function saveCookie() {
 	let minutes = 20;
 	let date = new Date();
 	date.setTime(date.getTime() + (minutes * 60 * 1000));
-	if(firstName && lastName)
-	{
+	if (firstName && lastName) {
 		document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
 	}
 }
@@ -210,7 +203,7 @@ function addContact() {
 
 	document.getElementById("addResult").innerHTML = "";
 
-	let tmp = { firstName: firstName, lastName: lastName, email:email, phone:phone, userID: userId };
+	let tmp = { firstName: firstName, lastName: lastName, email: email, phone: phone, userID: userId };
 	let jsonPayload = JSON.stringify(tmp);
 
 	let url = urlBase + '/AddContact.' + extension;
@@ -238,10 +231,10 @@ function searchContact() {
 	document.getElementById("searchType").innerHTML = "";
 
 	let searchType = document.getElementById("searchType").value;
-	
+
 	let tmp = { search: searchType, userID: userId };
 
-	
+
 
 	let jsonPayload = JSON.stringify(tmp);
 
