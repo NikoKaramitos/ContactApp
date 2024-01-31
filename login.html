@@ -33,7 +33,7 @@
 	</script>
 </head>
 
-<body id="login_body">
+<body>
 	<!-- Navigation Bar -->
 	<nav id="navbar" class="navbar sticky-top navbar-expand-md bg-altpurple navbar-dark py-3">
 		<div class="container">
@@ -42,9 +42,19 @@
 			</a>
 
 			<!-- Hamburger Toggle -->
-			<ul class="navbar-nav">
-				<a href="/index.html#aboutUs" class="nav-link text-white">About Us</a>
-			</ul>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu"
+				aria-controls="navmenu" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse justify-content-end align-center" id="navmenu">
+				<ul class="navbar-nav ms-auto">
+					<a href="/index.html#aboutUs" class="nav-link text-white">About Us</a>
+				</ul>
+				<!-- <ul class="navbar-nav">
+					<a href="/reference.html" class="nav-link text-white">BS REFERENCE</a>
+				</ul> -->
+			</div>
 		</div>
 	</nav>
 
@@ -56,9 +66,9 @@
 				<div id="login" class="container mt-5">
 					<div class="row justify-content-center align-center">
 						<div class="col-md-6 p-2 ">
-							<div class="card ">
-								<div class="card-body shadow">
-									<h2 class="card-title text-center mb-4">
+							<div class="my-containers shadow p-5">
+								<div class="card-body">
+									<h2 class="text-center mb-4">
 										Login
 									</h2>
 									<form id="loginForm" onsubmit="event.preventDefault(); doLogin();">
@@ -90,8 +100,8 @@
 				<div id="register" class="container mt-5">
 					<div class="row justify-content-center">
 						<div class="col-md-6 p-2">
-							<div class="card">
-								<div class="card-body shadow">
+							<div class="my-containers shadow p-5">
+								<div class="card-body">
 									<h2 class="card-title text-center mb-4">
 										Register
 									</h2>

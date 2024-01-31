@@ -1,81 +1,86 @@
 // redefined variables go here:
 $position-values: (
-    1: 1%
+    1: 1%,
 );
 
 // import functions and variables
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
 
-@keyframes gradient-wave 
-{
+@keyframes gradient-wave {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 80%;
     }
 }
-  
-body 
-{
-    background: linear-gradient(45deg, #ff020a, #fad0c4, #8b8ee7, rgb(195, 118, 233));
+
+body {
+    background: linear-gradient(45deg,
+            #b33d12,
+            #f1936e,
+            #8b8ee7,
+            #003ebb);
     background-size: 400% 400%;
     animation: gradient-wave 30s infinite alternate linear;
     // height: 100vh;
     padding-bottom: 20px;
 }
 
-.my-containers
-{
-  margin: auto;
-  background-color: rgba(255, 255, 255, 0.5);
-  width: 90%;
-  border-radius: 50px;
-  margin-top: 30px;
+.my-containers {
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 90%;
+    border-radius: 50px;
+    margin-top: 30px;
 }
 
-@keyframes bounce
-{
-  0%,20%,50%,80%,100%{
-    transform: translateY(0);
-  }
-  40%{
-    transform: translateY(-45px);
-  }
-  60%{
-    transform: translateY(-20px);
-  }
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-45px);
+    }
+
+    60% {
+        transform: translateY(-20px);
+    }
 }
 
-.bounce
-{
+.bounce {
     animation-name: bounce;
 }
 
-.animate{
+.animate {
     animation-duration: 1s;
     animation-fill-mode: both;
     animation-iteration-count: 3;
 }
 
-.navbar
-{
-  box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
+.navbar {
+    box-shadow: 0 -6px 10px 5px rgba(0, 0, 0, 0.5);
 }
 
-
 // Main Theme
-$custom-theme-colors:
-(
-    "altwhite":#ffffff,
+$custom-theme-colors: (
+    "altwhite": #ffffff,
     "altlight": #b4b4b4,
     "altgray": #5a5a5a,
-    "altblack":#000000,
-    "altpurple":#88d48fc8
+    "altblack": #000000,
+    "altpurple": #12a8b3,
 );
 
 // merge custom theme with original
