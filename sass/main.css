@@ -25,6 +25,26 @@ body {
   margin-top: 30px;
 }
 
+.navbar-nav {
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar-nav:hover::after {
+  width: 100%;
+}
+
+.navbar-nav::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #f1936e;
+  transition: width 0.5s ease;
+}
+
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
     transform: translateY(0);
