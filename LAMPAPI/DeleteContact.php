@@ -3,7 +3,7 @@
 
 	$inData = getRequestInfo();
 
-	$conn = new mysqli("contactz.xyz", "TheBeast", "Group31POOS", "COP4331");
+	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 
 	if (!isset($inData['contactID']) || !isset($inData['userID']))
 	{
