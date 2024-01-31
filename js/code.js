@@ -10,6 +10,40 @@ let email = "";
 let login = "";
 let password = "";
 
+function loadContacts()
+{
+	let url = 'http://contactz.xyz/LAMPAPI/SearchContacts.php';
+	let xhr = new XMLHttpRequest();
+	xhr.open("GET", url, true);
+
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+	try {
+		xhr.onload = function () {
+			if (this.status == 200) {
+				let jsonResponse = JSON.parse(xhr.responseText);
+				let contacts = jsonResponse.contacts;
+				const searchContainer = document.getElementById("searchResults");
+				searchContainer.innerHTML = "";
+
+				searchContact.forEach(function(contacts) {
+					const a = document.createElement("div");
+					a.className = "contact";
+					// populate the following line with carlos' js code for adding boxes orw/e idk
+					a.innerHTML = `<h3>${searchContact.firstName}</h3>
+					<p>${searchContact.phone}</p>`; 
+					searchContainer.appendChild(a);
+				});
+			}
+		};
+	}
+	catch (err) {
+		document.getElementById("searchResult").innerHTML = err.message;
+	}
+
+	xhr.send(jsonPayload);
+}
+
 function validateLogin(login, password) {
 	let empty = true;
 
@@ -75,7 +109,6 @@ function doLogin() {
 	try {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
-				console.log(xhr.responseText);
 				let jsonObject = JSON.parse(xhr.responseText);
 				userId = jsonObject.id;
 				if (userId < 1) {
