@@ -9,7 +9,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link
-		href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+		href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
 		rel="stylesheet">
 	<script type="text/javascript" src="js/code.js"></script>
 	<script type="text/javascript">
@@ -27,7 +27,7 @@
 	<nav id="navbar" class="navbar sticky-top navbar-expand-md bg-altpurple navbar-dark py-3">
 		<div class="container">
 			<a href="/index.html" onclick="doLogout()" class="navbar-brand">
-				<span class="fw-bold text-light"> Contactz </span>
+				<span class="fw-bold text-light txt-shadow"> Contactz </span>
 			</a>
 
 			<!-- Hamburger Toggle -->
@@ -39,10 +39,10 @@
 			<!-- Nav Links -->
 			<div class="collapse navbar-collapse justify-content-end align-center" id="navmenu">
 				<ul class="navbar-nav ms-auto">
-					<a href="/index.html#aboutUs" onclick="doLogout();" class="nav-link text-white">About Us</a>
+					<a href="/index.html#aboutUs" onclick="doLogout();" class="nav-link text-light txt-shadow">About Us</a>
 				</ul>
 				<ul class="navbar-nav">
-					<a href="/index.html" onclick="doLogout();" class="nav-link text-white">Log Out</a>
+					<a href="/index.html" onclick="doLogout();" class="nav-link text-light txt-shadow">Log Out</a>
 				</ul>
 			</div>
 		</div>
@@ -63,13 +63,14 @@
 				<!--Search bar-->
 				<div class="row rounded-top bg-altpurple p-3">
 					<div class="input-group">
-						<select class="form-select d-none d-md-inline" id="SearchType">
-							<option value="Default" selected>
+						<select class="form-select d-none d-md-inline" id="searchType">
+							<option value="default" selected>
 								Search Type
 							</option>
-							<option value="Name">Name</option>
-							<option value="Number">Number</option>
-							<option value="Mail">Mail</option>
+							<option value="firstName">First Name</option>
+							<option value="lastName">Last Name</option>
+							<option value="phone">Number</option>
+							<option value="email">Mail</option>
 						</select>
 						<input type="text" id="searchText" class="form-control w-50"
 							placeholder="Contact To Search For" />
@@ -142,7 +143,7 @@
 						-->
 				<div id="myInput" class="btn rounded-circle btn-altpurple position-relative bottom-0 end-0"
 					data-bs-toggle="modal" data-bs-target="#myModal">
-					<svg xmlns="http://www.w3.org/2000/svg" width="32" height="48" fill="currentColor"
+					<svg xmlns="http://www.w3.org/2000/svg" width="32" height="48" fill="white"
 						class="bi bi-plus-lg" viewBox="0 0 16 16">
 						<path fill-rule="evenodd"
 							d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
