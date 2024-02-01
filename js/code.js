@@ -228,10 +228,10 @@ function doLogout() {
 }
 
 function addContact() {
-	let firstName = document.getElementId("addFirstName").value;
-	let lastName = document.getElementId("addLastName").value;
-	let email = document.getElementId("addEmail").value;
-	let phone = document.getElementId("addPhone").value;
+	let firstName = document.getElementById("addFirstName").value;
+	let lastName = document.getElementById("addLastName").value;
+	let email = document.getElementById("addEmail").value;
+	let phone = document.getElementById("addPhone").value;
 
 	//document.getElementById("addResult").innerHTML = "";
 
