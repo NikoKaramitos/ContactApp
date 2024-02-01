@@ -234,7 +234,7 @@ function addContact() {
 	let email = document.getElementById("addEmail").value;
 	let phone = document.getElementById("addPhone").value;
 
-	document.getElementById("addResult").innerHTML = "";
+	//document.getElementById("addResult").innerHTML = "";
 
 	let tmp = { firstName: firstName, lastName: lastName, email: email, phone: phone, userID: userId };
 	let jsonPayload = JSON.stringify(tmp);
