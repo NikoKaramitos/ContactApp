@@ -10,8 +10,7 @@ let email = "";
 let login = "";
 let password = "";
 
-function loadContacts()
-{
+function loadContacts() {
 	let url = 'http://contactz.xyz/LAMPAPI/RequestContacts.php';
 	let xhr = new XMLHttpRequest();
 	xhr.open("GET", url, true);
@@ -26,12 +25,12 @@ function loadContacts()
 				const searchContainer = document.getElementById("searchResults");
 				searchContainer.innerHTML = "";
 
-				searchContact.forEach(function(contacts) {
+				searchContact.forEach(function (contacts) {
 					const a = document.createElement("div");
 					a.className = "contact";
 					// populate the following line with carlos' js code for adding boxes orw/e idk
 					a.innerHTML = `<h3>${searchContact.firstName}</h3>
-					<p>${searchContact.phone}</p>`; 
+					<p>${searchContact.phone}</p>`;
 					searchContainer.appendChild(a);
 				});
 			}
@@ -229,16 +228,16 @@ function doLogout() {
 }
 
 function addContact() {
-	let firstName = document.getElementById("addFirstName").value;
-	let lastName = document.getElementById("addLastName").value;
-	let email = document.getElementById("addEmail").value;
-	let phone = document.getElementById("addPhone").value;
+	let firstName = JSON.stringify(document.getElementById("addFirstName").value);
+	let lastName = JSON.stringify(document.getElementById("addLastName").value);
+	let email = JSON.stringify(document.getElementById("addEmail").value);
+	let phone = JSON.stringify(document.getElementById("addPhone").value);
 
 	//document.getElementById("addResult").innerHTML = "";
 
-	let tmp = `{ firstName: ${firstName}, lastName: ${lastName}, email: ${email}, phone: ${phone}, userID: ${userId} }`;
+	let tmp = `{ "firstName":${firstName}, "lastName":${lastName}, "email":${email}, "phone":${phone}, "userID":${userId} }`;
 	let jsonPayload = JSON.parse(tmp);
-	console.log("Contact payload: " + jsonPayload);
+	console.log(jsonPayload);
 
 	let url = urlBase + '/AddContact.' + extension;
 
@@ -262,15 +261,15 @@ function addContact() {
 }
 
 function searchContact() {
-	
+
 	// store the search type
 	const searchType = document.getElementById("searchType").value;
-	
+
 	const searchText = document.getElementById("searchText").value;
 	document.getElementById("searchText").value = "";
-	
-	let tmp = `{ ${searchType} : ${searchText}, userID : ${userId }}`;
-	
+
+	let tmp = `{ ${searchType} : ${searchText}, userID : ${userId}}`;
+
 	let jsonPayload = JSON.stringify(tmp);
 	console.log(jsonPayload);
 
@@ -297,7 +296,7 @@ function searchContact() {
 							contactList += "<br />\r\n";
 						}
 					}
-	
+
 					document.getElementsByTagName("p")[0].innerHTML = contactList;
 				}
 			}
