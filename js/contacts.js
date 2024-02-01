@@ -26,6 +26,6 @@ function addElement(name, number, mail) {
     //newContact.textContent = numContacts + " " + name + " " + number + " " + mail;
     numContacts++;
     searchResults.append(newContact);
-    console.log(newContact);
+    // console.log(newContact);
 }
 
