@@ -235,8 +235,8 @@ function addContact() {
 
 	//document.getElementById("addResult").innerHTML = "";
 
-	let tmp = {firstName : firstName , lastName: lastName, email : email, phone: phone, userID : userId};
-	let jsonPayload = JSON.parse(tmp);
+	let tmp = { firstName: firstName, lastName: lastName, email: email, phone: phone, userID: userId };
+	let jsonPayload = JSON.parse(JSON.stringify(tmp));
 	console.log(jsonPayload);
 
 	let url = urlBase + '/AddContact.' + extension;
