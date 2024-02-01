@@ -260,42 +260,50 @@ function addContact() {
 }
 
 function searchContact() {
-	let srch = document.getElementById("searchType").value;
-	document.getElementById("searchType").innerHTML = "";
-
-	let searchType = document.getElementById("searchType").value;
-
-	let tmp = { search: searchType, userID: userId };
-
-
-
+	
+	// store the search type
+	const searchType = document.getElementById("searchType").value;
+	
+	const searchText = document.getElementById("searchText").value;
+	document.getElementById("searchText").value = "";
+	
+	let tmp = `{ ${searchType} : ${searchText}, userID : ${userId }}`;
+	
 	let jsonPayload = JSON.stringify(tmp);
+	console.log(jsonPayload);
 
-	let url = urlBase + '/SearchColors.' + extension;
+	let url = urlBase + '/SearchContacts.' + extension;
 
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
 	try {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
-				document.getElementById("colorSearchResult").innerHTML = "Color(s) has been retrieved";
+				document.getElementById("searchResults").innerHTML = "Contact(s) has been retrieved";
 				let jsonObject = JSON.parse(xhr.responseText);
 
-				for (let i = 0; i < jsonObject.results.length; i++) {
-					colorList += jsonObject.results[i];
-					if (i < jsonObject.results.length - 1) {
-						colorList += "<br />\r\n";
-					}
+				if (jsonObject.error) {
+					document.getElementById("searchResults").innerHTML = jsonObject.error;
 				}
 
-				document.getElementsByTagName("p")[0].innerHTML = colorList;
+				else {
+					for (let i = 0; i < jsonObject.results.length; i++) {
+						contactList += jsonObject.results[i];
+						if (i < jsonObject.results.length - 1) {
+							contactList += "<br />\r\n";
+						}
+					}
+	
+					document.getElementsByTagName("p")[0].innerHTML = contactList;
+				}
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch (err) {
-		document.getElementById("colorSearchResult").innerHTML = err.message;
+		document.getElementById("SearchResults").innerHTML = err.message;
 	}
 
 }

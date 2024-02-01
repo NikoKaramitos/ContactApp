@@ -15,7 +15,7 @@ body {
   background: linear-gradient(45deg, #b33d12, #f1936e, #8b8ee7, #003ebb);
   background-size: 400% 400%;
   animation: gradient-wave 30s infinite alternate linear;
-  --bs-body-font-family: "IBM Plex Mono", monospace;
+  --bs-body-font-family: "Rubik", sans-serif;
 }
 
 .my-containers {
