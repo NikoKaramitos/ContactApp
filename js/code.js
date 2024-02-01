@@ -247,7 +247,8 @@ function addContact() {
 	try {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
-				document.getElementById("addContactResult").innerHTML = "Contact added.";
+				//document.getElementById("addContactResult").innerHTML = "Contact added.";
+				console.log("Contact Added");
 			}
 		};
 		xhr.send(jsonPayload);
