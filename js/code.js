@@ -228,16 +228,15 @@ function doLogout() {
 }
 
 function addContact() {
-	let firstName = JSON.stringify(document.getElementById("addFirstName").value);
-	let lastName = JSON.stringify(document.getElementById("addLastName").value);
-	let email = JSON.stringify(document.getElementById("addEmail").value);
-	let phone = JSON.stringify(document.getElementById("addPhone").value);
+	let firstName = document.getElementId("addFirstName").value;
+	let lastName = document.getElementId("addLastName").value;
+	let email = document.getElementId("addEmail").value;
+	let phone = document.getElementId("addPhone").value;
 
 	//document.getElementById("addResult").innerHTML = "";
 
 	let tmp = { firstName: firstName, lastName: lastName, email: email, phone: phone, userID: userId };
 	let jsonPayload = JSON.stringify(tmp);
-	console.log(jsonPayload);
 
 	let url = urlBase + '/AddContact.' + extension;
 
@@ -247,8 +246,7 @@ function addContact() {
 	try {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
-				//document.getElementById("addContactResult").innerHTML = "Contact added.";
-				console.log("Contact Added");
+				document.getElementById("addContactResult").innerHTML = "Contact added.";
 			}
 		};
 		xhr.send(jsonPayload);
