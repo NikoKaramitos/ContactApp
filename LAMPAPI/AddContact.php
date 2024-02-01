@@ -5,11 +5,8 @@
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 
-	if (invalidApplication($inData))
-	{
-		returnWithError("Some of the required application JSON fields: ['firstName', 'lastName', 'login', 'password', 'userID'] are missing");	
-	}
-	else if ($conn->connect_error)
+
+	if ($conn->connect_error)
 	{
 		returnWithError($conn->connect_error);
 	}
@@ -31,15 +28,6 @@
 		
 		$stmt->close();
 		$conn->close();
-	}
-
-	function invalidApplication($inData)
-	{
-		return !isset($inData['firstName'])
-			|| !isset($inData['lastName'])
-			|| !isset($inData['login'])
-			|| !isset($inData['password'])
-			|| !isset($inData['userID']);
 	}
 
 	function getRequestInfo()
