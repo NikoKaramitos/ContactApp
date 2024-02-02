@@ -71,7 +71,7 @@ function doLogin() {
 	userId = 0;
 	firstName = "";
 	lastName = "";
-	let testMode = false;
+	let testMode = true;
 
 	if (testMode) {
 		document.cookie = "mode=;expires = Thu, 01 Jan 1970 00:00:00 GMT";
@@ -215,7 +215,7 @@ function readCookie() {
 		window.location.href = "index.html";
 	}
 	else {
-		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+		document.getElementById("userName").innerHTML = firstName + " " + lastName + "'s";
 	}
 }
 

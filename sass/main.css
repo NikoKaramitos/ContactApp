@@ -85,6 +85,20 @@ body {
   text-shadow: black -1px 1px 2px;
 }
 
+.contact {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border: 1px lightgrey solid;
+  border-radius: 7px;
+  width: 100%;
+  margin-bottom: 2px;
+  flex-wrap: wrap;
+  font-size: large;
+}
+
 /*!
  * Bootstrap  v5.3.2 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors

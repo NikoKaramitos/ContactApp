@@ -51,30 +51,36 @@
 
 	<section id="contact-section">
 		<div class="my-containers shawdow text-center p-5">
-			<div id="title" class="display-5">Welcome to your Contactz</div>
-			<div class="display-7 text-muted">
+			<div id="title" class="display-5 text-altpurple fw-normal">
+				<div class="d-inline text-black" id="userName"></div> Contactz
+			</div>
+			<h4 class="text-muted my-2">
 				Below you can add, edit, search, and delete your contacts!
+			</h4>
+
+			<div id="loggedInDiv" class="container text-center p-2">
+
 			</div>
 
-			<div id="loggedInDiv" class="container text-center p-3">
-				<span id="userName"></span>
-			</div>
-
-			<div id="accessUIDiv" class="container-fluid rounded">
+			<div id="accessUIDiv" class="container-fluid rounded p-0">
 				<!--Search bar-->
 				<div class="row rounded-top bg-altpurple p-3">
 					<div class="input-group">
 						<select class="form-select d-none d-md-inline" id="searchType">
-							<option value="default" selected>
-								Search Type
-							</option>
-							<option value="firstName">First Name</option>
+							<option value="firstName" selected>First Name</option>
 							<option value="lastName">Last Name</option>
 							<option value="phone">Number</option>
 							<option value="email">Mail</option>
 						</select>
 						<input type="text" id="searchText" class="form-control w-50"
 							placeholder="Contact To Search For" />
+						<script>
+							document.getElementById('searchText').addEventListener('keypress', function (event) {
+								if (event.keyCode == 13) {
+									searchContact();
+								}
+							});
+						</script>
 						<button type="button" id="searchColorButton" class="btn btn-altlight"
 							onclick="searchContact();">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -87,8 +93,11 @@
 				</div>
 
 				<span id="colorSearchResult"></span>
-				<button onclick="addElement('Tester friend','(555) 555-1234','tester@testmail.xyz')">click here</button>
-				<p id="searchResults"></p>
+				<button onclick="practiceContacts.forEach(contact => {
+					addElement(contact);
+				});
+				">click here</button>
+				<p id="searchResults" class="container-fluid p-0"></p>
 				<br /><br />
 				<!--Example contact-->
 				<!-- <div class="row">
@@ -109,7 +118,7 @@
 					</div>
 				</div> -->
 
-				<div id="myModal" class="modal" tabindex="-1">
+				<div id="myModal" class="modal height" tabindex="-1">
 					<div class="modal-dialog modal-dialog-centered">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -120,8 +129,15 @@
 							<div class="modal-body d-flex flex-column justify-content-end">
 								<input type="text" class="mb-2" placeholder="First Name" id="addFirstName">
 								<input type="text" class="mb-2" placeholder="Last Name" id="addLastName">
-								<input type="tel" class="mb-2" placeholder="Number" id="addPhone"
-									pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+								<input type="tel" class="mb-2" placeholder="Number" id="addPhone" maxlength="12">
+								<script>
+									let field = document.getElementById("addPhone");
+									field.addEventListener("keypress", function (event) {
+										if (String(field.value).length == 3 || String(field.value).length == 7)
+											//console.log("ADD A DASH")
+											field.value = field.value + '-';
+									})
+								</script>
 								<input type="email" class="mb-2" placeholder="Email" id="addEmail">
 
 							</div>

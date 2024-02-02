@@ -117,6 +117,36 @@ $custom-theme-colors: (
     text-shadow: black -1px 1px 2px;
 }
 
+.contact {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border: 1px lightgrey solid;
+    border-radius: 7px;
+    width: 100%;
+    margin-bottom: 2px;
+    flex-wrap: wrap;
+    font-size: large;
+}
+
+// .name {
+//     margin: auto;
+//     width: 20%;
+// }
+
+// .number {
+//     margin: auto;
+//     width: 30%;
+// }
+
+// .mail {
+//     margin: auto;
+//     width: 30%;
+// }
+
+
 // merge custom theme with original
 $theme-colors: map-merge($custom-theme-colors, $theme-colors);
 
