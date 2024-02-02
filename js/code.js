@@ -232,6 +232,10 @@ function addContact() {
 	let lastName = document.getElementById("addLastName").value;
 	let email = document.getElementById("addEmail").value;
 	let phone = document.getElementById("addPhone").value;
+	document.getElementById("addFirstName").value = "";
+	document.getElementById("addLastName").value = "";
+	document.getElementById("addEmail").value ="";
+	document.getElementById("addPhone").value ="";
 
 	//document.getElementById("addResult").innerHTML = "";
 
