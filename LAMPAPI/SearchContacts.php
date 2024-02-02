@@ -24,7 +24,7 @@
 
 		// Bind dynamically generated prepared statment
 		for ($i = 0; $i < count($constructed['b']); $i++) {
-			$stmt->bind_param($constructed['t'][$i], $constructed['b'][$i]);
+			$statement->bind_param($constructed['t'][$i], $constructed['b'][$i]);
 		}
 
 		$statement->execute();
