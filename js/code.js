@@ -289,7 +289,7 @@ function searchContact() {
 				console.log(results);
 				for (let i = 0; i < results.length; i++)
 				{
-					console.log(results[i]);
+					addElement(results[i]);
 				}
 				if (jsonObject.error) {
 					document.getElementById("searchResults").innerHTML = jsonObject.error;

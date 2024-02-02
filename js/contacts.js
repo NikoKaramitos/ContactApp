@@ -6,6 +6,7 @@ function addElement(contact) {
 
     //newContact.classList.add("container");
     newContact.classList.add("contact");
+    newContact.id = contact.id;
     let count = document.createElement("p.my-0");
     count.classList.add("col-1");
     count.textContent = numContacts;
