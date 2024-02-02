@@ -275,14 +275,14 @@ function addContact() {
 	try {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
-				//document.getElementById("addContactResult").innerHTML = "Contact added.";
+				document.getElementById("addErrors").innerHTML = "Contact added.";
 				console.log("Contact added!")
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch (err) {
-		document.getElementById("addResult").innerHTML = err.message;
+		document.getElementById("addErrors").innerHTML = err.message;
 
 	}
 
