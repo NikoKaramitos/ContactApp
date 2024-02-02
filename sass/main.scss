@@ -71,6 +71,12 @@ body {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
 
+#myInput {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
 @keyframes bounce {
 
     0%,
@@ -129,6 +135,13 @@ $custom-theme-colors: (
     margin-bottom: 2px;
     flex-wrap: wrap;
     font-size: large;
+}
+
+#myInput
+{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
 }
 
 // .name {
