@@ -246,7 +246,8 @@ function addContact() {
 	try {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
-				document.getElementById("addContactResult").innerHTML = "Contact added.";
+				//document.getElementById("addContactResult").innerHTML = "Contact added.";
+				console.log("Contact added!")
 			}
 		};
 		xhr.send(jsonPayload);
@@ -286,18 +287,18 @@ function searchContact() {
 				if (jsonObject.error) {
 					document.getElementById("searchResults").innerHTML = jsonObject.error;
 				}
-				console.log(jsonObject);
+				//console.log(jsonObject);
 
-			// 	else {
-			// 		for (let i = 0; i < jsonObject.results.length; i++) {
-			// 			contactList += jsonObject.results[i];
-			// 			if (i < jsonObject.results.length - 1) {
-			// 				contactList += "<br />\r\n";
-			// 			}
-			// 		}
+				else {
+					for (let i = 0; i < jsonObject.results.length; i++) {
+						contactList += jsonObject.results[i];
+						if (i < jsonObject.results.length - 1) {
+							contactList += "<br />\r\n";
+						}
+					}
 
-			// 		document.getElementsByTagName("p")[0].innerHTML = contactList;
-			// 	}
+					document.getElementsByTagName("p")[0].innerHTML = contactList;
+				}
 			}
 		};
 		xhr.send(jsonPayload);
