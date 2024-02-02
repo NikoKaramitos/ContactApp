@@ -269,7 +269,7 @@ function searchContact() {
 	let tmp = `{ ${searchType} : ${searchText}, userID : ${userId}}`;
 
 	let jsonPayload = JSON.stringify(tmp);
-	// console.log(jsonPayload);
+	console.log(jsonPayload);
 
 	let url = urlBase + '/SearchContacts.' + extension;
 
