@@ -23,6 +23,8 @@
 		$statement = $conn->prepare($constructed['c']);
 
 		// Bind dynamically generated prepared statment
+		$statement->bind_param("s", $inData["userID"]);
+
 		for ($i = 0; $i < count($constructed['b']); $i++) {
 			$statement->bind_param($constructed['t'][$i], $constructed['b'][$i]);
 		}
@@ -68,9 +70,6 @@
 		$base = "SELECT ID, FirstName, LastName, Phone, Email FROM Contacts WHERE UserID = ?";
 		$types = "s";
 		$binding = array();
-
-		$integer = $inData["userID"];
-		array_push($binding, $integer);
 		
 		// Dynamic
 		if (isset($inData['firstName']))
