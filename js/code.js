@@ -284,8 +284,13 @@ function searchContact() {
 				document.getElementById("searchResults").innerHTML = "Contact(s) has been retrieved";
 				let response = xhr.responseText;
 				let jsonObject = JSON.parse(response);
-				console.log(response);
-				console.log(jsonObject);
+				let results = jsonObject.results;
+				//console.log(response);
+				console.log(results);
+				for (let i = 0; i < results.length; i++)
+				{
+					console.log(results[i]);
+				}
 				if (jsonObject.error) {
 					document.getElementById("searchResults").innerHTML = jsonObject.error;
 				}
