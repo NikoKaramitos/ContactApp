@@ -266,7 +266,7 @@ function searchContact() {
 	const searchText = document.getElementById("searchText").value;
 	document.getElementById("searchText").value = "";
 
-	let tmp = `{"${searchType}":${searchText}, "userID":${userId}}`;
+	let tmp = { searchType: searchText, userID : userId };
 
 	let jsonPayload = JSON.stringify(tmp);
 	console.log(jsonPayload);
