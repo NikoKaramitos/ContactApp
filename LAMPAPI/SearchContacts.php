@@ -36,8 +36,9 @@
 		if($result->num_rows > 0)
 		{
 			var_dump($result->num_rows);
-			var_dump($result->fetch_assoc());
-			foreach ($result->fetch_assoc() as $row)
+			$fetch = $result->fetch_assoc();
+			var_dump($fetch);
+			foreach ($fetch as $row)
 			{
 				var_dump($row);
 				$count++;
