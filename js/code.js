@@ -290,7 +290,7 @@ function searchContact() {
 				//console.log(jsonObject);
 
 				else {
-					let contactList = [];
+					let contactList;
 					for (let i = 0; i < jsonObject.results.length; i++) {
 						contactList += jsonObject.results[i];
 						if (i < jsonObject.results.length - 1) {
