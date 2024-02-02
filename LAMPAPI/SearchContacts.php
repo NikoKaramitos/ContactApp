@@ -106,7 +106,7 @@
 			&& !isset($inData['lastName'])
 			&& !isset($inData['phone'])
 			&& !isset($inData['email'])
-		);
+		) && false;
     }
 
 	function getRequestInfo()
