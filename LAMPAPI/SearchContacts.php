@@ -68,7 +68,9 @@
 		$base = "SELECT ID, FirstName, LastName, Phone, Email FROM Contacts WHERE UserID = ?";
 		$types = "s";
 		$binding = array();
-		array_push($binding, $inData["userID"]);
+
+		$integer = $inData["userID"];
+		array_push($binding, $integer);
 		
 		// Dynamic
 		if (isset($inData['firstName']))
