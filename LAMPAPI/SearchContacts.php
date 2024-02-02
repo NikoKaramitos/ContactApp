@@ -36,13 +36,14 @@
 		if($result->num_rows > 0)
 		{
 			var_dump($result->num_rows);
-			$fetch = $result->fetch_assoc();
-			var_dump($fetch);
-			foreach ($fetch as $row)
+			while ($row = $result->fetch_assoc())
 			{
 				var_dump($row);
 				$count++;
-				$search .= '{"id": ' . $row['ID'] . 
+
+				$id = $row['ID'];
+
+				$search .= '{"id": ' . $id . 
 					', "firstName": "' . $row['FirstName'] . 
 					'", "lastName": "' . $row['LastName'] . 
 					'", "phone": "' . $row['Phone'] . 
@@ -73,7 +74,7 @@
 		$base = "SELECT ID, FirstName, LastName, Phone, Email FROM Contacts WHERE UserID = ?";
 		$types = "s";
 		$binding = array();
-		array_push($binding, '' . $inData["userID"]);
+		array_push($binding, '' . $inData['userID']);
 		
 		// Dynamic
 		if (isset($inData['firstName']))
