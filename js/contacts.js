@@ -79,3 +79,24 @@ let practiceContact =
 };
 
 practiceContacts.push(practiceContact);
+
+// checks that a name does not have a quote in it;
+function isValidName(name)
+{
+    for (let i = 0; i < name.length; i++)
+    {
+        if((/"/).test(name[i])) return false;
+    }
+    return true;
+}
+
+
+
+function isValidNumber(number)
+{
+    for (let i = 0; i < number.length; i++)
+    {
+        if (!(/[0-9]/).test(number[i]) && !(/-/).test(number[i])) return false;
+    }
+    return true;
+}

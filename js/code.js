@@ -232,6 +232,31 @@ function addContact() {
 	let lastName = document.getElementById("addLastName").value;
 	let email = document.getElementById("addEmail").value;
 	let phone = document.getElementById("addPhone").value;
+
+	if(!isValidName(firstName)) 
+	{
+		document.getElementById("addErrors").innerHTML = "Invalid first name.";
+		return;
+	}
+	if(!isValidName(lastName)) 
+	{
+		document.getElementById("addErrors").innerHTML = "Invalid last name.";
+		return;
+	}
+	if(!isValidNumber(phone)) 
+	{
+		document.getElementById("addErrors").innerHTML = "Invalid Phone Number";
+		return;
+	}
+	if(!isValidName(email)) 
+	{
+		document.getElementById("addErrors").innerHTML = "Invalid email.";
+		return;
+	}
+	
+	document.getElementById("addErrors").innerHTML = "";
+
+
 	document.getElementById("addFirstName").value = "";
 	document.getElementById("addLastName").value = "";
 	document.getElementById("addEmail").value ="";
