@@ -83,17 +83,31 @@ practiceContacts.push(practiceContact);
 // checks that a name does not have a quote in it;
 function isValidName(name)
 {
+    if (name.length == 0) return false;
     for (let i = 0; i < name.length; i++)
     {
         if((/"/).test(name[i])) return false;
     }
     return true;
 }
-
+function isValidMail(mail)
+{
+    let atFlag = 0;
+    let dotFlag = 0;
+    if (mail.length == 0) return false;
+    for (let i = 0; i < name.length; i++)
+    {
+        if((/"/).test(mail[i])) return false;
+        if(mail[i] == '.') dotFlag++;
+        if(mail[i] == '@') atFlag++;
+    }
+    return (atFlag == 1) && (dotFlag == 1);
+}
 
 
 function isValidNumber(number)
 {
+    if (number.length == 0) return false;
     for (let i = 0; i < number.length; i++)
     {
         if (!(/[0-9]/).test(number[i]) && !(/-/).test(number[i])) return false;

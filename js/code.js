@@ -245,10 +245,10 @@ function addContact() {
 	}
 	if(!isValidNumber(phone)) 
 	{
-		document.getElementById("addErrors").innerHTML = "Invalid Phone Number";
+		document.getElementById("addErrors").innerHTML = "Invalid phone number.";
 		return;
 	}
-	if(!isValidName(email)) 
+	if(!isValidMail(email)) 
 	{
 		document.getElementById("addErrors").innerHTML = "Invalid email.";
 		return;
