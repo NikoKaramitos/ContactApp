@@ -1,3 +1,4 @@
+const testMode = false;
 const urlBase = 'http://contactz.xyz/LAMPAPI';
 const extension = 'php';
 
@@ -71,7 +72,6 @@ function doLogin() {
 	userId = 0;
 	firstName = "";
 	lastName = "";
-	let testMode = false;
 
 	if (testMode) {
 		document.cookie = "mode=;expires = Thu, 01 Jan 1970 00:00:00 GMT";
@@ -269,7 +269,7 @@ function searchContact() {
 	let tmp = `{ ${searchType} : ${searchText}, userID : ${userId}}`;
 
 	let jsonPayload = JSON.stringify(tmp);
-	console.log(jsonPayload);
+	// console.log(jsonPayload);
 
 	let url = urlBase + '/SearchContacts.' + extension;
 
@@ -286,17 +286,18 @@ function searchContact() {
 				if (jsonObject.error) {
 					document.getElementById("searchResults").innerHTML = jsonObject.error;
 				}
+				console.log(jsonObject);
 
-				else {
-					for (let i = 0; i < jsonObject.results.length; i++) {
-						contactList += jsonObject.results[i];
-						if (i < jsonObject.results.length - 1) {
-							contactList += "<br />\r\n";
-						}
-					}
+			// 	else {
+			// 		for (let i = 0; i < jsonObject.results.length; i++) {
+			// 			contactList += jsonObject.results[i];
+			// 			if (i < jsonObject.results.length - 1) {
+			// 				contactList += "<br />\r\n";
+			// 			}
+			// 		}
 
-					document.getElementsByTagName("p")[0].innerHTML = contactList;
-				}
+			// 		document.getElementsByTagName("p")[0].innerHTML = contactList;
+			// 	}
 			}
 		};
 		xhr.send(jsonPayload);
