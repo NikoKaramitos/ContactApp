@@ -74,29 +74,33 @@
 		// Dynamic
 		if (isset($inData['firstName']))
 		{
+			$firstName = $inData['firstName'];
 			$types .= "s";
-			array_push($binding, '%' . $inData['firstName'] . '%');
+			array_push($binding, '%' . $firstName . '%');
 			$base .= ' AND FirstName LIKE ?';
 		}
 
 		if (isset($inData['lastName']))
 		{
+			$lastName = $inData['lastName'];
 			$types .= "s";
-			array_push($binding, '%' . $inData['lastName'] . '%');
+			array_push($binding, '%' . $lastName . '%');
 			$base .= ' AND LastName LIKE ?';
 		}
 
 		if (isset($inData['phone']))
 		{
+			$phone = $inData['phone'];
 			$types .= "s";
-			array_push($binding, '%' . $inData['phone'] . '%');
+			array_push($binding, '%' . $phone . '%');
 			$base .= ' AND Phone LIKE ?';
 		}
 
 		if (isset($inData['email']))
 		{
+			$email = $inData['email'];
 			$types .= "s";
-			array_push($binding, '%' . $inData['email'] . '%');
+			array_push($binding, '%' . $email . '%');
 			$base .= ' AND Email LIKE ?';
 		}
 
