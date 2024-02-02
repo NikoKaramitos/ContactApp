@@ -291,7 +291,7 @@ function searchContact() {
 				let response = xhr.responseText;
 				let jsonObject = JSON.parse(response);
 				let results = jsonObject.results;
-				//console.log(response);
+				console.log(response);
 				console.log(results);
 				for (let i = 0; i < results.length; i++)
 				{
