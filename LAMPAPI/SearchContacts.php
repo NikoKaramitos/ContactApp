@@ -102,10 +102,10 @@
     {
 		// NO 'userID' OR NO ONE OF ['firstName', 'lastName', 'phone', 'email']
         return !isset($inData['userID']) || !(
-			isset($inData['firstName'])
-			|| isset($inData['lastName'])
-			|| isset($inData['phone'])
-			|| isset($inData['email'])
+			!isset($inData['firstName'])
+			&& !isset($inData['lastName'])
+			&& !isset($inData['phone'])
+			&& !isset($inData['email'])
 		);
     }
 
