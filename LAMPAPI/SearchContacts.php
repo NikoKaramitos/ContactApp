@@ -36,6 +36,7 @@
 		if($result->num_rows > 0)
 		{
 			var_dump($result->num_rows);
+			var_dump($result->fetch_assoc());
 			foreach ($result->fetch_assoc() as $row)
 			{
 				var_dump($row);
