@@ -24,10 +24,6 @@
 
 		// Bind dynamically generated prepared statment
 		$statement->bind_param($constructed['t'], ...$constructed['b']);
-		// for ($i = 0; $i < count($constructed['b']); $i++) {
-		// 	$statement->bind_param($constructed['t'][$i], $constructed['b'][$i]);
-		// }
-
 		$statement->execute();
 		$result = $statement->get_result();
 		$count = 0;
@@ -35,15 +31,10 @@
 
 		if($result->num_rows > 0)
 		{
-			var_dump($result->num_rows);
 			while ($row = $result->fetch_assoc())
 			{
-				var_dump($row);
 				$count++;
-
-				$id = $row['ID'];
-
-				$search .= '{"id": ' . $id . 
+				$search .= '{"id": ' . $row['ID'] . 
 					', "firstName": "' . $row['FirstName'] . 
 					'", "lastName": "' . $row['LastName'] . 
 					'", "phone": "' . $row['Phone'] . 
@@ -74,38 +65,34 @@
 		$base = "SELECT ID, FirstName, LastName, Phone, Email FROM Contacts WHERE UserID = ?";
 		$types = "s";
 		$binding = array();
-		array_push($binding, '' . $inData['userID']);
+		array_push($binding, $inData['userID']);
 		
 		// Dynamic
 		if (isset($inData['firstName']))
 		{
-			$firstName = $inData['firstName'];
 			$types .= "s";
-			array_push($binding, '%' . $firstName . '%');
+			array_push($binding, '%' . $inData['firstName'] . '%');
 			$base .= ' AND FirstName LIKE ?';
 		}
 
 		if (isset($inData['lastName']))
 		{
-			$lastName = $inData['lastName'];
 			$types .= "s";
-			array_push($binding, '%' . $lastName . '%');
+			array_push($binding, '%' . $inData['lastName'] . '%');
 			$base .= ' AND LastName LIKE ?';
 		}
 
 		if (isset($inData['phone']))
 		{
-			$phone = $inData['phone'];
 			$types .= "s";
-			array_push($binding, '%' . $phone . '%');
+			array_push($binding, '%' . $inData['phone'] . '%');
 			$base .= ' AND Phone LIKE ?';
 		}
 
 		if (isset($inData['email']))
 		{
-			$email = $inData['email'];
 			$types .= "s";
-			array_push($binding, '%' . $email . '%');
+			array_push($binding, '%' . $inData['email'] . '%');
 			$base .= ' AND Email LIKE ?';
 		}
 
