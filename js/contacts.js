@@ -94,20 +94,29 @@ function isValidMail(mail)
 {
     let atFlag = 0;
     let dotFlag = 0;
-    if (mail.length == 0) return false;
-    for (let i = 0; i < name.length; i++)
-    {
-        if((/"/).test(mail[i])) return false;
-        if(mail[i] == '.') dotFlag++;
-        if(mail[i] == '@') atFlag++;
+    if (mail.length == 0)
+    { 
+        console.log("mail to short")
+        return false;
     }
-    return (atFlag == 1) && (dotFlag == 1);
+    for (let i = 0; i < mail.length; i++)
+    {
+        if((/"/).test(mail[i]))
+        { 
+            console.log("Found a quote")
+            return false;
+        }
+        if(mail[i] == '.') dotFlag++;
+        if((/@/).test(mail[i])) atFlag++;
+    }
+    console.log("at count: "+atFlag +" dot count: "+dotFlag);
+    return (atFlag == 1) && (dotFlag >= 1);
 }
 
 
 function isValidNumber(number)
 {
-    if (number.length == 0) return false;
+    if (number.length != 12) return false;
     for (let i = 0; i < number.length; i++)
     {
         if (!(/[0-9]/).test(number[i]) && !(/-/).test(number[i])) return false;

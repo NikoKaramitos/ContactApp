@@ -1,4 +1,4 @@
-const testMode = false;
+const testMode = true;
 const urlBase = 'http://contactz.xyz/LAMPAPI';
 const extension = 'php';
 
