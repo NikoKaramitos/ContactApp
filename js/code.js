@@ -260,6 +260,8 @@ function addContact() {
 }
 
 function searchContact() {
+	const searchDiv = document.getElementById("searchResults");
+	searchDiv.innerHTML = "";
 
 	// store the search type
 	const searchType = document.getElementById("searchType").value;
@@ -292,7 +294,7 @@ function searchContact() {
 					addElement(results[i], i + 1);
 				}
 				if (jsonObject.error) {
-					document.getElementById("searchResults").innerHTML = jsonObject.error;
+					searchDiv.innerHTML = jsonObject.error;
 				}
 				//jsonObject.forEach(contact => (console.log(contact)));
 
