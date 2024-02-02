@@ -5,7 +5,7 @@
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 
-	if (noQueries($inData))
+	if (false)
 	{
 		returnWithError("The application JSON must contain at minimum the fields 'userID' and one query: ['firstName', 'lastName', 'phone', 'email']");
 	}
