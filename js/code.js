@@ -282,12 +282,14 @@ function searchContact() {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				document.getElementById("searchResults").innerHTML = "Contact(s) has been retrieved";
-				let jsonObject = JSON.parse(xhr.responseText);
-
+				let response = xhr.responseText;
+				let jsonObject = JSON.parse(response);
+				console.log(response);
+				console.log(jsonObject);
 				if (jsonObject.error) {
 					document.getElementById("searchResults").innerHTML = jsonObject.error;
 				}
-				jsonObject.forEach(contact => (console.log(contact)));
+				//jsonObject.forEach(contact => (console.log(contact)));
 
 				// else {
 				// 	let contactList;
