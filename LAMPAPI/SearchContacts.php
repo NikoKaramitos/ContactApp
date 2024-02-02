@@ -101,7 +101,7 @@
     function noQueries($inData)
     {
 		// NO 'userID' OR NO ONE OF ['firstName', 'lastName', 'phone', 'email']
-        return !isset($inData['userID']) || !(
+        return !isset($inData['userID']) || (
 			!isset($inData['firstName'])
 			&& !isset($inData['lastName'])
 			&& !isset($inData['phone'])
