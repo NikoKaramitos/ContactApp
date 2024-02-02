@@ -287,18 +287,18 @@ function searchContact() {
 				if (jsonObject.error) {
 					document.getElementById("searchResults").innerHTML = jsonObject.error;
 				}
-				//console.log(jsonObject);
+				jsonObject.forEach(contact => (console.log(contact)));
 
-				else {
-					let contactList;
-					for (let i = 0; i < jsonObject.results.length; i++) {
-						contactList += jsonObject.results[i];
-						if (i < jsonObject.results.length - 1) {
-							contactList += "<br />\r\n";
-						}
-					}
-					console.log(contactList);
-				}
+				// else {
+				// 	let contactList;
+				// 	for (let i = 0; i < jsonObject.results.length; i++) {
+				// 		contactList += jsonObject.results[i];
+				// 		if (i < jsonObject.results.length - 1) {
+				// 			contactList += "<br />\r\n";
+				// 		}
+				// 	}
+				// 	console.log(contactList);
+				// }
 			}
 		};
 		xhr.send(jsonPayload);
