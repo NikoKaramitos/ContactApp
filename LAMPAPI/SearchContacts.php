@@ -116,7 +116,7 @@
 
 	function getRequestInfo()
 	{
-		return $_GET;
+		return json_decode(file_get_contents('php://input'), true);
 	}
 
 	function sendResultInfoAsJson($obj)
