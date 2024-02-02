@@ -281,7 +281,7 @@ function searchContact() {
 	try {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
-				document.getElementById("searchResults").innerHTML = "Contact(s) has been retrieved";
+				//document.getElementById("searchResults").innerHTML = "Contact(s) has been retrieved";
 				let response = xhr.responseText;
 				let jsonObject = JSON.parse(response);
 				let results = jsonObject.results;
@@ -289,7 +289,7 @@ function searchContact() {
 				console.log(results);
 				for (let i = 0; i < results.length; i++)
 				{
-					addElement(results[i]);
+					addElement(results[i], i + 1);
 				}
 				if (jsonObject.error) {
 					document.getElementById("searchResults").innerHTML = jsonObject.error;

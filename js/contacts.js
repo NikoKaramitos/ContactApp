@@ -1,7 +1,6 @@
 const searchResults = document.getElementById("searchResults");
-let numContacts = 1;
 
-function addElement(contact) {
+function addElement(contact, num) {
     const newContact = document.createElement("div");
 
     //newContact.classList.add("container");
@@ -9,7 +8,7 @@ function addElement(contact) {
     newContact.id = contact.id;
     let count = document.createElement("p.my-0");
     count.classList.add("col-1");
-    count.textContent = numContacts;
+    count.textContent = num;
     newContact.append(count);
 
     let temp = document.createElement("p.my-0");
@@ -35,7 +34,6 @@ function addElement(contact) {
     newContact.append(temp);
 
     //newContact.textContent = numContacts + " " + name + " " + number + " " + mail;
-    numContacts++;
     searchResults.append(newContact);
     // console.log(newContact);
 }
