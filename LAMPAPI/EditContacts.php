@@ -11,8 +11,8 @@
     $stmt = $conn->prepare("UPDATE Contacts SET FirstName = ?, LastName = ?, Phone = ?, Email = ? WHERE
     FirstName = ? AND LastName = ? AND Phone = ? AND Email = ? AND UserID = ?");
 
-    $stmt->bind_param("sssssssss", $inData["firstName"], $inData["lastName"], $inData["phone"], $inData["email"]
-    , $inData["firstName"], $inData["lastName"], $inData["phone"], $inData["email"], $inData["userID"]);
+    $stmt->bind_param("ssssssssi", $inData["oldFirstName"], $inData["oldLastName"], $inData["oldPhone"], $inData["oldEmail"]
+    , $inData["newFirstName"], $inData["newLastName"], $inData["newPhone"], $inData["newEmail"], $inData["userId"]);
 
     if ($stmt->execute()) {
         if ($stmt->affected_rows > 0) {
