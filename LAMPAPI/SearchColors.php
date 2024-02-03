@@ -14,7 +14,7 @@
 	{
 		$stmt = $conn->prepare("select ID, FirstName, LastName, Phone, Email from Contacts where (FirstName like ? or LastName like ? or Phone like ? Email like ?) and UserID=?");
 		$contactName = "%" . $inData["search"] . "%";
-		$stmt->bind_param("sssss", $contactName, $inData["userId"]);
+		$stmt->bind_param("sssss", $contactName, $contactName, $contactName, $contactName, $inData["userId"]);
 		$stmt->execute();
 		
 		$result = $stmt->get_result();
