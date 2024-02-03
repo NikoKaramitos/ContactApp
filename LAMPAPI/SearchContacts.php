@@ -11,7 +11,7 @@
 
 	if (noQueries($inData))
 	{
-		returnWithError("The application JSON must contain at minimum the fields 'userID' and one query: ['firstName', 'lastName', 'phone', 'email']");
+		returnWithError("The application JSON must contain fields ['userID', 'search']");
 	}
 	else if ($conn->connect_error)
 	{
@@ -68,32 +68,32 @@
 		array_push($binding, $inData["userID"]);
 		
 		// Dynamic
-		if (isset($inData['firstName']))
+		if (true)
 		{
 			$types .= "s";
-			array_push($binding, '%' . $inData['firstName'] . '%');
-			$base .= ' AND FirstName LIKE ?';
+			array_push($binding, '%' . $inData['search'] . '%');
+			$base .= ' OR FirstName LIKE ?';
 		}
 
-		if (isset($inData['lastName']))
+		if (true)
 		{
 			$types .= "s";
-			array_push($binding, '%' . $inData['lastName'] . '%');
-			$base .= ' AND LastName LIKE ?';
+			array_push($binding, '%' . $inData['search'] . '%');
+			$base .= ' OR LastName LIKE ?';
 		}
 
-		if (isset($inData['phone']))
+		if (true)
 		{
 			$types .= "s";
-			array_push($binding, '%' . $inData['phone'] . '%');
-			$base .= ' AND Phone LIKE ?';
+			array_push($binding, '%' . $inData['search'] . '%');
+			$base .= ' OR Phone LIKE ?';
 		}
 
-		if (isset($inData['email']))
+		if (true)
 		{
 			$types .= "s";
-			array_push($binding, '%' . $inData['email'] . '%');
-			$base .= ' AND Email LIKE ?';
+			array_push($binding, '%' . $inData['search'] . '%');
+			$base .= ' OR Email LIKE ?';
 		}
 
 		return array('c' => $base, 't' => $types, 'b' => $binding);
@@ -101,13 +101,7 @@
 
     function noQueries($inData)
     {
-		// NO 'userID' OR NO ONE OF ['firstName', 'lastName', 'phone', 'email']
-        return !isset($inData['userID']) || (
-			!isset($inData['firstName'])
-			&& !isset($inData['lastName'])
-			&& !isset($inData['phone'])
-			&& !isset($inData['email'])
-		) && false;
+        return !isset($inData['userID']) || !isset($inData['search']);
     }
 
 	function getRequestInfo()
