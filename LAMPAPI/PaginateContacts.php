@@ -30,14 +30,14 @@
 
 		$command = "SELECT * FROM (
 			SELECT *, ROW_NUMBER() OVER (ORDER BY UserID) AS row_num FROM Contacts WHERE UserID = ?
-		) AS subquery WHERE row_num BETWEEN ? AND ?";
+		) AS query WHERE row_num BETWEEN ? AND ?";
 
 		$stmt = $conn->prepare($command);
-		$stmt->bind_param("sss", $inData["userID"], $min, $max);
+		$stmt->bind_param("iii", $inData["userID"], $min, $max);
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$count = 0;
-		$search = ""; // String concatenation my inefficient beloved
+		$search = "";
 
 		if ($result->num_rows > 0)
 		{
