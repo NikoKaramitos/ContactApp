@@ -28,16 +28,16 @@
 		$min = 10 * ($page - 1) + 1;
 		$max = 10 * $page;
 
-		var_dump($page);
-		var_dump($min);
-		var_dump($max);
+		// var_dump($page);
+		// var_dump($min);
+		// var_dump($max);
 
 		$command = "SELECT * FROM (
 			SELECT *, ROW_NUMBER() OVER (ORDER BY UserID) AS row_num FROM Contacts WHERE UserID = ?
 		) AS query WHERE row_num BETWEEN ? AND ?";
 
 		$stmt = $conn->prepare($command);
-		$stmt->bind_param("iii", $inData["userID"], $min, $max);
+		$stmt->bind_param("sii", $inData["userID"], $min, $max);
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$count = 0;
@@ -45,7 +45,7 @@
 
 		if ($result->num_rows > 0)
 		{
-			foreach ($result->fetch_assoc() as $row)
+			while ($row = $result->fetch_assoc())
 			{
 				$count++;
 				$search .= json_encode($row);
