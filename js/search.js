@@ -6,14 +6,14 @@ const searchResults = document.getElementById("searchResults");
 function pageUp() {
     page++;
     searchContact();
-    document.getElementById(pageNum).innerHTML = page;
+    document.getElementById("pageNum").innerHTML = page;
 }
 function pageDown() {
     if (page - 1 > 0) {
         page--;
         searchContact();
     }
-    document.getElementById(pageNum).innerHTML = page;
+    document.getElementById("pageNum").innerHTML = page;
 }
 
 function addElement(contact, num) {
@@ -24,7 +24,7 @@ function addElement(contact, num) {
 
     let count = document.createElement("p.my-0");
     count.classList.add("col-1");
-    count.textContent = num;
+    count.textContent = num * (10 ** (page - 1));
     newContact.append(count);
 
     let temp = document.createElement("p.my-0");
