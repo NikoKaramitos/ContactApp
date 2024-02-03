@@ -73,28 +73,28 @@
 		if (true)
 		{
 			$types .= "s";
-			array_push($binding, '%' . clone $query . '%');
+			array_push($binding, '%' . $query . '%');
 			$base .= ' OR FirstName LIKE ?';
 		}
 
 		if (true)
 		{
 			$types .= "s";
-			array_push($binding, '%' . clone $query . '%');
+			array_push($binding, '%' . $query . '%');
 			$base .= ' OR LastName LIKE ?';
 		}
 
 		if (true)
 		{
 			$types .= "s";
-			array_push($binding, '%' . clone $query . '%');
+			array_push($binding, '%' . $query . '%');
 			$base .= ' OR Phone LIKE ?';
 		}
 
 		if (true)
 		{
 			$types .= "s";
-			array_push($binding, '%' . clone $query . '%');
+			array_push($binding, '%' . $query . '%');
 			$base .= ' OR Email LIKE ?';
 		}
 
