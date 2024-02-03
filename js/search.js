@@ -3,6 +3,17 @@
 let page = 1;
 const searchResults = document.getElementById("searchResults");
 
+function pageUp() {
+    page++;
+    searchContact();
+}
+function pageDown() {
+    if (page - 1 > 0) {
+        page--;
+        searchContact();
+    }
+}
+
 function addElement(contact, num) {
     console.log(contact);
     const newContact = document.createElement("div");
