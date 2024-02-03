@@ -10,6 +10,8 @@ let phone = "";
 let email = "";
 let login = "";
 let password = "";
+let page = 1;
+
 
 function loadContacts() {
 	let url = 'http://contactz.xyz/LAMPAPI/RequestContacts.php';
@@ -77,6 +79,7 @@ function doLogin() {
 		document.cookie = "mode=;expires = Thu, 01 Jan 1970 00:00:00 GMT";
 		firstName = "Tester";
 		lastName = "Man"
+		userId = 0;
 		saveCookie();
 		window.location.href = "../dashboard.html";
 		return;
@@ -288,6 +291,16 @@ function addContact() {
 	}
 
 }
+function pageUp()
+{
+	page++;
+}
+
+function pageDown()
+{
+	if (page - 1 > 0)
+		page--;
+}
 
 function searchContact() {
 	const searchDiv = document.getElementById("searchResults");
@@ -299,7 +312,7 @@ function searchContact() {
 	const searchText = document.getElementById("searchText").value;
 	document.getElementById("searchText").value = "";
 
-	let tmp = { search: searchText, userID: userId };
+	let tmp = { search: searchText, userID: userId, page: page};
 
 	let jsonPayload = JSON.stringify(tmp);
 	console.log(jsonPayload);
