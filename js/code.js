@@ -161,7 +161,7 @@ function doRegister() {
 					document.getElementById("registerResult").innerHTML = jsonObject.error;
 				} else {
 					document.getElementById("registerResult").innerHTML = "Registration successful";
-					window.location.href = "../login.html";
+					window.location.href = "../dashboard.html";
 				}
 			}
 		};
