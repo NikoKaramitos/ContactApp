@@ -65,17 +65,8 @@
 		$base = "SELECT ID, FirstName, LastName, Phone, Email FROM Contacts WHERE UserID = ?";
 		$types = "s";
 		$binding = array();
-		array_push($binding, $inData['userID']);
+		array_push($binding, $inData["userID"]);
 		
-		if(isset($inData['search']))
-		{
-			$search = '%' . $inData['search'] .'%';
-			$base .= ' AND (FirstName LIKE? OR LastName LIKE ? OR Phone LIKE ? OR EMAIL LIKE?)';
-		}
-
-		$types .= 'ssss';
-		array_push($binding, $search, $search, $search, $search, $search);
-		/*
 		// Dynamic
 		if (isset($inData['firstName']))
 		{
@@ -104,7 +95,7 @@
 			array_push($binding, '%' . $inData['email'] . '%');
 			$base .= ' AND Email LIKE ?';
 		}
-		*/
+
 		return array('c' => $base, 't' => $types, 'b' => $binding);
 	}
 
