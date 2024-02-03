@@ -29,7 +29,7 @@
 		$man = 10 * $page;
 
 		$command = "SELECT * FROM (
-			SELECT *, ROW_NUMBER() OVER (ORDER BY ID) AS row_num FROM Contacts WHERE ID = ?
+			SELECT *, ROW_NUMBER() OVER (ORDER BY UserID) AS row_num FROM Contacts WHERE UserID = ?
 		) AS subquery WHERE row_num BETWEEN ? AND ?";
 
 		$stmt = $conn->prepare($command);
