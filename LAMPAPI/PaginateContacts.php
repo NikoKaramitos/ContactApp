@@ -1,6 +1,10 @@
 
 <?php
 
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
+
 	$inData = getRequestInfo();
 
 	$conn = new mysqli("contactz.xyz", "TheBeast", "Group31POOS", "COP4331");
