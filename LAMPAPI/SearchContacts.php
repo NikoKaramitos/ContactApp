@@ -71,28 +71,28 @@
 		if (true)
 		{
 			$types .= "s";
-			array_push($binding, '%' . $inData['search'] . '%');
+			array_push($binding, '%' . clone $inData['search'] . '%');
 			$base .= ' OR FirstName LIKE ?';
 		}
 
 		if (true)
 		{
 			$types .= "s";
-			array_push($binding, '%' . $inData['search'] . '%');
+			array_push($binding, '%' . clone $inData['search'] . '%');
 			$base .= ' OR LastName LIKE ?';
 		}
 
 		if (true)
 		{
 			$types .= "s";
-			array_push($binding, '%' . $inData['search'] . '%');
+			array_push($binding, '%' . clone $inData['search'] . '%');
 			$base .= ' OR Phone LIKE ?';
 		}
 
 		if (true)
 		{
 			$types .= "s";
-			array_push($binding, '%' . $inData['search'] . '%');
+			array_push($binding, '%' . clone $inData['search'] . '%');
 			$base .= ' OR Email LIKE ?';
 		}
 
