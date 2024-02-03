@@ -26,7 +26,7 @@
 	else
 	{
 		$min = 10 * ($page - 1) + 1;
-		$man = 10 * $page;
+		$max = 10 * $page;
 
 		$command = "SELECT * FROM (
 			SELECT *, ROW_NUMBER() OVER (ORDER BY UserID) AS row_num FROM Contacts WHERE UserID = ?
