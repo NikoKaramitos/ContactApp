@@ -1,7 +1,7 @@
 //this file contains global variables and all login/logout/register functions
 
 
-/*------------------------------*/const testMode = true;/*---------------------------------------*/
+/*------------------------------*/const testMode = false;/*---------------------------------------*/
 
 
 const urlBase = 'http://contactz.xyz/LAMPAPI';
