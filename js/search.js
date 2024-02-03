@@ -1,6 +1,6 @@
 // this file contains all functions related to search
 
-let page = 0;
+let page = 1;
 const searchResults = document.getElementById("searchResults");
 
 function addElement(contact, num) {
