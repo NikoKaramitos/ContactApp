@@ -29,7 +29,7 @@
 		$max = 10 * $page;
 
 		$command = "SELECT ID, FirstName, LastName, Phone, Email FROM (
-			SELECT *, ROW_NUMBER() OVER (ORDER BY UserID) AS row_num FROM Contacts WHERE UserID = ?
+			SELECT *, ROW_NUMBER() OVER (ORDER BY LastName) AS row_num FROM Contacts WHERE UserID = ?
 		) AS query WHERE row_num BETWEEN ? AND ?";
 
 		$stmt = $conn->prepare($command);

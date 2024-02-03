@@ -39,9 +39,9 @@
 		$query = "%" . $inData["search"] . "%";
 		$stmt->bind_param("issssii", $inData["userID"], $query, $query, $query, $query, $min, $max);
 		$stmt->execute();
-		
+
 		$result = $stmt->get_result();
-		
+
 		while($row = $result->fetch_assoc())
 		{
 			if($count > 0)
