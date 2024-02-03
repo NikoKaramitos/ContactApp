@@ -31,9 +31,9 @@
 		$max = 10 * $page;
 
 		$command = "SELECT ID, FirstName, LastName, Phone, Email FROM (
-			SELECT *, ROW_NUMBER() OVER (ORDER BY LastName) AS row_number FROM Contacts
+			SELECT *, ROW_NUMBER() OVER (ORDER BY LastName) AS row_num FROM Contacts
 			WHERE UserID = ? AND (FirstName LIKE ? OR LastName LIKE ? OR Phone LIKE ? OR Email LIKE ?)
-		) AS query WHERE row_number BETWEEN ? AND ?";
+		) AS query WHERE row_num BETWEEN ? AND ?";
 
 		$stmt = $conn->prepare($command);
 		$query = "%" . $inData["search"] . "%";

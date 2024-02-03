@@ -29,8 +29,8 @@
 		$max = 10 * $page;
 
 		$command = "SELECT ID, FirstName, LastName, Phone, Email FROM (
-			SELECT *, ROW_NUMBER() OVER (ORDER BY UserID) AS row_number FROM Contacts WHERE UserID = ?
-		) AS query WHERE row_number BETWEEN ? AND ?";
+			SELECT *, ROW_NUMBER() OVER (ORDER BY UserID) AS row_num FROM Contacts WHERE UserID = ?
+		) AS query WHERE row_num BETWEEN ? AND ?";
 
 		$stmt = $conn->prepare($command);
 		$stmt->bind_param("iii", $inData["userID"], $min, $max);
