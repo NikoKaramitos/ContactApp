@@ -66,33 +66,35 @@
 		$types = "s";
 		$binding = array();
 		array_push($binding, $inData["userID"]);
+
+		$query = $inData['search'];
 		
 		// Dynamic
 		if (true)
 		{
 			$types .= "s";
-			array_push($binding, '%' . clone $inData['search'] . '%');
+			array_push($binding, '%' . clone $query . '%');
 			$base .= ' OR FirstName LIKE ?';
 		}
 
 		if (true)
 		{
 			$types .= "s";
-			array_push($binding, '%' . clone $inData['search'] . '%');
+			array_push($binding, '%' . clone $query . '%');
 			$base .= ' OR LastName LIKE ?';
 		}
 
 		if (true)
 		{
 			$types .= "s";
-			array_push($binding, '%' . clone $inData['search'] . '%');
+			array_push($binding, '%' . clone $query . '%');
 			$base .= ' OR Phone LIKE ?';
 		}
 
 		if (true)
 		{
 			$types .= "s";
-			array_push($binding, '%' . clone $inData['search'] . '%');
+			array_push($binding, '%' . clone $query . '%');
 			$base .= ' OR Email LIKE ?';
 		}
 
