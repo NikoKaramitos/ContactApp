@@ -1,6 +1,6 @@
 // this file contains all functions related to search
 
-
+let page = 0;
 const searchResults = document.getElementById("searchResults");
 
 function addElement(contact, num) {
@@ -42,7 +42,7 @@ function searchContact() {
 
     readCookie();
 
-    let tmp = { search: searchText, userID: userId };
+    let tmp = { search: searchText, userID: userId, page: page };
     let jsonPayload = JSON.stringify(tmp);
 
     let url = urlBase + '/SearchContacts.' + extension;
