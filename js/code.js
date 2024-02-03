@@ -116,8 +116,8 @@ function doLogin() {
 				}
 				document.cookie = "mode=;expires = Thu, 01 Jan 1970 00:00:00 GMT";
 
-				firstName = jsonObject.firstName;
-				lastName = jsonObject.lastName;
+				window.firstName = jsonObject.firstName;
+				window.lastName = jsonObject.lastName;
 
 				saveCookie();
 
@@ -162,8 +162,9 @@ function doRegister() {
 					document.getElementById("registerResult").innerHTML = jsonObject.error;
 				} else {
 					document.getElementById("registerResult").innerHTML = "Registration successful";
-					this.firstName = firstName;
-					this.lastName = lastName;
+					window.firstName = firstName;
+					window.lastName = lastName;
+					window.userId = userId;
 					saveCookie();
 					window.location.href = "../dashboard.html";
 				}
@@ -180,8 +181,8 @@ function saveCookie() {
 	let minutes = 20;
 	let date = new Date();
 	date.setTime(date.getTime() + (minutes * 60 * 1000));
-	if (firstName && lastName) {
-		document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
+	if (window.firstName && window.lastName) {
+		document.cookie = "firstName=" + window.firstName + ",lastName=" + window.lastName + ",userId=" + window.userId + ";expires=" + date.toGMTString();
 	}
 }
 
