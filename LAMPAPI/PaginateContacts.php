@@ -81,22 +81,22 @@
 		return json_decode(file_get_contents('php://input'), true);
 	}
 
-	function sendResultInfoAsJson($obj)
+	function sendResultInfoAsJson($object)
 	{
 		header('Content-Type: application/json');
-		echo $obj;
+		echo $object;
 	}
 
-	function returnWithError($err)
+	function returnWithError($error)
 	{
-		$retValue = '{"results": [], "error": "' . $err . '"}';
-		sendResultInfoAsJson($retValue);
+		$value = '{"results": [], "error": "' . $error . '"}';
+		sendResultInfoAsJson($value);
 	}
 
-	function returnWithInfo($searchResults)
+	function returnWithInfo($search)
 	{
-		$retValue = '{"results": [' . $searchResults . '], "error": ""}';
-		sendResultInfoAsJson($retValue);
+		$value = '{"results": [' . $search . '], "error": ""}';
+		sendResultInfoAsJson($value);
 	}
 
 ?>

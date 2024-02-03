@@ -59,7 +59,7 @@
 		}
 		else
 		{
-			returnWithInfo($searchResults);
+			returnWithInfo($searches);
 		}
 		
 		$stmt->close();
