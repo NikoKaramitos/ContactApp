@@ -33,7 +33,7 @@
 		) AS query WHERE row_num BETWEEN ? AND ?";
 
 		$stmt = $conn->prepare($command);
-		$stmt->bind_param("iii", $inData["userID"], $min, $max);
+		$stmt->bind_param("sii", $inData["userID"], $min, $max);
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$count = 0;
