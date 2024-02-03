@@ -62,7 +62,7 @@
 	function constructCommand($inData): array
 	{
 		// Global
-		$base = "SELECT ID, FirstName, LastName, Phone, Email FROM Contacts WHERE UserID = ?";
+		$base = "SELECT ID, FirstName, LastName, Phone, Email FROM Contacts WHERE UserID = ? AND (";
 		$types = "s";
 		$binding = array();
 		array_push($binding, $inData["userID"]);
@@ -74,7 +74,7 @@
 		{
 			$types .= "s";
 			array_push($binding, '%' . $query . '%');
-			$base .= ' OR FirstName LIKE ?';
+			$base .= 'FirstName LIKE ?';
 		}
 
 		if (true)
@@ -95,7 +95,7 @@
 		{
 			$types .= "s";
 			array_push($binding, '%' . $query . '%');
-			$base .= ' OR Email LIKE ?';
+			$base .= ' OR Email LIKE ?)';
 		}
 
 		return array('c' => $base, 't' => $types, 'b' => $binding);
