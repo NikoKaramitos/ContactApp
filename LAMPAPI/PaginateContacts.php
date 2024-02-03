@@ -25,9 +25,12 @@
 	}
 	else
 	{
-		var_dump($page);
 		$min = 10 * ($page - 1) + 1;
 		$max = 10 * $page;
+
+		var_dump($page);
+		var_dump($min);
+		var_dump($max);
 
 		$command = "SELECT * FROM (
 			SELECT *, ROW_NUMBER() OVER (ORDER BY UserID) AS row_num FROM Contacts WHERE UserID = ?
