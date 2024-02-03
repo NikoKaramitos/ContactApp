@@ -6,12 +6,14 @@ const searchResults = document.getElementById("searchResults");
 function pageUp() {
     page++;
     searchContact();
+    document.getElementById(pageNum).innerHTML = page;
 }
 function pageDown() {
     if (page - 1 > 0) {
         page--;
         searchContact();
     }
+    document.getElementById(pageNum).innerHTML = page;
 }
 
 function addElement(contact, num) {
