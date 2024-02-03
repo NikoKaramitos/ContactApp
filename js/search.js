@@ -4,6 +4,7 @@ let page = 1;
 const searchResults = document.getElementById("searchResults");
 
 function addElement(contact, num) {
+    console.log(contact);
     const newContact = document.createElement("div");
     newContact.classList.add("contact");
     newContact.id = contact.id;
