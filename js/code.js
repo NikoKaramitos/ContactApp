@@ -150,6 +150,7 @@ function doRegister() {
 
 	let url = urlBase + '/Register.' + extension;
 
+	
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -161,6 +162,9 @@ function doRegister() {
 					document.getElementById("registerResult").innerHTML = jsonObject.error;
 				} else {
 					document.getElementById("registerResult").innerHTML = "Registration successful";
+					this.firstName = firstName;
+					this.lastName = lastName;
+					saveCookie();
 					window.location.href = "../dashboard.html";
 				}
 			}
