@@ -7,7 +7,7 @@ function addElement(contact, num) {
     console.log(contact);
     const newContact = document.createElement("div");
     newContact.classList.add("contact");
-    newContact.id = contact.id;
+    newContact.id = contact.ID;
 
     let count = document.createElement("p.my-0");
     count.classList.add("col-1");
@@ -16,19 +16,19 @@ function addElement(contact, num) {
 
     let temp = document.createElement("p.my-0");
     temp.classList.add("col");
-    temp.textContent = contact.firstName + " " + contact.lastName;
+    temp.textContent = contact.FirstName + " " + contact.LastName;
     newContact.append(temp);
 
     temp = document.createElement("p.my-0");
     temp.classList.add("col-12");
     temp.classList.add("col-md");
-    temp.textContent = contact.phone;
+    temp.textContent = contact.Phone;
     newContact.append(temp);
 
     temp = document.createElement("p.my-0");
     temp.classList.add("col-12");
     temp.classList.add("col-md");
-    temp.textContent = contact.email;
+    temp.textContent = contact.Email;
     newContact.append(temp);
 
     searchResults.append(newContact);
