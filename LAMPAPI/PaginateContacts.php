@@ -7,9 +7,9 @@
 
 	$inData = getRequestInfo();
 
-	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
-
 	$page = 0;
+
+	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 
 	if (!isset($inData['userID']) || !isset($inData['page']))
 	{
@@ -28,16 +28,12 @@
 		$min = 10 * ($page - 1) + 1;
 		$max = 10 * $page;
 
-		// var_dump($page);
-		// var_dump($min);
-		// var_dump($max);
-
-		$command = "SELECT * FROM (
+		$command = "SELECT ID, FirstName, LastName, Phone, Email FROM (
 			SELECT *, ROW_NUMBER() OVER (ORDER BY UserID) AS row_num FROM Contacts WHERE UserID = ?
 		) AS query WHERE row_num BETWEEN ? AND ?";
 
 		$stmt = $conn->prepare($command);
-		$stmt->bind_param("sii", $inData["userID"], $min, $max);
+		$stmt->bind_param("iii", $inData["userID"], $min, $max);
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$count = 0;
@@ -85,22 +81,22 @@
 		return json_decode(file_get_contents('php://input'), true);
 	}
 
-	function sendResultInfoAsJson($obj)
+	function sendResultInfoAsJson($object)
 	{
 		header('Content-Type: application/json');
-		echo $obj;
+		echo $object;
 	}
 
-	function returnWithError($err)
+	function returnWithError($error)
 	{
-		$retValue = '{"results": [], "error": "' . $err . '"}';
-		sendResultInfoAsJson($retValue);
+		$value = '{"results": [], "error": "' . $error . '"}';
+		sendResultInfoAsJson($value);
 	}
 
-	function returnWithInfo($searchResults)
+	function returnWithInfo($search)
 	{
-		$retValue = '{"results": [' . $searchResults . '], "error": ""}';
-		sendResultInfoAsJson($retValue);
+		$value = '{"results": [' . $search . '], "error": ""}';
+		sendResultInfoAsJson($value);
 	}
 
 ?>
