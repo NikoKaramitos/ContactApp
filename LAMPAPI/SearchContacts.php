@@ -91,7 +91,7 @@
 	
 	function returnWithError($error)
 	{
-		$value = '{"id": 0, "firstName": "", "lastName": "", "error": "' . $error . '"}';
+		$value = '{"results": [], "error": "' . $error . '"}';
 		sendResultInfoAsJson($value);
 	}
 	
