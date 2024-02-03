@@ -13,7 +13,7 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("select ID, FirstName, LastName, Phone, Email from Contacts where (FirstName like ? or LastName like ? or Phone like ? Email like ?) and UserID=?");
+		$stmt = $conn->prepare("SELECT ID, FirstName, LastName, Phone, Email FROM Contacts WHERE (FirstName LIKE ? OR LastName LIKE ? OR Phone LIKE ? OR Email LIKE ?) AND UserID=?");
 		$contactName = "%" . $inData["search"] . "%";
 		$stmt->bind_param("sssss", $contactName, $contactName, $contactName, $contactName, $inData["userID"]);
 		$stmt->execute();
@@ -27,8 +27,10 @@
 				$searchResults .= ",";
 			}
 			$searchCount++;
-			$searchResults .= '"' . $row["Name"] . '"';
+			// Correctly format each contact as a JSON object
+			$searchResults .= json_encode($row); // This automatically handles escaping and formatting
 		}
+	
 		
 		if( $searchCount == 0 )
 		{
