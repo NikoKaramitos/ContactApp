@@ -137,28 +137,15 @@ $custom-theme-colors: (
     font-size: large;
 }
 
-#myInput
-{
+#myInput {
     position: fixed;
     bottom: 20px;
     right: 20px;
 }
 
-// .name {
-//     margin: auto;
-//     width: 20%;
-// }
-
-// .number {
-//     margin: auto;
-//     width: 30%;
-// }
-
-// .mail {
-//     margin: auto;
-//     width: 30%;
-// }
-
+.pageButtons {
+    justify-content: space-between;
+}
 
 // merge custom theme with original
 $theme-colors: map-merge($custom-theme-colors, $theme-colors);
