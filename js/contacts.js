@@ -38,47 +38,6 @@ function addElement(contact, num) {
     // console.log(newContact);
 }
 
-let practiceContacts = [
-    {
-        "firstName": "john",
-        "lastName": "pork",
-        "email": "johnathanpork@porkmail.com",
-        "phone": "123-456-5555",
-        "ID": 0
-    },
-    {
-        "firstName": "mayo",
-        "lastName": "naise",
-        "email": "somemail@gmail.com",
-        "phone": "123-456-5555",
-        "ID": 1
-    },
-    {
-        "firstName": "Parchtic",
-        "lastName": "Star",
-        "email": "pattyflipper@mail.com",
-        "phone": "123-456-5555",
-        "ID": 2
-    },
-    {
-        "firstName": "Rick",
-        "lastName": "Leinecker",
-        "email": "theRickster@gmail.com",
-        "phone": "123-456-5555",
-        "ID": 3
-    }
-];
-
-let practiceContact =
-{
-    "firstName": "johnny",
-    "lastName": "test",
-    "email": "dookielover@gmail.com",
-    "phone": "123-456-5555",
-    "ID": 4
-};
-
-practiceContacts.push(practiceContact);
 
 // checks that a name does not have a quote in it;
 function isValidName(name)
@@ -123,3 +82,44 @@ function isValidNumber(number)
     }
     return true;
 }
+    // let practiceContacts = [
+    //     {
+    //         "firstName": "john",
+    //         "lastName": "pork",
+    //         "email": "johnathanpork@porkmail.com",
+    //         "phone": "123-456-5555",
+    //         "ID": 0
+    //     },
+    //     {
+    //         "firstName": "mayo",
+    //         "lastName": "naise",
+    //         "email": "somemail@gmail.com",
+    //         "phone": "123-456-5555",
+    //         "ID": 1
+    //     },
+    //     {
+    //         "firstName": "Parchtic",
+    //         "lastName": "Star",
+    //         "email": "pattyflipper@mail.com",
+    //         "phone": "123-456-5555",
+    //         "ID": 2
+    //     },
+    //     {
+    //         "firstName": "Rick",
+    //         "lastName": "Leinecker",
+    //         "email": "theRickster@gmail.com",
+    //         "phone": "123-456-5555",
+    //         "ID": 3
+    //     }
+    // ];
+    
+    // let practiceContact =
+    // {
+    //     "firstName": "johnny",
+    //     "lastName": "test",
+    //     "email": "dookielover@gmail.com",
+    //     "phone": "123-456-5555",
+    //     "ID": 4
+    // };
+    
+    // practiceContacts.push(practiceContact);

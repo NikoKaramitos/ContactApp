@@ -233,34 +233,30 @@ function addContact() {
 	let email = document.getElementById("addEmail").value;
 	let phone = document.getElementById("addPhone").value;
 
-	if(!isValidName(firstName)) 
-	{
+	if (!isValidName(firstName)) {
 		document.getElementById("addErrors").innerHTML = "Invalid first name.";
 		return;
 	}
-	if(!isValidName(lastName)) 
-	{
+	if (!isValidName(lastName)) {
 		document.getElementById("addErrors").innerHTML = "Invalid last name.";
 		return;
 	}
-	if(!isValidNumber(phone)) 
-	{
+	if (!isValidNumber(phone)) {
 		document.getElementById("addErrors").innerHTML = "Invalid phone number.";
 		return;
 	}
-	if(!isValidMail(email)) 
-	{
+	if (!isValidMail(email)) {
 		document.getElementById("addErrors").innerHTML = "Invalid email.";
 		return;
 	}
-	
+
 	document.getElementById("addErrors").innerHTML = "";
 
 
 	document.getElementById("addFirstName").value = "";
 	document.getElementById("addLastName").value = "";
-	document.getElementById("addEmail").value ="";
-	document.getElementById("addPhone").value ="";
+	document.getElementById("addEmail").value = "";
+	document.getElementById("addPhone").value = "";
 
 	//document.getElementById("addResult").innerHTML = "";
 
@@ -293,12 +289,12 @@ function searchContact() {
 	searchDiv.innerHTML = "";
 
 	// store the search type
-	const searchType = document.getElementById("searchType").value;
+	// const searchType = document.getElementById("searchType").value;
 
 	const searchText = document.getElementById("searchText").value;
 	document.getElementById("searchText").value = "";
 
-	let tmp = { [searchType] : searchText, userID : userId };
+	let tmp = { search: searchText, userID: userId };
 
 	let jsonPayload = JSON.stringify(tmp);
 	console.log(jsonPayload);
@@ -318,8 +314,7 @@ function searchContact() {
 				let jsonObject = JSON.parse(response);
 				let results = jsonObject.results;
 				console.log(results);
-				for (let i = 0; i < results.length; i++)
-				{
+				for (let i = 0; i < results.length; i++) {
 					addElement(results[i], i + 1);
 				}
 				if (jsonObject.error) {
