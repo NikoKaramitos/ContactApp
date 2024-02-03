@@ -35,7 +35,7 @@
 		$stmt = $conn->prepare($command);
 		$stmt->bind_param("sii", $inData["userID"], $min, $max);
 		$stmt->execute();
-		$result = $statement->get_result();
+		$result = $stmt->get_result();
 		$count = 0;
 		$search = ""; // String concatenation my inefficient beloved
 
