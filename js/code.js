@@ -1,4 +1,4 @@
-const testMode = true;
+const testMode = false;
 const urlBase = 'http://contactz.xyz/LAMPAPI';
 const extension = 'php';
 
@@ -161,7 +161,7 @@ function doRegister() {
 					document.getElementById("registerResult").innerHTML = jsonObject.error;
 				} else {
 					document.getElementById("registerResult").innerHTML = "Registration successful";
-					window.location.href = "../dashboard.html";
+					window.location.href = "../login.html";
 				}
 			}
 		};
