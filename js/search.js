@@ -24,7 +24,7 @@ function addElement(contact, num) {
 
     let count = document.createElement("p.my-0");
     count.classList.add("col-1");
-    count.textContent = num + (10 ** (page - 1));
+    count.textContent = "Page " + num + (10 * (page - 1));
     newContact.append(count);
 
     let temp = document.createElement("p.my-0");
