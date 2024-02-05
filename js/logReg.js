@@ -1,7 +1,7 @@
 //this file contains global variables and all login/logout/register functions
 
 
-/*------------------------------*/const testMode = true;/*---------------------------------------*/
+/*------------------------------*/const testMode = false;/*---------------------------------------*/
 
 
 const urlBase = 'http://contactz.xyz/LAMPAPI';
@@ -180,17 +180,9 @@ function doLogout() {
 	window.location.href = "index.html";
 }
 
-// takes the old variable after the first click of the edit button is clicked
-function startEdit() {
-	oldFirstName = document.getElementById("editFirstName").value;
-	oldLastName = document.getElementById("editLastName").value;
-	oldEmail = document.getElementById("editEmail").value;
-	oldPhone = document.getElementById("editPhone").value;
-	
-}
-
 // takes the new variables after the finished edit button is clicked
-function finishEdit() {
+function Edit() {
+	
 	let newFirstName = document.getElementById("editFirstName").value;
 	let newLastName = document.getElementById("editLastName").value;
 	let newEmail = document.getElementById("editEmail").value;
@@ -209,7 +201,6 @@ function finishEdit() {
 		userId: uID 
 	};
 	
-    
     let jsonPayload = JSON.stringify(tmp);
 
     let url = urlBase + '/EditContacts.' + extension;

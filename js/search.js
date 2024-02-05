@@ -3,6 +3,12 @@
 let page = 1;
 const searchResults = document.getElementById("searchResults");
 
+let editFirstName = "";
+let editLastName = "";
+let editPhoneNumber = "";
+let editEmail = "";
+let tempString = "";
+
 function pageUp() {
     page++;
     searchContact();
@@ -17,34 +23,67 @@ function pageDown() {
 }
 
 function addElement(contact, num) {
-    console.log(contact);
+    const newContact = document.createElement("div");
+    newContact.classList.add("contact");
+    newContact.id = `contact-${contact.ID}`; 
+
+    let count = document.createElement("p");
+    count.classList.add("my-0", "col-1");
+    count.id = `count-${contact.ID}`; 
+    count.textContent = num + (10 * (page - 1));
+    newContact.appendChild(count);
+
+    let name = document.createElement("p");
+    name.classList.add("my-0", "col");
+    name.id = `name-${contact.ID}`;
+    name.textContent = `${contact.FirstName} ${contact.LastName}`;
+    newContact.appendChild(name);
+
+    let phone = document.createElement("p");
+    phone.classList.add("my-0", "col-12", "col-md");
+    phone.id = `phone-${contact.ID}`; 
+    phone.textContent = contact.Phone;
+    newContact.appendChild(phone);
+
+    let email = document.createElement("p");
+    email.classList.add("my-0", "col-12", "col-md");
+    email.id = `email-${contact.ID}`; 
+    email.textContent = contact.Email;
+    newContact.appendChild(email);
+    /*
     const newContact = document.createElement("div");
     newContact.classList.add("contact");
     newContact.id = contact.ID;
 
-    let count = document.createElement("p.my-0");
-    count.classList.add("col-1");
+    let count = document.createElement("p");
+    count.classList.add("my-0", "col-1");
     count.textContent = num + (10 * (page - 1));
     newContact.append(count);
 
-    let temp = document.createElement("p.my-0");
-    temp.classList.add("col");
+    
+    let temp = document.createElement("p");
+    temp.classList.add("my-0", "col");
     temp.textContent = contact.FirstName + " " + contact.LastName;
     newContact.append(temp);
 
-    temp = document.createElement("p.my-0");
-    temp.classList.add("col-12");
-    temp.classList.add("col-md");
+    temp = document.createElement("p");
+    temp.classList.add("my-0", "col-12", "col-md");
+    // DELETE (?) temp.classList.add("col-md");
     temp.textContent = contact.Phone;
     newContact.append(temp);
 
-    temp = document.createElement("p.my-0");
-    temp.classList.add("col-12");
-    temp.classList.add("col-md");
+    temp = document.createElement("p");
+    temp.classList.add("my-0", "col-12", "col-md");
+    // DELETE (?) temp.classList.add("col-md");
     temp.textContent = contact.Email;
     newContact.append(temp);
 
+    // EDIT BUTTON HERE:
+    let editButt = document.createElement("Button");
+    editButt.classList.add("btn", "btn-primary");
+    editButt.textContent = "Edit";
     searchResults.append(newContact);
+    */
 }
 
 function searchContact() {
@@ -87,6 +126,7 @@ function searchContact() {
     }
 }
 
+/* LEGACY CODE - GONE BUT NEVER FORGOTTEN
 function loadContacts() {
     let url = 'http://contactz.xyz/LAMPAPI/RequestContacts.php';
     let xhr = new XMLHttpRequest();
@@ -117,4 +157,6 @@ function loadContacts() {
     catch (err) {
         document.getElementById("searchResult").innerHTML = err.message;
     }
+
 }
+*/
