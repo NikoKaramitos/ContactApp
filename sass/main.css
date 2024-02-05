@@ -35,6 +35,10 @@ body {
   width: 100%;
 }
 
+.font-size-custom {
+  font-size: 18px;
+}
+
 .navbar-nav::after {
   content: "";
   position: absolute;

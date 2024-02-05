@@ -97,12 +97,16 @@
 						</button>
 					</div>
 				</div>
-				<div class="pageButtons d-flex flex-row justify-content-evenly">
-					<button onclick="pageDown()">Down</button>
-					<div>Page <div id="pageNum">1</div>
-					</div>
-					<button onclick="pageUp()">Up</button>
+				<div class="pageButtons d-flex flex-row justify-content-evenly p-5">
+					<button onclick="pageDown()" class="btn bg-altpurple text-altwhite" id="prevButton">
+						<i class="bi bi-chevron-left"></i> Previous
+					</button>
+					<div class="align-self-center fw-bold font-size-custom">Page <span id="pageNum">1</span></div>
+					<button onclick="pageUp()" class="btn bg-altpurple text-altwhite" id="nextButton">
+						Next <i class="bi bi-chevron-right"></i>
+					</button>
 				</div>
+				
 				<span id="colorSearchResult"></span>
 				<!-- <button onclick="practiceContacts.forEach(contact => {
 					addElement(contact);
