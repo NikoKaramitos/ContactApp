@@ -24,6 +24,7 @@
 </head>
 
 <body>
+
 	<nav id="navbar" class="navbar sticky-top navbar-expand-md bg-altpurple navbar-dark py-3">
 		<div class="container">
 			<a href="/index.html" onclick="doLogout()" class="navbar-brand">
@@ -74,6 +75,11 @@
 						</select> -->
 						<input type="text" id="searchText" class="form-control w-50"
 							placeholder="Contact To Search For" />
+						<script>
+							window.onload = function() {
+								searchContact();
+							};
+						</script>
 						<script>
 							document.getElementById('searchText').addEventListener('keypress', function (event) {
 								if (event.keyCode == 13) {
