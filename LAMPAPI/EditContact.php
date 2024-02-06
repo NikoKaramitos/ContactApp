@@ -2,6 +2,7 @@
 <?php
 
 	// WIP
+	// Deprecated
     // UPDATE table_name SET column1 = new_value, column2 = new_value WHERE condition;
 
 	$inData = getRequestInfo();
