@@ -23,34 +23,34 @@ function pageDown() {
 }
 
 function addElement(contact, num) {
-    const newContact = document.createElement("div");
-    newContact.classList.add("contact");
-    newContact.id = `contact-${contact.ID}`; 
+    // const newContact = document.createElement("div");
+    // newContact.classList.add("contact");
+    // newContact.id = `contact-${contact.ID}`; 
 
-    let count = document.createElement("p");
-    count.classList.add("my-0", "col-1");
-    count.id = `count-${contact.ID}`; 
-    count.textContent = num + (10 * (page - 1));
-    newContact.appendChild(count);
+    // let count = document.createElement("p");
+    // count.classList.add("my-0", "col-1");
+    // count.id = `count-${contact.ID}`; 
+    // count.textContent = num + (10 * (page - 1));
+    // newContact.appendChild(count);
 
-    let name = document.createElement("p");
-    name.classList.add("my-0", "col");
-    name.id = `name-${contact.ID}`;
-    name.textContent = `${contact.FirstName} ${contact.LastName}`;
-    newContact.appendChild(name);
+    // let name = document.createElement("p");
+    // name.classList.add("my-0", "col");
+    // name.id = `name-${contact.ID}`;
+    // name.textContent = `${contact.FirstName} ${contact.LastName}`;
+    // newContact.appendChild(name);
 
-    let phone = document.createElement("p");
-    phone.classList.add("my-0", "col-12", "col-md");
-    phone.id = `phone-${contact.ID}`; 
-    phone.textContent = contact.Phone;
-    newContact.appendChild(phone);
+    // let phone = document.createElement("p");
+    // phone.classList.add("my-0", "col-12", "col-md");
+    // phone.id = `phone-${contact.ID}`; 
+    // phone.textContent = contact.Phone;
+    // newContact.appendChild(phone);
 
-    let email = document.createElement("p");
-    email.classList.add("my-0", "col-12", "col-md");
-    email.id = `email-${contact.ID}`; 
-    email.textContent = contact.Email;
-    newContact.appendChild(email);
-    /*
+    // let email = document.createElement("p");
+    // email.classList.add("my-0", "col-12", "col-md");
+    // email.id = `email-${contact.ID}`; 
+    // email.textContent = contact.Email;
+    // newContact.appendChild(email);
+    
     const newContact = document.createElement("div");
     newContact.classList.add("contact");
     newContact.id = contact.ID;
@@ -59,7 +59,6 @@ function addElement(contact, num) {
     count.classList.add("my-0", "col-1");
     count.textContent = num + (10 * (page - 1));
     newContact.append(count);
-
     
     let temp = document.createElement("p");
     temp.classList.add("my-0", "col");
@@ -83,7 +82,9 @@ function addElement(contact, num) {
     editButt.classList.add("btn", "btn-primary");
     editButt.textContent = "Edit";
     searchResults.append(newContact);
-    */
+
+    
+
 }
 
 function searchContact() {
