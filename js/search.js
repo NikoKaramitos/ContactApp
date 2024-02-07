@@ -22,6 +22,7 @@ function pageDown() {
     if (page - 1 > 0) {
         page--;
         searchContact();
+        searchErr = "";
     }
     document.getElementById("pageNum").innerHTML = page;
 }
@@ -86,14 +87,14 @@ function addElement(contact, num) {
 
     // EDIT BUTTON HERE:
     let editButt = document.createElement("Button");
-    editButt.classList.add("btn", "btn-primary");
+    editButt.classList.add("btn", "btn-altpurple");
     editButt.textContent = "Edit";
     buttRow.append(editButt);
 
     // Delete BUTTON HERE:
     let delButt = document.createElement("Button");
-    delButt.classList.add("btn", "btn-primary");
-    delButt.textContent = "DEL";
+    delButt.classList.add("btn", "btn-danger");
+    delButt.textContent = "Delete";
     buttRow.append(delButt);
 
     newContact.append(buttRow);
