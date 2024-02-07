@@ -93,8 +93,8 @@ function addElement(contact, num) {
     // Delete BUTTON HERE:
     let delButt = document.createElement("Button");
     delButt.classList.add("btn", "btn-primary");
-    delButt.textContent = "Edit";
-    buttRow.append(editButt);
+    delButt.textContent = "DEL";
+    buttRow.append(delButt);
 
     newContact.append(buttRow);
     searchResults.append(newContact);
@@ -130,15 +130,14 @@ function searchContact() {
                 }
                 if (jsonObject.error) {
                     searchDiv.innerHTML = jsonObject.error;
+                    searchErr = jsonObject.error;
                 }
             }
         };
         xhr.send(jsonPayload);
-        searchErr = "";
     }
     catch (err) {
         document.getElementById("SearchResults").innerHTML = err.message;
-        searchErr = err.message;
     }
 }
 
