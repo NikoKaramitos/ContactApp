@@ -83,7 +83,7 @@ function addElement(contact, num) {
     newContact.append(temp);
 
     const buttRow = document.createElement("div");
-    buttRow.classList.add("my-0", "col-6", "edit-del-row", "col-md");
+    buttRow.classList.add("my-0", "col-7", "edit-del-row", "col-md");
 
     // EDIT BUTTON HERE:
     let editButt = document.createElement("Button");
