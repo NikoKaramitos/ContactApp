@@ -1,7 +1,7 @@
 //this file contains global variables and all login/logout/register functions
 
 
-/*------------------------------*/const testMode = false;/*---------------------------------------*/
+/*------------------------------*/const testMode = true;/*---------------------------------------*/
 
 
 const urlBase = 'http://contactz.xyz/LAMPAPI';
@@ -182,33 +182,33 @@ function doLogout() {
 
 // takes the new variables after the finished edit button is clicked
 function Edit() {
-	
+
 	let newFirstName = document.getElementById("editFirstName").value;
 	let newLastName = document.getElementById("editLastName").value;
 	let newEmail = document.getElementById("editEmail").value;
 	let newPhone = document.getElementById("editPhone").value;
-	
-	
+
+
 	let tmp = {
-		oldFirstName: oldFirstName, 
-		oldLastName: oldLastName, 
-		oldPhone: oldPhone,  
-		oldEmail: oldEmail,         
+		oldFirstName: oldFirstName,
+		oldLastName: oldLastName,
+		oldPhone: oldPhone,
+		oldEmail: oldEmail,
 		newFirstName: newFirstName,
 		newLastName: newLastName,
 		newEmail: newEmail,
 		newPhone: newPhone,
-		userId: uID 
+		userId: uID
 	};
-	
-    let jsonPayload = JSON.stringify(tmp);
 
-    let url = urlBase + '/EditContacts.' + extension;
+	let jsonPayload = JSON.stringify(tmp);
 
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-    try {
+	let url = urlBase + '/EditContacts.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try {
 		xhr.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				let jsonObject = JSON.parse(xhr.responseText);
@@ -220,9 +220,9 @@ function Edit() {
 				}
 			}
 		};
-        xhr.send(jsonPayload);
-    }
-    catch (err) {
-        document.getElementById("editError").innerHTML = err.message;
-    }
+		xhr.send(jsonPayload);
+	}
+	catch (err) {
+		document.getElementById("editError").innerHTML = err.message;
+	}
 }

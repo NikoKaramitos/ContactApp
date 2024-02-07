@@ -1,6 +1,7 @@
 // this file contains all functions related to search
 
 let page = 1;
+let searchErr = "";
 const searchResults = document.getElementById("searchResults");
 
 let editFirstName = "";
@@ -10,8 +11,11 @@ let editEmail = "";
 let tempString = "";
 
 function pageUp() {
-    page++;
-    searchContact();
+
+    if (searchErr.length == 0) {
+        page++;
+        searchContact();
+    }
     document.getElementById("pageNum").innerHTML = page;
 }
 function pageDown() {
@@ -50,7 +54,7 @@ function addElement(contact, num) {
     // email.id = `email-${contact.ID}`; 
     // email.textContent = contact.Email;
     // newContact.appendChild(email);
-    
+
     const newContact = document.createElement("div");
     newContact.classList.add("contact");
     newContact.id = contact.ID;
@@ -59,7 +63,7 @@ function addElement(contact, num) {
     count.classList.add("my-0", "col-1");
     count.textContent = num + (10 * (page - 1));
     newContact.append(count);
-    
+
     let temp = document.createElement("p");
     temp.classList.add("my-0", "col");
     temp.textContent = contact.FirstName + " " + contact.LastName;
@@ -77,14 +81,23 @@ function addElement(contact, num) {
     temp.textContent = contact.Email;
     newContact.append(temp);
 
+    const buttRow = documetn.createElement("div");
+    buttRow.classList.add("my-0", "col")
+
     // EDIT BUTTON HERE:
     let editButt = document.createElement("Button");
     editButt.classList.add("btn", "btn-primary");
     editButt.textContent = "Edit";
+    buttRow.append(editButt);
+
+    // Delete BUTTON HERE:
+    let delButt = document.createElement("Button");
+    delButt.classList.add("btn", "btn-primary");
+    delButt.textContent = "Edit";
+    buttRow.append(editButt);
+
+    newContact.append(buttRow);
     searchResults.append(newContact);
-
-    
-
 }
 
 function searchContact() {
@@ -92,7 +105,7 @@ function searchContact() {
     searchDiv.innerHTML = "";
 
     const searchText = document.getElementById("searchText").value;
-    document.getElementById("searchText").value = "";
+    //document.getElementById("searchText").value = "";
 
     readCookie();
 
@@ -121,9 +134,11 @@ function searchContact() {
             }
         };
         xhr.send(jsonPayload);
+        searchErr = "";
     }
     catch (err) {
         document.getElementById("SearchResults").innerHTML = err.message;
+        searchErr = err.message;
     }
 }
 
@@ -148,7 +163,7 @@ function loadContacts() {
                     a.className = "contact";
                     // populate the following line with carlos' js code for adding boxes orw/e idk
                     a.innerHTML = `<h3>${searchContact.firstName}</h3>
-					<p>${searchContact.phone}</p>`;
+                    <p>${searchContact.phone}</p>`;
                     searchContainer.appendChild(a);
                 });
             }
