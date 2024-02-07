@@ -81,7 +81,7 @@ function addElement(contact, num) {
     temp.textContent = contact.Email;
     newContact.append(temp);
 
-    const buttRow = documetn.createElement("div");
+    const buttRow = document.createElement("div");
     buttRow.classList.add("my-0", "col")
 
     // EDIT BUTTON HERE:
