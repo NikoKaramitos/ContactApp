@@ -81,7 +81,7 @@
 							};
 						</script>
 						<script>
-							document.getElementById('searchText').addEventListener('keypress', function (event) {
+							document.getElementById('searchText').addEventListener('keydown', function (event) {
 								searchContact();
 							});
 						</script>
@@ -157,42 +157,6 @@
 										if (String(field.value).length == 3 || String(field.value).length == 7)
 											//console.log("ADD A DASH")
 											field.value = field.value + '-';
-									})
-								</script>
-								<input type="email" class="mb-2" placeholder="Email" id="addEmail">
-
-							</div>
-							<div class="modal-footer">
-								<div id="addErrors" class="ms-auto"></div>
-								<button type="button" class="btn btn-altgray text-white" data-bs-dismiss="modal">
-									Cancel
-								</button>
-								<button type="button" class="btn btn-altpurple text-white" onclick="addContact()">
-									Add Contact
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div id="myModal" class="modal height" tabindex="-1">
-					<div class="modal-dialog modal-dialog-centered">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title">Add a Contact</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal"
-									aria-label="Close"></button>
-							</div>
-							<div class="modal-body d-flex flex-column justify-content-end">
-								<input type="text" class="mb-2" placeholder="First Name" id="addFirstName">
-								<input type="text" class="mb-2" placeholder="Last Name" id="addLastName">
-								<input type="tel" class="mb-2" placeholder="Number" id="addPhone" maxlength="12">
-								<script>
-									let field2 = document.getElementById("addPhone");
-									field2.addEventListener("keypress", function (event) {
-										if (String(field2.value).length == 3 || String(field2.value).length == 7)
-											//console.log("ADD A DASH")
-											field2.value = field2.value + '-';
 									})
 								</script>
 								<input type="email" class="mb-2" placeholder="Email" id="addEmail">
