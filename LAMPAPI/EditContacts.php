@@ -7,15 +7,8 @@
     {
         returnWithError ("". $conn->connect_error);
     }
-
-    /*
-    $stmt = $conn->prepare("UPDATE Contacts SET FirstName = ?, LastName = ?, Phone = ?, Email = ? WHERE
-    FirstName = ? AND LastName = ? AND Phone = ? AND Email = ? AND UserID = ?");
-    $stmt->bind_param("ssssssssi", $inData["oldFirstName"], $inData["oldLastName"], $inData["oldPhone"], $inData["oldEmail"]
-    , $inData["newFirstName"], $inData["newLastName"], $inData["newPhone"], $inData["newEmail"], $inData["userId"]);
-    */
+    
     $stmt = $conn->prepare("UPDATE Contacts SET FirstName = ?, LastName = ?, Phone = ?, Email = ? WHERE ID = ? AND UserID = ?");
-
     $stmt->bind_param("ssssss", $inData["newFirstName"], $inData["newLastName"], $inData["newPhone"], $inData["newEmail"], $inData["contactID"], $inData["userID"]);
     
 
