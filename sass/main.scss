@@ -24,9 +24,9 @@ $position-values: (
 body {
     height: 150vh;
     background: linear-gradient(45deg,
-            #b33d12,
-            #f1936e,
-            #8b8ee7,
+            #272525,
+            #a3a4bd,
+            #000d3d,
             #003ebb);
     background-size: 400% 400%;
     animation: gradient-wave 30s infinite alternate linear;
@@ -77,6 +77,10 @@ body {
     right: 0;
 }
 
+#myInput:hover {
+    box-shadow: 0 0 20px rgba(237, 234, 234, 0.3);
+}
+
 @keyframes bounce {
 
     0%,
@@ -113,10 +117,10 @@ body {
 // Main Theme
 $custom-theme-colors: (
     "altwhite": #ffffff,
-    "altlight": #b4b4b4,
+    "altlight": #848484,
     "altgray": #5a5a5a,
     "altblack": #000000,
-    "altpurple": #12a8b3,
+    "altpurple": #021629,
 );
 
 .txt-shadow {
@@ -145,6 +149,19 @@ $custom-theme-colors: (
 
 .pageButtons {
     justify-content: space-between;
+}
+
+.personalLogo {
+    aspect-ratio: 1;
+    width: 100%;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    object-fit: fill;
+}
+
+.personalLogo:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 
 // merge custom theme with original

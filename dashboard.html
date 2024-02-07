@@ -76,15 +76,13 @@
 						<input type="text" id="searchText" class="form-control w-50"
 							placeholder="Contact To Search For" />
 						<script>
-							window.onload = function() {
+							window.onload = function () {
 								searchContact();
 							};
 						</script>
 						<script>
 							document.getElementById('searchText').addEventListener('keypress', function (event) {
-								if (event.keyCode == 13) {
-									searchContact();
-								}
+								searchContact();
 							});
 						</script>
 						<button type="button" id="searchColorButton" class="btn btn-altlight"
@@ -99,14 +97,22 @@
 				</div>
 				<div class="pageButtons d-flex flex-row justify-content-evenly p-5">
 					<button onclick="pageDown()" class="btn bg-altpurple text-altwhite" id="prevButton">
-						<i class="bi bi-chevron-left"></i> Previous
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+							<path
+								d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+						</svg>
 					</button>
 					<div class="align-self-center fw-bold font-size-custom">Page <span id="pageNum">1</span></div>
 					<button onclick="pageUp()" class="btn bg-altpurple text-altwhite" id="nextButton">
-						Next <i class="bi bi-chevron-right"></i>
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+							<path
+								d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+						</svg>
 					</button>
 				</div>
-				
+
 				<span id="colorSearchResult"></span>
 				<!-- <button onclick="practiceContacts.forEach(contact => {
 					addElement(contact);
@@ -176,8 +182,8 @@
 						-->
 				<div id="myInput" class="btn rounded-circle btn-altpurple" data-bs-toggle="modal"
 					data-bs-target="#myModal">
-					<svg xmlns="http://www.w3.org/2000/svg" width="50" fill="white" class="bi bi-plus-lg"
-						viewBox="0 0 16 16">
+					<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" style="aspect-ratio: 1;" fill="white"
+						class="bi bi-plus-xl" viewBox="0 0 16 16">
 						<path fill-rule="evenodd"
 							d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
 					</svg>
