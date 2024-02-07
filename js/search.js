@@ -78,6 +78,9 @@ function addElement(contact, num) {
 
     temp = document.createElement("p");
     temp.classList.add("my-0", "col-12", "col-md");
+    if (contact.Email.length > 30) {
+        temp.classList.add("fs-6")
+    }
     // DELETE (?) temp.classList.add("col-md");
     temp.textContent = contact.Email;
     newContact.append(temp);
