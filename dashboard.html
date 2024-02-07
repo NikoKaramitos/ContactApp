@@ -194,10 +194,11 @@
 
 	<script>
 		var myModal = document.getElementById("myModal");
-		var myInput = document.getElementById("myInput");
+		// var myInput = document.getElementById("myInput");
 
 		myModal.addEventListener("shown.bs.modal", function () {
-			myInput.getElementById("addFirstName").focus();
+			var myInput = document.getElementById("addFirstName");
+			myInput.focus();
 		});
 	</script>
 
