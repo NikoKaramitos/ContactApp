@@ -71,13 +71,13 @@ function addElement(contact, num) {
     newContact.append(temp);
 
     temp = document.createElement("p");
-    temp.classList.add("my-0", "col-12", "col-md");
+    temp.classList.add("my-0", "col-12", "col-lg");
     // DELETE (?) temp.classList.add("col-md");
     temp.textContent = contact.Phone;
     newContact.append(temp);
 
     temp = document.createElement("p");
-    temp.classList.add("my-0", "col-12", "col-md");
+    temp.classList.add("my-0", "col-12", "col-lg");
     if (contact.Email.length > 30) {
         temp.classList.add("fs-6")
     }
@@ -86,7 +86,7 @@ function addElement(contact, num) {
     newContact.append(temp);
 
     const buttRow = document.createElement("div");
-    buttRow.classList.add("my-0", "col-7", "edit-del-row", "col-md");
+    buttRow.classList.add("my-0", "col-7", "edit-del-row", "col-lg");
 
     // EDIT BUTTON HERE:
     let editButt = document.createElement("Button");
