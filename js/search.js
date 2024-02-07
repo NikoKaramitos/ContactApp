@@ -83,17 +83,17 @@ function addElement(contact, num) {
     newContact.append(temp);
 
     const buttRow = document.createElement("div");
-    buttRow.classList.add("my-0", "col")
+    buttRow.classList.add("my-0", "col", "edit-del-row")
 
     // EDIT BUTTON HERE:
     let editButt = document.createElement("Button");
-    editButt.classList.add("btn", "btn-altpurple");
+    editButt.classList.add("btn", "btn-altpurple", "mx-1");
     editButt.textContent = "Edit";
     buttRow.append(editButt);
 
     // Delete BUTTON HERE:
     let delButt = document.createElement("Button");
-    delButt.classList.add("btn", "btn-danger");
+    delButt.classList.add("btn", "btn-danger", "mx-1");
     delButt.textContent = "Delete";
     buttRow.append(delButt);
 

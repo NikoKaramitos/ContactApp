@@ -35,7 +35,12 @@ body {
 
 .my-containers {
     margin: auto;
-    background-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.48);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9.3px);
+    -webkit-backdrop-filter: blur(9.3px);
+    border: 1px solid rgba(255, 255, 255, 0.37);
     width: 90%;
     border-radius: 20px;
     margin-top: 30px;
@@ -162,6 +167,12 @@ $custom-theme-colors: (
 .personalLogo:hover {
     transform: scale(1.2);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+.edit-del-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
 // merge custom theme with original
