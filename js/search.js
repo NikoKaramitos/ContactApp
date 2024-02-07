@@ -135,6 +135,8 @@ function searchContact() {
                 if (jsonObject.error) {
                     searchDiv.innerHTML = jsonObject.error;
                     searchErr = jsonObject.error;
+                } else {
+                    searchErr = "";
                 }
             }
         };
