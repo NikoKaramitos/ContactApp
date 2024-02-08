@@ -1,6 +1,6 @@
 
 <?php
-	header('Access-Control-Allow-Origin: http://localhost:54471');
+	header('Access-Control-Allow-Origin: http://127.0.0.1:54417/login.html');
 	header('Access-Control-Allow-Credentials: true');
 	header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
 	header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Accept, Origin, Authorization');
