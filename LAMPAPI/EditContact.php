@@ -1,6 +1,9 @@
 
 <?php
-
+		header('Access-Control-Allow-Origin: http://127.0.0.1:54471');
+		header('Access-Control-Allow-Credentials: true');
+		header('Access-Control-Allow-Methods: POST, OPTIONS');
+		header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Accept, Origin, Authorization');
 	// WIP
 	// Deprecated
     // UPDATE table_name SET column1 = new_value, column2 = new_value WHERE condition;
