@@ -5849,7 +5849,7 @@ textarea.form-control-lg {
 }
 
 .modal {
-  --bs-modal-zindex: 1055;
+  --bs-modal-zindex: 1050;
   --bs-modal-width: 500px;
   --bs-modal-padding: 1rem;
   --bs-modal-margin: 0.5rem;
@@ -5936,14 +5936,13 @@ textarea.form-control-lg {
 }
 
 .modal-backdrop {
-  --bs-backdrop-zindex: 1050;
+  --bs-backdrop-zindex: -1;
   --bs-backdrop-bg: #000;
   --bs-backdrop-opacity: 0.5;
   position: fixed;
   top: 0;
   left: 0;
-  /* z-index: var(--bs-backdrop-zindex); */
-  z-index: -1;
+  z-index: var(--bs-backdrop-zindex);
   width: 100vw;
   height: 100vh;
   background-color: var(--bs-backdrop-bg);

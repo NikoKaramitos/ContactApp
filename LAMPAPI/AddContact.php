@@ -1,10 +1,18 @@
 
 <?php
-	header('Access-Control-Allow-Origin: http://127.0.0.1:54471');
-	header('Access-Control-Allow-Credentials: true');
-	header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
-	header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Accept, Origin, Authorization');
+	if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+		header('Access-Control-Allow-Origin: http://127.0.0.1:54471');
+		header('Access-Control-Allow-Credentials: true');
+		header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+		header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Accept, Origin, Authorization');
+	}
 
+	if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+		// Return 204 No Content or 200 OK status to indicate preflight was successful
+		http_response_code(200);
+		exit;
+	}
+	
 	$inData = getRequestInfo();
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
@@ -30,6 +38,7 @@
 			returnWithError("Contact Creation Failed: ['" . $stmt->error . "']");
 		}
 		
+		returnCreatedContact($row);
 		$stmt->close();
 		$conn->close();
 	}
