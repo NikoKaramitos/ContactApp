@@ -1,5 +1,9 @@
 
 <?php
+	header('Access-Control-Allow-Origin: http://localhost:54471');
+	header('Access-Control-Allow-Credentials: true');
+	header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+	header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Accept, Origin, Authorization');
 	/* TODO -
 	 * Password hashing was mentioned at the bottom of the word document
 	 * 
