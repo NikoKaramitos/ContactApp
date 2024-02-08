@@ -167,19 +167,13 @@
 								<button type="button" class="btn btn-altgray text-white" data-bs-dismiss="modal">
 									Cancel
 								</button>
-								<button type="button" class="btn btn-altpurple text-white" onclick="addContact()">
+								<button onclick="addContact()" type="button" class="btn btn-altpurple text-white">
 									Add Contact
 								</button>
 							</div>
 						</div>
 					</div>
 				</div>
-				<!-- Prof code
-						<input type="text" id="colorText" placeholder="Contact To Add" />
-						<button type="button" id="addColorButton" class="btn btn-altlight mt-2" onclick="addColor();">
-							Add Contact</button><br />
-							<span id="colorAddResult"></span>
-						-->
 				<div id="myInput" class="btn rounded-circle btn-altpurple" data-bs-toggle="modal"
 					data-bs-target="#myModal">
 					<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" style="aspect-ratio: 1;" fill="white"
@@ -197,7 +191,8 @@
 		var myInput = document.getElementById("myInput");
 
 		myModal.addEventListener("shown.bs.modal", function () {
-			myInput.focus();
+			var myModal = document.getElementById("addFirstName");
+    		myModal.focus();
 		});
 	</script>
 
