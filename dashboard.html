@@ -182,6 +182,41 @@
 							d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
 					</svg>
 				</div>
+				<div id="editModal" class="modal height" tabindex="-1">
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Edit Contact</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"
+									aria-label="Close"></button>
+							</div>
+							<div class="modal-body d-flex flex-column justify-content-end">
+								<input type="text" class="mb-2" placeholder="First Name" id="editFirstName">
+								<input type="text" class="mb-2" placeholder="Last Name" id="editLastName">
+								<input type="tel" class="mb-2" placeholder="Number" id="editPhone" maxlength="12">
+								<script>
+									let field2 = document.getElementById("editPhone");
+									field2.addEventListener("keypress", function (event) {
+										if (String(field2.value).length == 3 || String(field2.value).length == 7)
+											//console.log("ADD A DASH")
+											field2.value = field2.value + '-';
+									})
+								</script>
+								<input type="email" class="mb-2" placeholder="Email" id="editEmail">
+
+							</div>
+							<div class="modal-footer">
+								<div id="addErrors" class="ms-auto"></div>
+								<button type="button" class="btn btn-altgray text-white" data-bs-dismiss="modal">
+									Cancel
+								</button>
+								<button onclick="edit()" type="button" class="btn btn-altpurple text-white">
+									Save
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -205,6 +240,7 @@
 	<script src="js/logReg.js"></script>
 	<script src="js/search.js"></script>
 	<script src="js/add.js"></script>
+	<script src="js/edit.js"></script>
 </body>
 
 </html>

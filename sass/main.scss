@@ -175,6 +175,21 @@ $custom-theme-colors: (
     justify-content: flex-end;
 }
 
+// .modal-content {
+//     background-color: #fff;
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+//     background: rgba(255, 255, 255, 0.48);
+//     border-radius: 16px;
+//     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+//     backdrop-filter: blur(9.3px);
+//     -webkit-backdrop-filter: blur(9.3px);
+// }
+
+// .modal-backdrop {
+//     --bs-backdrop-zindex: -1;
+//     z-index: var(--bs-backdrop-zindex);
+// }
+
 // merge custom theme with original
 $theme-colors: map-merge($custom-theme-colors, $theme-colors);
 

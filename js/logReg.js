@@ -11,7 +11,6 @@ let userId = 0;
 let firstName = "";
 let lastName = "";
 let carouselMode = "";
-let uID = 0;
 let oldFirstName = "";
 let oldLastName = "";
 let oldEmail = "";
@@ -115,7 +114,6 @@ function doLogin() {
 
 				firstName = jsonObject.firstName;
 				lastName = jsonObject.lastName;
-				uID = jsonObject.userID;
 				saveCookie();
 
 				window.location.href = "../dashboard.html";
@@ -178,51 +176,4 @@ function doLogout() {
 	lastName = "";
 	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 	window.location.href = "index.html";
-}
-
-// takes the new variables after the finished edit button is clicked
-function Edit() {
-
-	let newFirstName = document.getElementById("editFirstName").value;
-	let newLastName = document.getElementById("editLastName").value;
-	let newEmail = document.getElementById("editEmail").value;
-	let newPhone = document.getElementById("editPhone").value;
-
-
-	let tmp = {
-		oldFirstName: oldFirstName,
-		oldLastName: oldLastName,
-		oldPhone: oldPhone,
-		oldEmail: oldEmail,
-		newFirstName: newFirstName,
-		newLastName: newLastName,
-		newEmail: newEmail,
-		newPhone: newPhone,
-		userId: uID
-	};
-
-	let jsonPayload = JSON.stringify(tmp);
-
-	let url = urlBase + '/EditContacts.' + extension;
-
-	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	try {
-		xhr.onreadystatechange = function () {
-			if (this.readyState == 4 && this.status == 200) {
-				let jsonObject = JSON.parse(xhr.responseText);
-				if (jsonObject.error) {
-					document.getElementById("editResult").innerHTML = jsonObject.error;
-				} else {
-					document.getElementById("editResult").innerHTML = "Edit successful.";
-					window.location.href = "../login.html";
-				}
-			}
-		};
-		xhr.send(jsonPayload);
-	}
-	catch (err) {
-		document.getElementById("editError").innerHTML = err.message;
-	}
 }

@@ -13,7 +13,7 @@
     }
     
     $stmt = $conn->prepare("UPDATE Contacts SET FirstName = ?, LastName = ?, Phone = ?, Email = ? WHERE ID = ? AND UserID = ?");
-    $stmt->bind_param("ssssss", $inData["newFirstName"], $inData["newLastName"], $inData["newPhone"], $inData["newEmail"], $inData["contactID"], $inData["userID"]);
+    $stmt->bind_param("sssssi", $inData["newFirstName"], $inData["newLastName"], $inData["newPhone"], $inData["newEmail"], $inData["contactID"], $inData["userID"]);
     
 
     if ($stmt->execute()) {
@@ -49,7 +49,13 @@ function getRequestInfo()
 	function returnWithInfo($searchResults)
 	{
 		$retValue = '{"results": [' . $searchResults . '], "error": ""}';
+		echo($retValue);
 		sendResultInfoAsJson($retValue);
+	}
+
+	function imTesting($test)
+	{
+		sendResultInfoAsJson('{"results":"' . $test .'"}');
 	}
 
 ?>

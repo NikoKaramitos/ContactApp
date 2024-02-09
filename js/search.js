@@ -58,40 +58,57 @@ function addElement(contact, num) {
 
     const newContact = document.createElement("div");
     newContact.classList.add("contact");
-    newContact.id = contact.ID;
-
+    
     let count = document.createElement("p");
     count.classList.add("my-0", "col-1");
     count.textContent = num + (10 * (page - 1));
     newContact.append(count);
-
+    
+    let nameRow = document.createElement("div");
+    nameRow.classList.add("my-0", "col");
+    nameRow.style.display = "flex";
+    nameRow.style.justifyContent = "center";
+    
     let temp = document.createElement("p");
-    temp.classList.add("my-0", "col");
-    temp.textContent = contact.FirstName + " " + contact.LastName;
-    newContact.append(temp);
+    temp.classList.add("px-1");
+    temp.textContent = contact.FirstName;
+    temp.id = `first${contact.ID}`;
+    nameRow.append(temp);
 
+    temp = document.createElement("p");
+    temp.textContent = contact.LastName;
+    temp.id = `last${contact.ID}`;
+    nameRow.append(temp);
+    newContact.append(nameRow);
+    
     temp = document.createElement("p");
     temp.classList.add("my-0", "col-12", "col-lg");
     // DELETE (?) temp.classList.add("col-md");
+    temp.id = `phone${contact.ID}`;
     temp.textContent = contact.Phone;
     newContact.append(temp);
-
+    
     temp = document.createElement("p");
     temp.classList.add("my-0", "col-12", "col-lg");
     if (contact.Email.length > 30) {
         temp.classList.add("fs-6")
     }
+    temp.id = `email${contact.ID}`;
     // DELETE (?) temp.classList.add("col-md");
     temp.textContent = contact.Email;
     newContact.append(temp);
-
+    
     const buttRow = document.createElement("div");
     buttRow.classList.add("my-0", "edit-del-row", "justify-content-md-end", "justify-content-center");
-
+    
     // EDIT BUTTON HERE:
     let editButt = document.createElement("Button");
     editButt.classList.add("btn", "btn-altpurple", "mx-1");
     editButt.textContent = "Edit";
+    editButt.id = contact.ID;
+    editButt.setAttribute("data-bs-toggle", "modal");
+    editButt.setAttribute("data-bs-target", "#editModal");
+    editButt.setAttribute("onclick", "setContactID()");
     buttRow.append(editButt);
 
     // Delete BUTTON HERE:
