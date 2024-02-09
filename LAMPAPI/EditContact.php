@@ -1,5 +1,6 @@
 
 <?php
+p/*
 		header('Access-Control-Allow-Origin: http://127.0.0.1:54471');
 		header('Access-Control-Allow-Credentials: true');
 		header('Access-Control-Allow-Methods: POST, OPTIONS');
@@ -138,5 +139,5 @@
 		$retValue = '{"results": [' . $searchResults . '], "error": ""}';
 		sendResultInfoAsJson($retValue);
 	}
-
+*/
 ?>

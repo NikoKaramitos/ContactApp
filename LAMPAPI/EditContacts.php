@@ -13,12 +13,12 @@
     }
     
     $stmt = $conn->prepare("UPDATE Contacts SET FirstName = ?, LastName = ?, Phone = ?, Email = ? WHERE ID = ? AND UserID = ?");
-    $stmt->bind_param("sssssi", $inData["newFirstName"], $inData["newLastName"], $inData["newPhone"], $inData["newEmail"], $inData["contactID"], $inData["userID"]);
-    
-
+    $stmt->bind_param("ssssss", $inData["newFirstName"], $inData["newLastName"], $inData["newPhone"], $inData["newEmail"], $inData["contactID"], $inData["userID"]);
+	//header('Content-Type: application/json');
+	// echo "<script>console.log('FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUCK');</script>";
     if ($stmt->execute()) {
         if ($stmt->affected_rows > 0) {
-            returnWithInfo("Contact updated successfully.");
+			returnWithInfo("We did it reddit!");
         } else {
             returnWithError("No contact found or data is the same.");
         }
@@ -29,7 +29,7 @@
     $stmt->close();
     $conn->close();
 
-function getRequestInfo()
+	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);
 	}
@@ -48,14 +48,13 @@ function getRequestInfo()
 
 	function returnWithInfo($searchResults)
 	{
-		$retValue = '{"results": [' . $searchResults . '], "error": ""}';
-		echo($retValue);
+		$retValue = '{"results": ["Contact updated successfully."], "error": ""}';
 		sendResultInfoAsJson($retValue);
 	}
 
-	function imTesting($test)
+	function imTesting()
 	{
-		sendResultInfoAsJson('{"results":"' . $test .'"}');
+		sendResultInfoAsJson('{"results":"Success!!"}');
 	}
 
 ?>

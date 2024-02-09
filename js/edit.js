@@ -34,7 +34,7 @@ function edit(id) {
 		newLastName: newLastName,
 		newPhone: newPhone,
 		newEmail: newEmail,
-		userID: userID,
+		userID: ""+userID,
         contactID: contactID
 	};
 
