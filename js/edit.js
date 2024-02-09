@@ -55,7 +55,7 @@ function edit(id) {
 					document.getElementById("editErrors").innerHTML = jsonObject.error;
 				} else {
 					document.getElementById("editErrors").innerHTML = "Edit successful.";
-					window.location.href = "../login.html";
+					//window.location.href = "../login.html";
 				}
 			}
 		};
