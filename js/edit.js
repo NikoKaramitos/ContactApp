@@ -27,6 +27,11 @@ function edit(id) {
 	let newPhone = document.getElementById("editPhone").value;
 	const userID = userId;
 
+	document.getElementById(`first${contactID}`).textContent = newFirstName;
+	document.getElementById(`last${contactID}`).textContent = newLastName;
+	document.getElementById(`phone${contactID}`).textContent = newPhone;
+	document.getElementById(`email${contactID}`).textContent = newEmail;
+
 
 	let tmp = {
 		newFirstName: newFirstName,
