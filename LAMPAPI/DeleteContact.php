@@ -5,7 +5,7 @@
 	header('Access-Control-Allow-Methods: POST, OPTIONS');
 	header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Accept, Origin, Authorization');
 	$inData = getRequestInfo();
-
+	// let tmp = { firstName: delFirst, lastName: delLast, email: delEmail, phone: delPhone, contactID, deleteContactID, userID: userId };
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 
 	if (!isset($inData['contactID']) || !isset($inData['userID']))

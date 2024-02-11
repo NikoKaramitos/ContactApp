@@ -9,6 +9,7 @@ let editLastName = "";
 let editPhoneNumber = "";
 let editEmail = "";
 let tempString = "";
+let deleteContactID = "";
 
 function pageUp() {
 
@@ -28,33 +29,6 @@ function pageDown() {
 }
 
 function addElement(contact, num) {
-    // const newContact = document.createElement("div");
-    // newContact.classList.add("contact");
-    // newContact.id = `contact-${contact.ID}`; 
-
-    // let count = document.createElement("p");
-    // count.classList.add("my-0", "col-1");
-    // count.id = `count-${contact.ID}`; 
-    // count.textContent = num + (10 * (page - 1));
-    // newContact.appendChild(count);
-
-    // let name = document.createElement("p");
-    // name.classList.add("my-0", "col");
-    // name.id = `name-${contact.ID}`;
-    // name.textContent = `${contact.FirstName} ${contact.LastName}`;
-    // newContact.appendChild(name);
-
-    // let phone = document.createElement("p");
-    // phone.classList.add("my-0", "col-12", "col-md");
-    // phone.id = `phone-${contact.ID}`; 
-    // phone.textContent = contact.Phone;
-    // newContact.appendChild(phone);
-
-    // let email = document.createElement("p");
-    // email.classList.add("my-0", "col-12", "col-md");
-    // email.id = `email-${contact.ID}`; 
-    // email.textContent = contact.Email;
-    // newContact.appendChild(email);
 
     const newContact = document.createElement("div");
     newContact.classList.add("contact");
@@ -115,6 +89,13 @@ function addElement(contact, num) {
     let delButt = document.createElement("Button");
     delButt.classList.add("btn", "btn-danger", "mx-1");
     delButt.textContent = "Delete";
+    delButt.id = contact.ID;
+    delButt.setAttribute("data-bs-toggle", "modal");
+    delButt.setAttribute("data-bs-target", "#deleteModal");
+    delButt.onclick = function() {
+        saveDelete(contact.ID, contact.userID);
+    };
+
     buttRow.append(delButt);
 
     newContact.append(buttRow);
@@ -163,38 +144,3 @@ function searchContact() {
         document.getElementById("SearchResults").innerHTML = err.message;
     }
 }
-
-/* LEGACY CODE - GONE BUT NEVER FORGOTTEN
-function loadContacts() {
-    let url = 'http://contactz.xyz/LAMPAPI/RequestContacts.php';
-    let xhr = new XMLHttpRequest();
-    xhr.open("GET", url, true);
-
-    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-
-    try {
-        xhr.onload = function () {
-            if (this.status == 200) {
-                let jsonResponse = JSON.parse(xhr.responseText);
-                let contacts = jsonResponse.contacts;
-                const searchContainer = document.getElementById("searchResults");
-                searchContainer.innerHTML = "";
-
-                searchContact.forEach(function (contacts) {
-                    const a = document.createElement("div");
-                    a.className = "contact";
-                    // populate the following line with carlos' js code for adding boxes orw/e idk
-                    a.innerHTML = `<h3>${searchContact.firstName}</h3>
-                    <p>${searchContact.phone}</p>`;
-                    searchContainer.appendChild(a);
-                });
-            }
-        };
-        xhr.send(jsonPayload);
-    }
-    catch (err) {
-        document.getElementById("searchResult").innerHTML = err.message;
-    }
-
-}
-*/

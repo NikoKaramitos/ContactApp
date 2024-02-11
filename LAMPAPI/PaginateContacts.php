@@ -8,11 +8,16 @@
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
 
+	function compareByFirst($a, $b) {
+		return strcmp ($a, $b);
+	}
+
 	$inData = getRequestInfo();
 
 	$page = 0;
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
+
 
 	if (!isset($inData['userID']) || !isset($inData['page']))
 	{

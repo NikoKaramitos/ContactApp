@@ -1,4 +1,9 @@
 <?php
+	function compare($a, $b) {
+		return strcmp($a, $b);
+	}
+	
+
     $inData = getRequestInfo();
     header('Access-Control-Allow-Origin: http://127.0.0.1:54471');
 	header('Access-Control-Allow-Credentials: true');
@@ -14,8 +19,7 @@
     
     $stmt = $conn->prepare("UPDATE Contacts SET FirstName = ?, LastName = ?, Phone = ?, Email = ? WHERE ID = ? AND UserID = ?");
     $stmt->bind_param("ssssss", $inData["newFirstName"], $inData["newLastName"], $inData["newPhone"], $inData["newEmail"], $inData["contactID"], $inData["userID"]);
-	//header('Content-Type: application/json');
-	// echo "<script>console.log('FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUCK');</script>";
+
     if ($stmt->execute()) {
         if ($stmt->affected_rows > 0) {
 			returnWithInfo("We did it reddit!");

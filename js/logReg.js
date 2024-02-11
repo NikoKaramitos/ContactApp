@@ -70,15 +70,6 @@ function doLogin() {
 	firstName = "";
 	lastName = "";
 
-	if (testMode) {
-		document.cookie = "mode=;expires = Thu, 01 Jan 1970 00:00:00 GMT";
-		firstName = "Tester";
-		lastName = "Man"
-		saveCookie();
-		window.location.href = "../dashboard.html";
-		return;
-	}
-
 	let loginID = document.getElementById("loginName")
 	let passwordID = document.getElementById("loginPassword")
 
