@@ -126,6 +126,7 @@ $custom-theme-colors: (
     "altgray": #5a5a5a,
     "altblack": #000000,
     "altpurple": #021629,
+    "altred": rgb(143, 0, 0),
 );
 
 .txt-shadow {
@@ -185,7 +186,8 @@ $custom-theme-colors: (
 }
 
 button svg {
-    pointer-events: none; /* Prevent SVG from capturing click events */
+    pointer-events: none;
+    /* Prevent SVG from capturing click events */
 }
 
 // .modal-content {
