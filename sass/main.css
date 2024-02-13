@@ -101,7 +101,7 @@ body {
 }
 
 .contact {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.65);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -112,6 +112,9 @@ body {
   margin-bottom: 2px;
   flex-wrap: wrap;
   font-size: large;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   transition: transform 0.3s ease;
   transition: box-shadow 0.3s ease;
 }
