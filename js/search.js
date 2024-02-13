@@ -26,6 +26,12 @@ function pageDown() {
 	}
 	document.getElementById("pageNum").innerHTML = page;
 }
+function resetPage()
+{
+	page = 1;
+	searchErr = "";
+	document.getElementById("pageNum").innerHTML = page;
+}
 
 function addElement(contact, num) {
 	const newContact = document.createElement("div");
@@ -125,6 +131,7 @@ function searchContact() {
 	//document.getElementById("searchText").value = "";
 
 	readCookie();
+	//resetPage();
 
 	let tmp = { search: searchText, userID: userId, page: page };
 	let jsonPayload = JSON.stringify(tmp);

@@ -82,11 +82,12 @@
 						</script>
 						<script>
 							document.getElementById('searchText').addEventListener('keyup', function (event) {
+								resetPage();
 								searchContact();
 							});
 						</script>
 						<button type="button" id="searchColorButton" class="btn btn-altlight"
-							onclick="searchContact();">
+							onclick="searchContact(); resetPage();">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 								class="bi bi-search" viewBox="0 0 16 16">
 								<path
