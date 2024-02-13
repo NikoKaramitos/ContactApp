@@ -15,7 +15,7 @@ function setContactID() {
 	document.getElementById("editPhone").value = oldPhone;
 
 	const contact = [oldFirstName, oldLastName, oldPhone, oldEmail];
-	//console.log(contact);
+	console.log(contact);
 	//alert(contactID);
 }
 

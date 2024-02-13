@@ -184,6 +184,10 @@ $custom-theme-colors: (
     justify-content: flex-end;
 }
 
+button svg {
+    pointer-events: none; /* Prevent SVG from capturing click events */
+}
+
 // .modal-content {
 //     background-color: #fff;
 //     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
