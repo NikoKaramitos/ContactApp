@@ -98,7 +98,7 @@ function doLogin() {
 				let jsonObject = JSON.parse(xhr.responseText);
 				userId = jsonObject.id;
 				if (userId < 1) {
-					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+					document.getElementById("loginResult").innerHTML = "User/Password combination incorrect *";
 					return;
 				}
 				document.cookie = "mode=;expires = Thu, 01 Jan 1970 00:00:00 GMT";
