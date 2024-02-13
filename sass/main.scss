@@ -144,6 +144,13 @@ $custom-theme-colors: (
     margin-bottom: 2px;
     flex-wrap: wrap;
     font-size: large;
+    transition: transform 0.3s ease;
+    transition: box-shadow 0.3s ease;
+}
+
+.contact:hover {
+    transform: scale(1.025);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
 
 #myInput {

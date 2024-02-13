@@ -112,6 +112,13 @@ body {
   margin-bottom: 2px;
   flex-wrap: wrap;
   font-size: large;
+  transition: transform 0.3s ease;
+  transition: box-shadow 0.3s ease;
+}
+
+.contact:hover {
+  transform: scale(1.025);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
 
 #myInput {
@@ -5936,7 +5943,7 @@ textarea.form-control-lg {
 }
 
 .modal-backdrop {
-  --bs-backdrop-zindex: -1;
+  --bs-backdrop-zindex: 1050;
   --bs-backdrop-bg: #000;
   --bs-backdrop-opacity: 0.5;
   position: fixed;
