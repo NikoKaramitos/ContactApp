@@ -151,6 +151,15 @@ function doRegister() {
 					document.getElementById("registerResult").innerHTML = jsonObject.error;
 				} else {
 					document.getElementById("registerResult").innerHTML = "Registration successful";
+
+					document.cookie = "mode=;expires = Thu, 01 Jan 1970 00:00:00 GMT";
+
+
+					firstName = jsonObject.firstName;
+					lastName = jsonObject.lastName;
+					userId = jsonObject.id;
+
+					saveCookie();
 					window.location.href = "../dashboard.html";
 				}
 			}
