@@ -1,5 +1,6 @@
 
 <?php
+	/*
 	if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 		header('Access-Control-Allow-Origin: http://127.0.0.1:54471');
 		header('Access-Control-Allow-Credentials: true');
@@ -12,7 +13,7 @@
 		http_response_code(200);
 		exit;
 	}
-	
+	*/
 	$inData = getRequestInfo();
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
