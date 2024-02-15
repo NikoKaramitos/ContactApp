@@ -10,8 +10,8 @@
 
 	
 	// Return 204 No Content or 200 OK status to indicate preflight was successful
-	http_response_code(200);
-	exit;
+	// http_response_code(200);
+	// exit;
 	
 	
 	$inData = getRequestInfo();
